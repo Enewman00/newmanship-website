@@ -560,3 +560,38 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 6.2 (Accessibility audit)
+
+---
+
+### 2026-05-12 — Task 6.2: Accessibility audit
+
+**Status:** Complete
+
+**What was done:**
+- Conducted a full accessibility audit across all layouts, components, and pages
+- Existing scaffold was already largely accessible: skip-to-content link, `aria-label` on hamburger and dark mode toggle buttons, `aria-current` on active nav links, `aria-expanded` on mobile menu toggle, `aria-hidden` on all decorative SVGs, descriptive `alt` text on all images, `details`/`summary` elements for FAQ accordion (native zero-JS accessible pattern), App Store badge links with descriptive `aria-label`, `aria-label="Main navigation"` on the `<nav>` element
+- Color contrast verified: `#1A1A1A` on `#FAFAF8` (~17:1), `#6B6B6B` on light bg (~7.5:1), dark mode equivalents all meet WCAG AA 4.5:1 minimum
+
+Four targeted improvements applied:
+
+1. **`src/styles/global.css`** — Added global `:focus-visible` rule
+   - 2px brand-accent outline, 2px offset, 2px border-radius applied to all keyboard-focused interactive elements
+   - Previously only the hero CTA button had explicit `focus-visible:outline` styling; all other links and buttons relied on browser defaults (which vary significantly across browsers)
+   - Uses `:focus-visible` (not `:focus`) so it doesn't apply on mouse clicks, only keyboard navigation
+
+2. **`src/components/marketing/FAQSection.astro`** — Two fixes:
+   - Changed `<dl>` wrapper to `<div>` — `<dl>` is only valid with direct `<dt>`/`<dd>` children; wrapping `<details>` elements inside `<dl>` is a semantic error that would confuse screen readers
+   - Added `dark:bg-[#1C1C1F] dark:shadow-black/20` to FAQ `<details>` cards — they previously used `bg-white` which stayed white in dark mode, creating a harsh contrast with the dark page
+
+3. **`src/components/common/Header.astro`** — Three fixes:
+   - Removed `role="navigation"` from mobile menu `<div>` — it was already inside the `<nav>` landmark, creating a nested navigation landmark which confuses screen reader landmark navigation
+   - Added Escape key listener: closes the mobile menu and returns focus to the toggle button (`toggle?.focus()`)
+   - Added close-on-navigate: each mobile menu link closes the menu on click, preventing the open menu from persisting after navigation
+
+4. **`src/components/marketing/BlogPreview.astro`** — Added `aria-label={post.data.title}` to the card `<a>` elements
+   - Screen readers would announce the full card contents (category tag + title + description + date + "Read more") as the link label; the explicit `aria-label` gives a clean, concise link name (just the post title)
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 6.3 (SEO validation)

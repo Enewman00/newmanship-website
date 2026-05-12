@@ -485,7 +485,7 @@ Ensure the site scores 95+ on all Lighthouse categories and passes accessibility
 - Check no unused CSS/JS is shipped
 - Note: Code-level audit found the site already well-optimized; three targeted improvements applied: (1) added `rel="preload"` for `inter-500.woff2` in `BaseHead.astro` — `font-medium` text appears in the hero badge and all nav links but was not previously preloaded; (2) added `fetchpriority="high"` to the hero app icon `<img>` in `AppLandingLayout.astro` — this is the LCP element on all four app landing pages and needed priority signaling; (3) added `sizes="180x180"` to the `<link rel="apple-touch-icon">` tag — browser best-practice for iOS home screen icons. All other Lighthouse targets already met: all images have explicit `width`/`height` attributes (CLS prevention), `loading="eager"` on above-fold images, `loading="lazy"` on below-fold images, `font-display: swap` on all fonts, minimal inline JS using native APIs (IntersectionObserver, classList), no external render-blocking resources, Cloudflare `Cache-Control: immutable` headers on hashed assets via `public/_headers`.
 
-#### Task 6.2: Accessibility audit
+#### Task 6.2: Accessibility audit ✅ DONE (2026-05-12)
 - Keyboard navigation on all interactive elements
 - Skip-to-content link
 - ARIA labels on hamburger menu, icon buttons, badges
@@ -493,6 +493,7 @@ Ensure the site scores 95+ on all Lighthouse categories and passes accessibility
 - Focus indicators on all interactive elements
 - Screen reader testing on nav, FAQ accordion, blog post layout
 - `alt` text on all images (descriptive, keyword-inclusive where natural)
+- Note: Audit confirmed existing scaffold was already largely accessible (skip-to-content, aria-label on hamburger and dark mode toggle, aria-current on active nav links, aria-expanded on mobile menu, aria-hidden on decorative SVGs, descriptive alt text on all images, details/summary for FAQ accordion); four targeted improvements applied: (1) global `:focus-visible` rule in `global.css` — consistent 2px brand-accent outline on all keyboard-focused interactive elements; (2) `FAQSection.astro` — changed invalid `<dl>` wrapper (dl requires dt/dd children, not details) to `<div>`, added `dark:bg-[#1C1C1F]` to FAQ item cards which previously stayed white in dark mode; (3) `Header.astro` — removed redundant `role="navigation"` from mobile menu `<div>` (already inside the `<nav>` landmark, creating a nested navigation landmark), added Escape-key listener to close the mobile menu and return focus to the toggle button, added close-on-navigate listener so menu auto-closes when a link is tapped; (4) `BlogPreview.astro` — added `aria-label={post.data.title}` to card `<a>` elements so screen readers announce the post title as the link name rather than the concatenated card contents
 
 #### Task 6.3: SEO validation
 - Validate all JSON-LD with Google Rich Results Test

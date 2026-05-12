@@ -45,6 +45,7 @@ function excerpt(text: string, maxLen = 160): string {
       {posts.map((post, i) => (
         <a
           href={`/blog/${post.slug}/`}
+          aria-label={post.data.title}
           class="group block bg-brand-surface rounded-2xl p-6 border border-transparent hover:border-brand-accent/20 hover:shadow-md transition-all duration-200 reveal"
           style={`--reveal-delay: ${i * 80}ms`}
         >
