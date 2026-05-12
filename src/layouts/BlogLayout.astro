@@ -153,7 +153,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
           {nextPost ? (
             <a
               href={`/blog/${nextPost.slug}/`}
-              class="group flex flex-col gap-1 p-4 rounded-xl bg-brand-surface hover:bg-[#E8E4DC] transition-colors min-w-0 flex-1 sm:items-end sm:text-right"
+              class="group flex flex-col gap-1 p-4 rounded-xl bg-brand-surface dark:bg-[#1C1C1F] hover:bg-[#E8E4DC] dark:hover:bg-[#252528] transition-colors min-w-0 flex-1 sm:items-end sm:text-right"
             >
               <span class="text-xs font-semibold uppercase tracking-wider text-brand-ink-muted">Next →</span>
               <span class="text-brand-ink font-medium group-hover:text-brand-accent transition-colors line-clamp-2">{nextPost.title}</span>

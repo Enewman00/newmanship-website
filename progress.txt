@@ -645,3 +645,41 @@ Six targeted fixes applied:
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 6.4 (Cross-browser & device testing)
+
+---
+
+### 2026-05-12 — Task 6.4: Cross-browser & device testing
+
+**Status:** Complete
+
+**What was done:**
+- Conducted a full code-level cross-browser compatibility audit across all layouts, components, pages, and scripts
+- Verified all JavaScript APIs used are supported across modern browsers (Chrome 88+, Firefox 89+, Safari 15+, Edge 88+):
+  - `IntersectionObserver` — used for scroll-reveal animations
+  - `localStorage` — used for dark mode persistence
+  - `classList.toggle(name, force)` two-argument form — used in mobile menu
+  - `URLSearchParams`, `history.replaceState` — used for blog tag filtering
+  - `window.matchMedia('(prefers-color-scheme: dark)')` — used for system theme detection
+  - `e.key` — used for Escape key handler in mobile menu
+- Verified Astro's `<ViewTransitions />` gracefully degrades in Safari (no native View Transitions API) — falls back to standard page navigation; `astro:page-load` event still fires on every navigation
+- Verified `backdrop-filter: blur()` header: Tailwind v3 auto-generates both `-webkit-backdrop-filter` and `backdrop-filter` prefixes
+- Verified `details`/`summary` FAQ accordion: uses both `[list-style:none]` (Firefox) and `[&::-webkit-details-marker]:hidden` (WebKit) for cross-browser disclosure triangle removal
+- Verified `font-display: swap` + preloads for all 3 Inter weights eliminates FOUT across browsers
+- Verified `prefers-reduced-motion` disables all reveal transitions and smooth scroll
+- Verified responsive layout at all breakpoints (sm/md/lg) for mobile-first grid and flex layouts
+
+Three bugs found and fixed:
+
+1. **`src/layouts/AppLandingLayout.astro`** — `bg-brand-background` → `bg-brand-bg`
+   - `brand-background` is not defined in `tailwind.config.mjs` (the key is `brand.bg`); the class was silently stripped by PurgeCSS, leaving the features section with no background utility applied; corrected to `bg-brand-bg`
+
+2. **`src/components/marketing/AppCard.astro`** — `transition-gap` → `transition-[gap]`
+   - `transition-gap` is not a valid Tailwind v3 built-in utility (Tailwind's `transition-*` helpers only cover colors, opacity, shadow, transform); it was silently stripped, so the "Learn more" arrow gap hover animation never fired; corrected to arbitrary syntax `transition-[gap]`
+
+3. **`src/layouts/BlogLayout.astro`** — Added `dark:bg-[#1C1C1F] dark:hover:bg-[#252528]` to "Next →" post navigation card
+   - The "Previous ←" card had dark mode background variants but the "Next →" card was missing them; in dark mode, the next post card stayed light-colored while the previous card was correctly dark
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 7.1 (Analytics integration — Plausible)
