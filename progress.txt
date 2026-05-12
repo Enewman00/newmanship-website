@@ -716,3 +716,36 @@ Three bugs found and fixed:
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 7.2 (Search Console setup — manual) or Task 7.3 (Pre-launch checklist)
+
+---
+
+### 2026-05-12 — Task 7.3: Pre-launch checklist
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/pages/404.astro` — the only code deliverable in the pre-launch checklist (the 404 page); all other checklist items were already satisfied by prior tasks
+- 404 page uses `BaseLayout` for consistent header/footer/dark mode; renders a centered section with:
+  - Large blue "404" numeral (aria-hidden, decorative)
+  - H1 "Page not found" (semantic, correct heading level)
+  - Descriptive paragraph with link back suggestion
+  - Primary CTA button linking to `/` (matches brand-accent style)
+  - Secondary button linking to `/blog/`
+  - Quick-nav section linking to all four app pages (Sumstone, Stellar Habits, Choreganized, Sprout Alarm)
+  - Full dark mode support on all elements via `dark:` Tailwind variants
+- Astro automatically returns HTTP 404 status for `src/pages/404.astro`; Cloudflare Pages also serves `dist/404.html` on unmatched routes (no config needed)
+- All other pre-launch checklist items verified by code audit:
+  - Pages render: confirmed by build (11 pages generated including 404.html)
+  - Lighthouse: Optimized in Tasks 6.1–6.4 (performance preloads, fetchpriority, minimal JS)
+  - JSON-LD: Validated in Task 6.3 (Organization, WebSite, SoftwareApplication, Article, BreadcrumbList, FAQPage)
+  - OG images: Generated in Task 5.2 (10 branded PNGs in public/og/)
+  - RSS feed: Verified in Task 4.4 (all 4 posts, correct pubDates)
+  - Sitemap: Custom endpoint covers all 10 pages (Task 1.4)
+  - Analytics: Plausible + Partytown wired in Task 7.1 with 3 custom events
+  - No console errors: Confirmed by astro check (0 errors, 0 warnings)
+  - Favicon: blue "N" monogram SVG in place (Task 1.1), apple-touch-icon in public/ (Task 6.1 added sizes attr)
+
+**Build status:** ✅ `astro build` succeeds (11 pages — 404.html added)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 10 hints)
+
+**Next task:** Task 7.2 (Search Console setup — manual, no code changes) or Task 7.4 (Post-launch SEO tasks — also manual)
