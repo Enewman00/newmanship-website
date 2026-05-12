@@ -349,3 +349,24 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 4.3 (Seed blog content — 4 launch posts)
+
+---
+
+### 2026-05-12 — Task 4.3: Seed blog content (4 launch posts)
+
+**Status:** Complete
+
+**What was done:**
+- Created 4 MDX blog posts in `src/content/blog/`, each 900–1100 words with keyword-optimized headings, correct frontmatter, and internal links to the respective app page:
+  - `5-ways-to-make-math-fun-again.mdx` — targets "math games for adults", "offline math puzzle app", "Countdown numbers game"; links to Sumstone; tags: math, puzzle, brain games; pubDate: 2026-04-28
+  - `why-streaks-dont-work.mdx` — targets "habit tracker without streaks", "streak-based habit tracker", behavioral science of habits; links to Stellar Habits; tags: habits, productivity, habit tracker; pubDate: 2026-05-01
+  - `home-maintenance-schedule-youll-actually-follow.mdx` — targets "home maintenance checklist app", "recurring task manager"; covers HVAC, water heater, dryer vent, and other commonly-missed tasks; links to Choreganized; tags: home maintenance, productivity, recurring tasks; pubDate: 2026-05-05
+  - `how-your-morning-alarm-can-help-the-planet.mdx` — targets "eco-friendly alarm app", "alarm app that plants trees"; explains wake challenges and the 50% reforestation revenue model; links to Sprout Alarm; tags: environment, productivity, alarm; pubDate: 2026-05-08
+- All posts use `relatedApp` frontmatter field matching the content collection schema
+- No per-post OG images generated (deferred to Task 5.2)
+- Blog listing page now renders all 4 posts with tag filtering; individual post pages render with TableOfContents and Related Posts sections
+
+**Build status:** ✅ `astro build` succeeds (10 pages — 4 new blog post pages + index, 5 app/home pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 4.4 (RSS feed — verify RSS feed renders posts correctly)

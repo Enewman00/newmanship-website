@@ -409,7 +409,7 @@ Content marketing engine for long-tail SEO. Blog posts target problem-solution k
 - Related posts section at bottom of each post (same tags)
 - Note: `BlogCard.astro` was already created in Task 4.1; `TagList.astro` created as a reusable tag-chip component with active-tag highlighting; `TableOfContents.astro` uses h2/h3 headings from Astro's `getHeadings()` (only renders when ≥2 headings); related posts computed in `[...slug].astro` by tag intersection, capped at 3, rendered in `BlogLayout` using `BlogCard` grid; `BlogLayout` updated to accept `headings` and `relatedPosts` props
 
-#### Task 4.3: Seed blog content (4 launch posts)
+#### Task 4.3: Seed blog content (4 launch posts) ✅ DONE (2026-05-12)
 Write 4 initial blog posts (MDX), one relevant to each app, targeting long-tail keywords:
 
 1. **"5 Ways to Make Math Fun Again"** — targets "math games for adults", links to Sumstone
@@ -418,6 +418,7 @@ Write 4 initial blog posts (MDX), one relevant to each app, targeting long-tail 
 4. **"How Your Morning Alarm Can Help the Planet"** — targets "eco-friendly alarm app", links to Sprout Alarm
 
 Each post: 800-1200 words, keyword-optimized title/headings, internal links to app page, OG image
+- Note: All 4 posts written as MDX in `src/content/blog/`; each 900–1100 words with keyword-optimized headings, internal links to the respective app page, correct `relatedApp` frontmatter field for cross-linking; no per-post OG images yet (Task 5.2 will generate them); blog listing and individual post routes now render 4 live pages (site builds to 10 pages total)
 
 #### Task 4.4: RSS feed
 - `src/pages/rss.xml.ts` — generates RSS feed from blog collection
