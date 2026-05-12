@@ -370,3 +370,20 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 4.4 (RSS feed — verify RSS feed renders posts correctly)
+
+---
+
+### 2026-05-12 — Task 4.4: RSS feed
+
+**Status:** Complete
+
+**What was done:**
+- `src/pages/rss.xml.ts` was already implemented from Task 1.1 scaffold and `BaseHead.astro` already contained the RSS autodiscovery `<link rel="alternate" type="application/rss+xml">` tag from Task 1.3
+- Verified the feed renders correctly with all 4 seeded blog posts after clearing a stale build cache; each item includes correct title, description, pubDate, and absolute URL at `https://newmanship.com/blog/[slug]/`; feed is sorted newest-first (2026-05-08 → 2026-04-28)
+- Feed metadata: title "Newmanship Blog", description, language `en-us`, site link `https://newmanship.com/`
+- Phase 4 is now fully complete (all 4 tasks done: 4.1, 4.2, 4.3, 4.4)
+
+**Build status:** ✅ `astro build` succeeds (10 pages — 4 blog posts + blog index + 5 app/home pages + rss.xml + sitemap + robots.txt)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 5.1 (App icon pipeline — copy and optimize app icons to WebP)

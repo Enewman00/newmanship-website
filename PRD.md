@@ -420,10 +420,11 @@ Write 4 initial blog posts (MDX), one relevant to each app, targeting long-tail 
 Each post: 800-1200 words, keyword-optimized title/headings, internal links to app page, OG image
 - Note: All 4 posts written as MDX in `src/content/blog/`; each 900–1100 words with keyword-optimized headings, internal links to the respective app page, correct `relatedApp` frontmatter field for cross-linking; no per-post OG images yet (Task 5.2 will generate them); blog listing and individual post routes now render 4 live pages (site builds to 10 pages total)
 
-#### Task 4.4: RSS feed
+#### Task 4.4: RSS feed ✅ DONE (2026-05-12)
 - `src/pages/rss.xml.ts` — generates RSS feed from blog collection
 - Include post title, description, pubDate, link, content snippet
 - Add RSS autodiscovery `<link>` tag in BaseHead
+- Note: RSS feed was scaffolded in Task 1.1 and autodiscovery link was in BaseHead from Task 1.3; Task 4.4 verified both work correctly with the 4 seeded blog posts — all items render with correct titles, descriptions, pubDates, and absolute URLs at `https://newmanship.com/blog/[slug]/`; feed is sorted newest-first
 
 ---
 
