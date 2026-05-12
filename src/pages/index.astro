@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroSection from '@/components/marketing/HeroSection.astro';
 import AppCard from '@/components/marketing/AppCard.astro';
+import BrandStory from '@/components/marketing/BrandStory.astro';
 import { getCollection } from 'astro:content';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/utils/seo';
 
@@ -40,14 +41,5 @@ const apps = APP_ORDER.map((slug) => allApps.find((a) => a.id === slug)!).filter
     </div>
   </section>
 
-  <section class="bg-brand-surface py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-brand-ink mb-4">About Newmanship</h2>
-      <p class="text-brand-ink-muted max-w-2xl mx-auto leading-relaxed">
-        Newmanship is a one-person indie app studio focused on craft, simplicity, and privacy.
-        Every app is designed to do one thing well — no dark patterns, no data harvesting, no bloat.
-        Just tools that make your day a little better.
-      </p>
-    </div>
-  </section>
+  <BrandStory />
 </BaseLayout>

@@ -311,10 +311,11 @@ The main entry point — showcases all 4 apps, establishes the brand, and funnel
 - Render from content collection data (loop over `apps` collection)
 - Note: `AppCard` uses a luminance check to auto-select light/dark text based on each app's background color; inline `onmouseenter/leave` for dynamic border-color hover since Tailwind can't interpolate hex values at runtime; `APP_ORDER` array in `index.astro` controls display order since JSON collection has no order field
 
-#### Task 2.3: Brand story section
+#### Task 2.3: Brand story section ✅ DONE (2026-05-12)
 - Brief "About Newmanship" section — indie developer, craft-focused, privacy-first
 - Keep it short: 2-3 sentences max
 - Optional: small dev photo or illustrated avatar
+- Note: Extracted to `BrandStory.astro` component; includes 3-column value pillars (Craft, Privacy, Simplicity) with inline SVG icons; accepts optional `avatarPath` prop for a dev photo when available
 
 #### Task 2.4: Blog preview section
 - `BlogPreview.astro` — latest 3 blog posts as cards

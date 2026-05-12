@@ -123,3 +123,21 @@
 **Type check:** ✅ `astro check` passes (0 errors)
 
 **Next task:** Task 2.3 (Brand story section) or Task 2.4 (Blog preview section)
+
+---
+
+### 2026-05-12 — Task 2.3: Brand story section
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/marketing/BrandStory.astro` — a dedicated brand story component replacing the inline "About Newmanship" section in `index.astro`
+- Component renders: section heading, 2-3 sentence brand description copy (indie studio, craft-focused, privacy-first), and a 3-column value pillars grid
+- Three value pillars: **Craft** (every detail considered), **Privacy** (no accounts, on-device data), **Simplicity** (one app, one job, done well) — each with an inline SVG icon and short description
+- Accepts optional `avatarPath` prop: if a dev photo path is provided it renders as a circular avatar above the heading; gracefully omitted when not set (no placeholder image)
+- Replaced the inline `<section>` block in `index.astro` with `<BrandStory />` import
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 2.4 (Blog preview section)
