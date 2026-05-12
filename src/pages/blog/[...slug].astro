@@ -40,6 +40,8 @@ const canonicalUrl = `${siteUrl}/blog/${post.slug}/`;
 const wordCount = post.body.split(/\s+/).filter(Boolean).length;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
+const ogImage = post.data.heroImage ?? `/og/blog-${post.slug}.png`;
+
 const relatedPosts = allPosts
   .filter(
     (p) =>
@@ -55,7 +57,7 @@ const relatedPosts = allPosts
   author={post.data.author}
   pubDate={post.data.pubDate}
   updatedDate={post.data.updatedDate}
-  heroImage={post.data.heroImage}
+  heroImage={ogImage}
   tags={post.data.tags}
   canonicalUrl={canonicalUrl}
   readingTime={readingTime}

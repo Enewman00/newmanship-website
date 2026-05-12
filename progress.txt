@@ -414,3 +414,32 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 5.2 (OG image creation — per-app and per-post OG images)
+
+---
+
+### 2026-05-12 — Task 5.2: OG image creation
+
+**Status:** Complete
+
+**What was done:**
+- Extended `scripts/generate-og-images.py` to generate 10 total OG images (up from 2):
+  - `public/og/homepage.png` — existing homepage image (regenerated)
+  - `public/og/default.png` — existing fallback image (regenerated)
+  - `public/og/sumstone.png` — warm parchment bg, gold accent bar, "Sumstone" name, category, tagline
+  - `public/og/stellar-habits.png` — deep night sky bg, amber accent bar, "Stellar Habits" name, category, tagline
+  - `public/og/choreganized.png` — warm cream bg, indigo accent bar, "Choreganized" name, category, tagline
+  - `public/og/sprout-alarm.png` — eco-green bg, green accent bar, "Sprout Alarm" name, category, tagline
+  - `public/og/blog-5-ways-to-make-math-fun-again.png`
+  - `public/og/blog-why-streaks-dont-work.png`
+  - `public/og/blog-home-maintenance-schedule-youll-actually-follow.png`
+  - `public/og/blog-how-your-morning-alarm-can-help-the-planet.png`
+- Per-app design: app background color, 10px accent bar top, subtle accent-blend strip at bottom, category label, large app name, word-wrapped tagline, URL footer
+- Per-blog design: brand background, blue accent bar, "NEWMANSHIP BLOG" label, word-wrapped bold post title, author · date, hashtag list, URL footer; added `wrap_text()` and `draw_wrapped_centered()` helpers to handle multi-line titles
+- Updated all 4 app pages to pass `image="/og/{slug}.png"` to `AppLandingLayout`
+- Updated `src/pages/blog/[...slug].astro` to derive `ogImage = post.data.heroImage ?? \`/og/blog-${post.slug}.png\`` — falls back to generated image when no real hero image exists; passed as `heroImage` to `BlogLayout`, which forwards it to `BaseLayout` → `BaseHead`
+- OG image URL appears correctly in `og:image`, `twitter:image`, and Article JSON-LD schema `image` field in built HTML
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 5.3 (Screenshot placeholders)

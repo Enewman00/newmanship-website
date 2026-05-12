@@ -438,12 +438,13 @@ Gather app screenshots/icons, create OG images, optimize all assets, and polish 
 - Create favicon from Newmanship brand mark
 - Note: Real app icons not yet exported from the app projects; created branded SVG placeholder icons for each app in `public/app-icons/` (sumstone, stellar-habits, choreganized, sprout-alarm) using each app's brand colors and a distinctive visual motif (tiles for Sumstone, star for Stellar Habits, checkmark for Choreganized, sprout for Sprout Alarm); favicon.svg (`public/favicon.svg`) was already in place as a blue "N" monogram from the Task 1.1 scaffold; added `iconPath` field to all 4 app JSON files; updated `AppLandingLayout` to accept `iconPath` prop and display a 128×128 `loading="eager"` icon in the hero; `AppCard` already handled 64×64 icons — icons now appear on homepage cards and all 4 app landing page heroes; replace SVGs with real app icon exports when available
 
-#### Task 5.2: OG image creation
+#### Task 5.2: OG image creation ✅ DONE (2026-05-12)
 - Create 1200x630 OG images for:
   - Homepage (Newmanship brand + 4 app icons)
   - Each app landing page (app icon + name + tagline on branded background)
   - Blog post template (title text on branded background)
 - Place in `src/assets/images/og-images/`
+- Note: All 10 OG images generated via `scripts/generate-og-images.py` (Pillow) and placed in `public/og/`; per-app images (`sumstone.png`, `stellar-habits.png`, `choreganized.png`, `sprout-alarm.png`) use each app's brand background + accent bar + name + tagline; per-post images (`blog-{slug}.png`) use the parent brand background with post title word-wrapped, author, date, tags, and URL; all 4 app pages now pass `image="/og/{slug}.png"` to `AppLandingLayout`; `[...slug].astro` derives `ogImage` from `heroImage ?? \`/og/blog-${post.slug}.png\`` so blog post OG images are used automatically; OG image URL appears correctly in og:image, twitter:image, and Article JSON-LD schema image fields
 
 #### Task 5.3: Screenshot placeholders
 - Create placeholder sections on each app page for screenshots
