@@ -1,0 +1,139 @@
+---
+interface Screenshot {
+  alt: string;
+  caption: string;
+  label?: string;
+  src?: string;
+  srcWebp?: string;
+}
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  screenshots: Screenshot[];
+  accentColor: string;
+  appBackground: string;
+  backgroundClass?: string;
+}
+
+const {
+  heading = 'See it in action',
+  subheading,
+  screenshots,
+  accentColor,
+  appBackground,
+  backgroundClass = 'bg-brand-surface',
+} = Astro.props;
+---
+
+<section class:list={['py-20', backgroundClass]}>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      class:list={[
+        'text-2xl font-bold text-brand-ink text-center',
+        subheading ? 'mb-4' : 'mb-12',
+      ]}
+    >
+      {heading}
+    </h2>
+    {subheading && (
+      <p class="text-brand-ink-muted text-center mb-12 max-w-xl mx-auto">{subheading}</p>
+    )}
+    <div class="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-10 sm:gap-8 lg:gap-12">
+      {screenshots.map((shot) => (
+        <div class="flex flex-col items-center w-[160px] flex-shrink-0">
+          <div class="relative w-full">
+            {/* Volume buttons (left side) */}
+            <div
+              class="absolute -left-[3px] rounded-l-sm bg-gray-600"
+              style="top: 52px; width: 3px; height: 20px;"
+              aria-hidden="true"
+            />
+            <div
+              class="absolute -left-[3px] rounded-l-sm bg-gray-600"
+              style="top: 80px; width: 3px; height: 28px;"
+              aria-hidden="true"
+            />
+            {/* Power button (right side) */}
+            <div
+              class="absolute -right-[3px] rounded-r-sm bg-gray-600"
+              style="top: 64px; width: 3px; height: 40px;"
+              aria-hidden="true"
+            />
+            {/* Outer bezel */}
+            <div class="relative rounded-[2rem] bg-gray-800 p-[5px] shadow-xl ring-1 ring-white/5">
+              {/* Screen */}
+              <div
+                class="relative rounded-[1.6rem] overflow-hidden"
+                style="aspect-ratio: 9 / 19.5; background-color: #000;"
+              >
+                {/* Dynamic island */}
+                <div
+                  class="absolute inset-x-0 flex justify-center z-20"
+                  style="top: 10px;"
+                  aria-hidden="true"
+                >
+                  <div class="w-14 h-3 rounded-full bg-gray-800" />
+                </div>
+                {shot.src ? (
+                  <picture>
+                    {shot.srcWebp && <source srcset={shot.srcWebp} type="image/webp" />}
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      loading="lazy"
+                      width="320"
+                      height="693"
+                      class="w-full h-full object-cover"
+                    />
+                  </picture>
+                ) : (
+                  <div
+                    class="w-full h-full flex flex-col items-center justify-center gap-3"
+                    style={`background-color: ${appBackground};`}
+                    role="img"
+                    aria-label={shot.alt}
+                  >
+                    <svg
+                      class="w-8 h-8"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      aria-hidden="true"
+                      style={`color: ${accentColor}; opacity: 0.35;`}
+                    >
+                      <rect
+                        x="2"
+                        y="5"
+                        width="28"
+                        height="22"
+                        rx="3"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <circle cx="11" cy="14" r="3" stroke="currentColor" stroke-width="1.5" />
+                      <path
+                        d="M2 22l7-6 6 4.5 6-7.5 9 9"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    {shot.label && (
+                      <p
+                        class="text-[9px] text-center leading-snug px-4"
+                        style={`color: ${accentColor}; opacity: 0.5;`}
+                      >
+                        {shot.label}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-sm text-brand-ink-muted mt-4 leading-snug">{shot.caption}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

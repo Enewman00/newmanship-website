@@ -446,11 +446,12 @@ Gather app screenshots/icons, create OG images, optimize all assets, and polish 
 - Place in `src/assets/images/og-images/`
 - Note: All 10 OG images generated via `scripts/generate-og-images.py` (Pillow) and placed in `public/og/`; per-app images (`sumstone.png`, `stellar-habits.png`, `choreganized.png`, `sprout-alarm.png`) use each app's brand background + accent bar + name + tagline; per-post images (`blog-{slug}.png`) use the parent brand background with post title word-wrapped, author, date, tags, and URL; all 4 app pages now pass `image="/og/{slug}.png"` to `AppLandingLayout`; `[...slug].astro` derives `ogImage` from `heroImage ?? \`/og/blog-${post.slug}.png\`` so blog post OG images are used automatically; OG image URL appears correctly in og:image, twitter:image, and Article JSON-LD schema image fields
 
-#### Task 5.3: Screenshot placeholders
+#### Task 5.3: Screenshot placeholders ✅ DONE (2026-05-12)
 - Create placeholder sections on each app page for screenshots
 - Use `<picture>` with WebP + fallback
 - Design screenshot frames (phone mockup CSS) for app screenshots
 - Lazy-load all screenshots below the fold
+- Note: Created `src/components/marketing/ScreenshotSection.astro` — a reusable section that renders 3 CSS phone mockups (dark bezel, dynamic island, side buttons) with either a real screenshot via `<picture srcset webp + fallback>` or a branded placeholder (app background color + accent-tinted image icon + screen label); all images use `loading="lazy"`; added to all 4 app landing pages in the default slot after each app's custom section; replace placeholder `src`/`srcWebp` props with real screenshot paths when exports are available
 
 #### Task 5.4: Animation & micro-interactions
 - Subtle scroll-reveal animations on feature cards (CSS `@keyframes` + `IntersectionObserver`)

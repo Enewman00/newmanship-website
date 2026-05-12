@@ -1,5 +1,6 @@
 ---
 import AppLandingLayout from '@/layouts/AppLandingLayout.astro';
+import ScreenshotSection from '@/components/marketing/ScreenshotSection.astro';
 import { getEntry } from 'astro:content';
 
 const app = await getEntry('apps', 'stellar-habits');
@@ -177,4 +178,29 @@ const demoHabits = [
       50% { opacity: 0.9; transform: translate(-50%, -58%) scale(1.15); }
     }
   </style>
+
+  <ScreenshotSection
+    heading="Your sky, your story"
+    subheading="Every screen is designed for quiet focus — a moment of calm in your day."
+    accentColor={colors.accent}
+    appBackground={colors.background}
+    backgroundClass="bg-brand-surface"
+    screenshots={[
+      {
+        alt: 'Stellar Habits night sky showing glowing habit stars',
+        caption: 'Your habits as a living constellation.',
+        label: 'Your night sky',
+      },
+      {
+        alt: 'Hold-to-light gesture lighting up a habit star',
+        caption: 'Hold to mark complete — feel it glow.',
+        label: 'Hold to light',
+      },
+      {
+        alt: 'Year spiral showing a full year of habit consistency',
+        caption: 'A year of consistency, beautifully mapped.',
+        label: 'Year spiral',
+      },
+    ]}
+  />
 </AppLandingLayout>

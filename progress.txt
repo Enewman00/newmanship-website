@@ -443,3 +443,27 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 5.3 (Screenshot placeholders)
+
+---
+
+### 2026-05-12 — Task 5.3: Screenshot placeholders
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/marketing/ScreenshotSection.astro` — a reusable screenshot gallery section
+- Component renders 3 CSS phone mockup frames per app page; each mockup includes: dark gray-800 bezel (rounded-[2rem]), decorative side buttons (volume up/down, power — purely CSS divs), dynamic island notch, and a rounded inner screen area at 9:19.5 aspect ratio
+- When `src` prop is provided on a screenshot entry, renders a `<picture>` element: optional `<source srcset type="image/webp">` first, then `<img loading="lazy" width height>` as fallback — supports WebP optimization when available
+- When no `src` provided (current state — real screenshots not yet exported), renders a branded placeholder: app background color fills the screen, with an accent-tinted screenshot icon SVG (35% opacity) and an optional screen label (e.g., "Main game board", "Year spiral")
+- Added `ScreenshotSection` to all 4 app landing pages via the default slot, placed after each app's existing custom section:
+  - **Sumstone**: After "How to Play" — 3 shots: "Main game board", "Difficulty select", "Results screen"; `bg-brand-background`
+  - **Stellar Habits**: After "New Kind of Habit Ritual" — 3 shots: "Your night sky", "Hold to light", "Year spiral"; `bg-brand-surface`
+  - **Choreganized**: After use-case cards — 3 shots: "Task dashboard", "Add recurring task", "Today's view"; `bg-brand-background`
+  - **Sprout Alarm**: After "How Your Mornings Plant Trees" — 3 shots: "Set your alarm", "Wake challenge", "Impact tracker"; `bg-brand-background`
+- Background classes alternate with surrounding sections for visual rhythm
+- When real app screenshots are exported, add `src="/path/to/screenshot.jpg"` and optionally `srcWebp="/path/to/screenshot.webp"` to each screenshot entry — no other code changes needed
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 5.4 (Animation & micro-interactions)

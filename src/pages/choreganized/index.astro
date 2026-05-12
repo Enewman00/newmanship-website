@@ -1,5 +1,6 @@
 ---
 import AppLandingLayout from '@/layouts/AppLandingLayout.astro';
+import ScreenshotSection from '@/components/marketing/ScreenshotSection.astro';
 import { getEntry } from 'astro:content';
 
 const app = await getEntry('apps', 'choreganized');
@@ -114,4 +115,29 @@ const useCases = [
       </p>
     </div>
   </section>
+
+  <ScreenshotSection
+    heading="Built for how life actually works"
+    subheading="Clear priorities, smart schedules, and everything stored privately on your device."
+    accentColor={colors.accent}
+    appBackground={colors.background}
+    backgroundClass="bg-brand-background"
+    screenshots={[
+      {
+        alt: 'Choreganized task dashboard showing recurring tasks by priority',
+        caption: 'All your tasks, clearly prioritised.',
+        label: 'Task dashboard',
+      },
+      {
+        alt: 'Choreganized add recurring task screen with scheduling options',
+        caption: 'Set it once, never forget again.',
+        label: 'Add recurring task',
+      },
+      {
+        alt: "Choreganized today's view grouped by category",
+        caption: "Today's tasks, grouped and ready.",
+        label: "Today's view",
+      },
+    ]}
+  />
 </AppLandingLayout>

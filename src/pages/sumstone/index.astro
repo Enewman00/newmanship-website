@@ -1,5 +1,6 @@
 ---
 import AppLandingLayout from '@/layouts/AppLandingLayout.astro';
+import ScreenshotSection from '@/components/marketing/ScreenshotSection.astro';
 import { getEntry } from 'astro:content';
 
 const app = await getEntry('apps', 'sumstone');
@@ -118,4 +119,29 @@ const steps = [
       </div>
     </div>
   </section>
+
+  <ScreenshotSection
+    heading="The puzzle in your pocket"
+    subheading="A clean, focused interface designed to keep you in the flow — no distractions, just numbers."
+    accentColor={colors.accent}
+    appBackground={colors.background}
+    backgroundClass="bg-brand-background"
+    screenshots={[
+      {
+        alt: 'Sumstone main game board showing six number tiles and a target of 247',
+        caption: 'Six tiles. One target. Go.',
+        label: 'Main game board',
+      },
+      {
+        alt: 'Sumstone difficulty selection screen',
+        caption: 'Pick your challenge level.',
+        label: 'Difficulty select',
+      },
+      {
+        alt: 'Sumstone results screen showing score and best solution',
+        caption: 'See your score and best path.',
+        label: 'Results screen',
+      },
+    ]}
+  />
 </AppLandingLayout>
