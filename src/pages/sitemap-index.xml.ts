@@ -14,17 +14,22 @@ export const GET: APIRoute = async ({ site }) => {
   ];
 
   const posts = await getCollection('blog', ({ data }) => !data.draft);
-  const blogUrls = posts.map((post) => `/blog/${post.slug}/`);
-
-  const allUrls = [...staticPages, ...blogUrls];
   const now = new Date().toISOString();
 
-  const urlEntries = allUrls
+  const staticEntries = staticPages.map((path) => ({ path, lastmod: now }));
+  const blogEntries = posts.map((post) => ({
+    path: `/blog/${post.slug}/`,
+    lastmod: post.data.pubDate.toISOString(),
+  }));
+
+  const allEntries = [...staticEntries, ...blogEntries];
+
+  const urlEntries = allEntries
     .map(
-      (path) => `
+      ({ path, lastmod }) => `
   <url>
     <loc>${siteUrl}${path}</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${path === '' ? 'weekly' : 'monthly'}</changefreq>
     <priority>${path === '' ? '1.0' : path.includes('/blog/') && path !== '/blog/' ? '0.6' : '0.8'}</priority>
   </url>`,

@@ -595,3 +595,53 @@ Four targeted improvements applied:
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 6.3 (SEO validation)
+
+---
+
+### 2026-05-12 — Task 6.3: SEO validation
+
+**Status:** Complete
+
+**What was done:**
+- Conducted a full code-level SEO audit across all pages, layouts, and utilities
+- robots.txt, sitemap (all 10 pages), canonical URLs, heading hierarchies (single H1 per page, no skipped levels), OG/Twitter tags, and JSON-LD schema structures all validated as correct
+- `appleAppId` not yet set in any app JSON files — deferred until App Store IDs are assigned
+
+Six targeted fixes applied:
+
+1. **Meta descriptions over 160 chars** — Shortened descriptions in 6 files:
+   - `src/pages/stellar-habits/index.astro` (165 → 148 chars)
+   - `src/pages/choreganized/index.astro` (187 → 152 chars)
+   - `src/pages/sprout-alarm/index.astro` (177 → 151 chars)
+   - `src/content/blog/why-streaks-dont-work.mdx` (161 → 152 chars) — removed "actually"
+   - `src/content/blog/home-maintenance-schedule-youll-actually-follow.mdx` (198 → 152 chars)
+   - `src/content/blog/how-your-morning-alarm-can-help-the-planet.mdx` (173 → 132 chars)
+
+2. **`src/utils/seo.ts`** — Removed `potentialAction` SearchAction from `generateWebSiteSchema`
+   - The target URL `/blog?q=` references a non-functional search endpoint; a fake SearchAction would produce incorrect rich results and could be flagged by Google's Rich Results Test
+
+3. **`src/components/common/BaseHead.astro`** — Added `ogType?: string` prop (default `"website"`)
+   - Changed hardcoded `content="website"` to `content={ogType}` so the correct Open Graph type can be set per page
+
+4. **`src/layouts/BaseLayout.astro`** — Added `ogType?: string` prop and forwarded it to `<BaseHead>`
+
+5. **`src/layouts/BlogLayout.astro`** — Passes `ogType="article"` to `<BaseLayout>`
+   - Blog post pages now emit `<meta property="og:type" content="article">` instead of `"website"`, which enables richer social sharing cards and correct structured data classification
+
+6. **`src/pages/sitemap-index.xml.ts`** — Blog post URLs now use `post.data.pubDate.toISOString()` as `lastmod`
+   - Previously all URLs used the build timestamp; blog posts now report their actual publish date as last-modified, which gives search engines accurate freshness signals
+
+**Verified already correct (no changes needed):**
+- robots.txt: allows all crawlers, references sitemap
+- Canonical URLs: consistent and correct across all pages
+- Sitemap covers all 10 expected URLs
+- Heading hierarchy: single H1, no skipped levels on all pages (confirmed in all layouts and individual pages)
+- JSON-LD schema structures: Organization, WebSite, SoftwareApplication, Article, BreadcrumbList, FAQPage all valid
+- All OG and Twitter Card tags present (og:title, og:description, og:image, og:url, og:site_name, twitter:card, twitter:title, twitter:description, twitter:image)
+- All meta descriptions are unique across pages
+- Color contrast meets WCAG AA throughout (verified in Task 6.2)
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 6.4 (Cross-browser & device testing)

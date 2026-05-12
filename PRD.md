@@ -495,7 +495,7 @@ Ensure the site scores 95+ on all Lighthouse categories and passes accessibility
 - `alt` text on all images (descriptive, keyword-inclusive where natural)
 - Note: Audit confirmed existing scaffold was already largely accessible (skip-to-content, aria-label on hamburger and dark mode toggle, aria-current on active nav links, aria-expanded on mobile menu, aria-hidden on decorative SVGs, descriptive alt text on all images, details/summary for FAQ accordion); four targeted improvements applied: (1) global `:focus-visible` rule in `global.css` — consistent 2px brand-accent outline on all keyboard-focused interactive elements; (2) `FAQSection.astro` — changed invalid `<dl>` wrapper (dl requires dt/dd children, not details) to `<div>`, added `dark:bg-[#1C1C1F]` to FAQ item cards which previously stayed white in dark mode; (3) `Header.astro` — removed redundant `role="navigation"` from mobile menu `<div>` (already inside the `<nav>` landmark, creating a nested navigation landmark), added Escape-key listener to close the mobile menu and return focus to the toggle button, added close-on-navigate listener so menu auto-closes when a link is tapped; (4) `BlogPreview.astro` — added `aria-label={post.data.title}` to card `<a>` elements so screen readers announce the post title as the link name rather than the concatenated card contents
 
-#### Task 6.3: SEO validation
+#### Task 6.3: SEO validation ✅ DONE (2026-05-12)
 - Validate all JSON-LD with Google Rich Results Test
 - Verify sitemap includes all pages
 - Verify robots.txt is correct
@@ -504,6 +504,7 @@ Ensure the site scores 95+ on all Lighthouse categories and passes accessibility
 - Verify smart app banner meta tags on app pages
 - Check heading hierarchy (single H1 per page, no skipped levels)
 - Verify meta descriptions are unique per page and < 160 chars
+- Note: Code-level audit conducted across all pages, layouts, and utilities. robots.txt, sitemap (all 10 pages), canonical URLs, heading hierarchies (single H1, no skipped levels), OG/Twitter tags, and JSON-LD schema structures all validated as correct. Six fixes applied: (1) shortened 6 meta descriptions that exceeded 160 chars (stellar-habits, choreganized, sprout-alarm pages + 3 blog posts); (2) removed invalid `potentialAction` SearchAction from `generateWebSiteSchema` in `seo.ts` — the target URL `/blog?q=` references a non-functional search endpoint; (3) added `ogType` prop to `BaseHead.astro` (default `"website"`) and `BaseLayout.astro`, then passed `ogType="article"` from `BlogLayout.astro` so blog post pages emit the correct Open Graph type; (4) updated `sitemap-index.xml.ts` to use each post's `pubDate` as `lastmod` for blog post URLs instead of the build timestamp — static pages still use build time. `appleAppId` not yet set in any app JSON (deferred until App Store IDs are assigned).
 
 #### Task 6.4: Cross-browser & device testing
 - Test on Safari, Chrome, Firefox (latest)

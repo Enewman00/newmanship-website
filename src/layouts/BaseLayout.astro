@@ -14,10 +14,11 @@ interface Props {
   image?: string;
   canonicalUrl?: string;
   appleAppId?: string;
+  ogType?: string;
   structuredData?: JsonLd;
 }
 
-const { title, description, image, canonicalUrl, appleAppId, structuredData } = Astro.props;
+const { title, description, image, canonicalUrl, appleAppId, ogType, structuredData } = Astro.props;
 ---
 
 <!doctype html>
@@ -39,6 +40,7 @@ const { title, description, image, canonicalUrl, appleAppId, structuredData } = 
       image={image}
       canonicalUrl={canonicalUrl}
       appleAppId={appleAppId}
+      ogType={ogType}
     />
     {structuredData && (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
