@@ -36,7 +36,7 @@
     "background": "#F0FDF4",
     "accent": "#22C55E"
   },
-  "iconPath": "/app-icons/sprout-alarm.svg",
+  "iconPath": "/app-icons/sprout-alarm.png",
   "faqs": [
     {
       "question": "How does Sprout Alarm plant trees?",
@@ -44,7 +44,7 @@
     },
     {
       "question": "What are wake challenges?",
-      "answer": "Wake challenges are mini-tasks you must complete to dismiss your alarm — shake your phone a set number of times, solve a simple math problem, or unscramble a word. They ensure you're actually awake, not just hitting snooze."
+      "answer": "Wake challenges are mini-tasks you must complete to dismiss your alarm - shake your phone a set number of times, solve a simple math problem, or unscramble a word. They ensure you're actually awake, not just hitting snooze."
     },
     {
       "question": "Does Sprout Alarm work with Focus mode?",

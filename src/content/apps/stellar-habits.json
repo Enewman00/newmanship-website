@@ -23,7 +23,7 @@
     },
     {
       "title": "Smart Reminders",
-      "description": "Gentle, timely nudges that fit your schedule. Not nagging — just a quiet reminder from the stars.",
+      "description": "Gentle, timely nudges that fit your schedule. Not nagging - just a quiet reminder from the stars.",
       "icon": "bell"
     },
     {
@@ -41,11 +41,11 @@
     "background": "#050709",
     "accent": "#F59E0B"
   },
-  "iconPath": "/app-icons/stellar-habits.svg",
+  "iconPath": "/app-icons/stellar-habits.png",
   "faqs": [
     {
       "question": "How is Stellar Habits different from other habit trackers?",
-      "answer": "Stellar Habits replaces the anxiety of streaks and checkboxes with a meditative ritual. You hold each habit to light it — a small moment of mindfulness that makes building habits feel beautiful, not pressured."
+      "answer": "Stellar Habits replaces the anxiety of streaks and checkboxes with a meditative ritual. You hold each habit to light it - a small moment of mindfulness that makes building habits feel beautiful, not pressured."
     },
     {
       "question": "What does hold-to-light mean?",
@@ -53,7 +53,7 @@
     },
     {
       "question": "Is there a streak counter?",
-      "answer": "No — by design. Streaks create anxiety and punish you for missing a day. Stellar Habits shows your overall consistency over time without the pressure of maintaining a streak."
+      "answer": "No - by design. Streaks create anxiety and punish you for missing a day. Stellar Habits shows your overall consistency over time without the pressure of maintaining a streak."
     },
     {
       "question": "What's included in Stellar Habits Pro?",

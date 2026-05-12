@@ -1,10 +1,11 @@
 {
   "name": "Sumstone",
   "slug": "sumstone",
-  "tagline": "The classic numbers puzzle — pick your tiles, reach the target, beat the clock.",
+  "tagline": "The classic numbers puzzle - pick your tiles, reach the target, beat the clock.",
   "description": "Six numbers. One goal. Endless combinations. A calm, satisfying math puzzle inspired by the Countdown numbers round. No internet needed, no accounts, no pressure.",
   "category": "Puzzle / Game",
   "platforms": ["iOS"],
+  "webAppUrl": "https://sumstone.app",
   "features": [
     {
       "title": "Timed Rounds",
@@ -18,7 +19,7 @@
     },
     {
       "title": "Offline Play",
-      "description": "No internet required. Play anywhere, anytime — on the subway, in a waiting room, on a plane.",
+      "description": "No internet required. Play anywhere, anytime - on the subway, in a waiting room, on a plane.",
       "icon": "wifi-off"
     },
     {
@@ -31,7 +32,7 @@
     "background": "#F5F0E8",
     "accent": "#C9A84C"
   },
-  "iconPath": "/app-icons/sumstone.svg",
+  "iconPath": "/app-icons/sumstone.png",
   "faqs": [
     {
       "question": "Is Sumstone free?",

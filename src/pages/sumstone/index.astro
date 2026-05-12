@@ -4,7 +4,7 @@ import ScreenshotSection from '@/components/marketing/ScreenshotSection.astro';
 import { getEntry } from 'astro:content';
 
 const app = await getEntry('apps', 'sumstone');
-const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors, iconPath } = app.data;
+const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, webAppUrl, features, faqs, colors, iconPath } = app.data;
 
 const pageUrl = 'https://newmanship.com/sumstone/';
 
@@ -12,7 +12,7 @@ const steps = [
   {
     number: '01',
     title: 'Get your numbers',
-    body: 'Six number tiles are dealt — a mix of small numbers (1–10) and large ones (25, 50, 75, 100). Every round is different.',
+    body: 'Six number tiles are dealt - a mix of small numbers (1–10) and large ones (25, 50, 75, 100). Every round is different.',
   },
   {
     number: '02',
@@ -33,7 +33,7 @@ const steps = [
 ---
 
 <AppLandingLayout
-  title="Sumstone — Free Math Puzzle Game | Countdown Numbers"
+  title="Sumstone - Free Math Puzzle Game | Countdown Numbers"
   description="A calm, satisfying math puzzle inspired by the Countdown numbers round. Six numbers, one target, endless combinations. Free, offline, no ads."
   canonicalUrl={pageUrl}
   image="/og/sumstone.png"
@@ -44,6 +44,7 @@ const steps = [
   platforms={platforms}
   appStoreUrl={appStoreUrl}
   playStoreUrl={playStoreUrl}
+  webAppUrl={webAppUrl}
   iconPath={iconPath}
   features={features}
   faqs={faqs}
@@ -122,25 +123,25 @@ const steps = [
 
   <ScreenshotSection
     heading="The puzzle in your pocket"
-    subheading="A clean, focused interface designed to keep you in the flow — no distractions, just numbers."
+    subheading="A clean, focused interface designed to keep you in the flow - no distractions, just numbers."
     accentColor={colors.accent}
     appBackground={colors.background}
     backgroundClass="bg-brand-background"
     screenshots={[
       {
+        src: '/screenshots/sumstone-1.png',
         alt: 'Sumstone main game board showing six number tiles and a target of 247',
         caption: 'Six tiles. One target. Go.',
-        label: 'Main game board',
       },
       {
+        src: '/screenshots/sumstone-2.png',
         alt: 'Sumstone difficulty selection screen',
         caption: 'Pick your challenge level.',
-        label: 'Difficulty select',
       },
       {
+        src: '/screenshots/sumstone-3.png',
         alt: 'Sumstone results screen showing score and best solution',
         caption: 'See your score and best path.',
-        label: 'Results screen',
       },
     ]}
   />

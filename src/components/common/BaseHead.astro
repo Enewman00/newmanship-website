@@ -61,12 +61,12 @@ const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
   href="/rss.xml"
 />
 
-<!-- Font preloads — critical Inter weights to eliminate FOUT -->
+<!-- Font preloads - critical Inter weights to eliminate FOUT -->
 <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin />
 
-<!-- Plausible Analytics — runs in Partytown web worker to keep main thread free.
+<!-- Plausible Analytics - runs in Partytown web worker to keep main thread free.
      Script and event API are proxied through our domain (/js/plausible.js and
      /api/event) so requests are same-origin (no CORS) and bypass ad blockers. -->
 <script

@@ -1,10 +1,11 @@
 {
-  "name": "Choreganized",
+  "name": "Choreganized: Life Admin",
   "slug": "choreganized",
   "tagline": "Never Miss What Matters.",
-  "description": "Stay on top of every chore, reminder, and recurring task — from car maintenance to home upkeep to personal health. Smart scheduling and clear priorities, all stored privately on your device.",
+  "description": "Stay on top of every chore, reminder, and recurring task - from car maintenance to home upkeep to personal health. Smart scheduling and clear priorities, all stored privately on your device.",
   "category": "Productivity / Life Management",
   "platforms": ["iOS"],
+  "appStoreUrl": "https://apps.apple.com/us/app/choreganized-life-admin/id6765558965",
   "features": [
     {
       "title": "Recurring Tasks",
@@ -36,7 +37,7 @@
     "background": "#FBF6EC",
     "accent": "#6366F1"
   },
-  "iconPath": "/app-icons/choreganized.svg",
+  "iconPath": "/app-icons/choreganized.png",
   "faqs": [
     {
       "question": "Is my data stored on my device?",
@@ -44,7 +45,7 @@
     },
     {
       "question": "Can I set recurring reminders?",
-      "answer": "Absolutely. You can set any task to recur on a schedule — daily, weekly, monthly, every X days, or on specific days of the week."
+      "answer": "Absolutely. You can set any task to recur on a schedule - daily, weekly, monthly, every X days, or on specific days of the week."
     },
     {
       "question": "Is Choreganized free?",

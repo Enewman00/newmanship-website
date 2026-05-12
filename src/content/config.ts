@@ -26,6 +26,7 @@ const apps = defineCollection({
     platforms: z.array(z.enum(['iOS', 'Android'])),
     appStoreUrl: z.string().url().optional(),
     playStoreUrl: z.string().url().optional(),
+    webAppUrl: z.string().url().optional(),
     features: z.array(z.object({
       title: z.string(),
       description: z.string(),
