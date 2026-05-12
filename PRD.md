@@ -402,11 +402,12 @@ Content marketing engine for long-tail SEO. Blog posts target problem-solution k
 - Tag/category filtering on listing page
 - Note: Installed `@tailwindcss/typography` to make `prose` classes work for post content rendering; `BlogCard.astro` created here since it's a dependency of the listing page; tag filtering implemented client-side via a small inline script (SSG-safe, progressive enhancement — all posts visible without JS); `BlogLayout` handles reading time (word count ÷ 200), Article + BreadcrumbList JSON-LD, and prev/next navigation passed from `getStaticPaths`
 
-#### Task 4.2: Blog components
+#### Task 4.2: Blog components ✅ DONE (2026-05-12)
 - `BlogCard.astro` — post title, date, excerpt (first 160 chars), read time, tag badges, featured image thumbnail
 - `TagList.astro` — horizontal tag list for filtering
 - Table of contents component (auto-generated from headings)
 - Related posts section at bottom of each post (same tags)
+- Note: `BlogCard.astro` was already created in Task 4.1; `TagList.astro` created as a reusable tag-chip component with active-tag highlighting; `TableOfContents.astro` uses h2/h3 headings from Astro's `getHeadings()` (only renders when ≥2 headings); related posts computed in `[...slug].astro` by tag intersection, capped at 3, rendered in `BlogLayout` using `BlogCard` grid; `BlogLayout` updated to accept `headings` and `relatedPosts` props
 
 #### Task 4.3: Seed blog content (4 launch posts)
 Write 4 initial blog posts (MDX), one relevant to each app, targeting long-tail keywords:

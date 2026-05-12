@@ -11,6 +11,7 @@ export async function getStaticPaths() {
     params: { slug: post.slug },
     props: {
       post,
+      allPosts: sorted,
       prevPost:
         index < sorted.length - 1
           ? { title: sorted[index + 1].data.title, slug: sorted[index + 1].slug }
@@ -25,18 +26,27 @@ export async function getStaticPaths() {
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  allPosts: CollectionEntry<'blog'>[];
   prevPost: { title: string; slug: string } | null;
   nextPost: { title: string; slug: string } | null;
 }
 
-const { post, prevPost, nextPost } = Astro.props;
-const { Content } = await post.render();
+const { post, allPosts, prevPost, nextPost } = Astro.props;
+const { Content, headings } = await post.render();
 
 const siteUrl = 'https://newmanship.com';
 const canonicalUrl = `${siteUrl}/blog/${post.slug}/`;
 
 const wordCount = post.body.split(/\s+/).filter(Boolean).length;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+const relatedPosts = allPosts
+  .filter(
+    (p) =>
+      p.slug !== post.slug &&
+      p.data.tags.some((tag) => post.data.tags.includes(tag)),
+  )
+  .slice(0, 3);
 ---
 
 <BlogLayout
@@ -49,8 +59,10 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
   tags={post.data.tags}
   canonicalUrl={canonicalUrl}
   readingTime={readingTime}
+  headings={headings}
   prevPost={prevPost}
   nextPost={nextPost}
+  relatedPosts={relatedPosts}
 >
   <Content />
 </BlogLayout>

@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import TableOfContents from '@/components/blog/TableOfContents.astro';
+import BlogCard from '@/components/blog/BlogCard.astro';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/utils/seo';
+import type { CollectionEntry } from 'astro:content';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 interface Props {
   title: string;
@@ -12,8 +21,10 @@ interface Props {
   tags: string[];
   canonicalUrl: string;
   readingTime: number;
+  headings?: Heading[];
   prevPost?: { title: string; slug: string } | null;
   nextPost?: { title: string; slug: string } | null;
+  relatedPosts?: CollectionEntry<'blog'>[];
 }
 
 const {
@@ -26,8 +37,10 @@ const {
   tags,
   canonicalUrl,
   readingTime,
+  headings = [],
   prevPost,
   nextPost,
+  relatedPosts = [],
 } = Astro.props;
 
 const siteUrl = 'https://newmanship.com';
@@ -105,9 +118,24 @@ const breadcrumbSchema = generateBreadcrumbSchema([
       </div>
     </header>
 
+    <TableOfContents headings={headings} />
+
     <div class="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-brand-ink prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-img:rounded-xl">
       <slot />
     </div>
+
+    {relatedPosts.length > 0 && (
+      <aside aria-label="Related posts" class="mt-16 pt-8 border-t border-brand-surface">
+        <h2 class="text-xl font-bold text-brand-ink mb-6">Related Posts</h2>
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
+          {relatedPosts.map((related) => (
+            <li>
+              <BlogCard post={related} />
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
 
     {(prevPost || nextPost) && (
       <nav aria-label="Post navigation" class="mt-16 pt-8 border-t border-brand-surface">

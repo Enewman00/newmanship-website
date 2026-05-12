@@ -332,3 +332,20 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 4.2 (Blog components — TagList, table of contents, related posts section)
+
+---
+
+### 2026-05-12 — Task 4.2: Blog components
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/blog/TagList.astro` — reusable horizontal tag-chip component; renders each tag as a link to `/blog/?tag=<tag>`; accepts optional `activeTag` prop to highlight the currently active tag; gracefully renders nothing when tag list is empty
+- Created `src/components/blog/TableOfContents.astro` — auto-generated table of contents from a post's heading list (from Astro's `getHeadings()`); only renders when there are ≥2 h2/h3 headings; h3 headings are indented; renders as a bordered card above the post body
+- Updated `src/pages/blog/[...slug].astro` — extracts `headings` from `post.render()`; passes `allPosts` as a prop so related posts can be computed; computes `relatedPosts` by tag intersection (posts sharing at least one tag with the current post, excluding itself), capped at 3
+- Updated `src/layouts/BlogLayout.astro` — accepts `headings` and `relatedPosts` props (both optional with empty defaults); renders `<TableOfContents>` between post header and content; renders a "Related Posts" grid of `BlogCard` components after the content, before prev/next navigation; imports `BlogCard` and `TableOfContents` components
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 4.3 (Seed blog content — 4 launch posts)
