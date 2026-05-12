@@ -364,13 +364,14 @@ Four individual marketing pages — one per app. Each is an SEO-optimized landin
 - SEO: title "Stellar Habits — Beautiful Habit Tracker for iOS", targeting "habit tracker app", "habit tracker without streaks", "mindful habit tracking"
 - Note: Added "A New Kind of Habit Ritual" section via default slot — features a CSS night sky phone mockup (dark background, glowing amber habit-stars at varying luminance for lit vs. unlit states, ambient star-field dots, pulsing ring on an unlit habit) and 3-step ritual explanation (add habits → hold to light → watch your sky grow); all using Stellar Habits' brand colors (#050709 bg, #F59E0B amber accent); no screenshots required (placeholder-safe until Task 5.3)
 
-#### Task 3.4: Choreganized landing page
+#### Task 3.4: Choreganized landing page ✅ DONE (2026-05-12)
 - Hero: app icon, "Choreganized", tagline, description, store badges
 - Feature showcase: recurring tasks, reminders, priority system, on-device privacy, smart scheduling
 - Use-case section: "For your home", "For your health", "For your car" — showing versatility
 - FAQ section: "Is my data stored on my device?", "Can I set recurring reminders?", "Is Choreganized free?", "Is Choreganized available on Android?"
 - Download CTA band
 - SEO: title "Choreganized — Smart Chore & Reminder Manager", targeting "chore reminder app", "recurring task manager", "home maintenance app"
+- Note: Use-case section added via default slot in choreganized/index.astro; renders three cards (home/health/car) each with inline SVG icon, context label, 4 example tasks, and their recurrence schedules; uses Choreganized's brand colors (#FBF6EC bg, #6366F1 indigo accent); no screenshots required (placeholder-safe until Task 5.3); updated meta description to include "home maintenance app" keyword per SEO targets
 
 #### Task 3.5: Sprout Alarm landing page
 - Hero: app icon, "Sprout Alarm", tagline, description, store badges

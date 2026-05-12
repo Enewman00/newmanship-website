@@ -266,3 +266,26 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 3.4 (Choreganized landing page)
+
+---
+
+### 2026-05-12 — Task 3.4: Choreganized landing page
+
+**Status:** Complete
+
+**What was done:**
+- All core sections (hero with 5 features, FAQ, CTA) were already handled by `AppLandingLayout` from Task 3.1
+- Added a "One App for All of Life's Recurring Tasks" use-case section via the layout's default slot (renders between features grid and FAQ)
+- Section renders three use-case cards demonstrating Choreganized's versatility:
+  - **For your home** — Deep clean bathrooms, replace air filters, check smoke detectors, mow the lawn; with recurrence schedules
+  - **For your health** — Take vitamins, schedule eye exam, refill prescriptions, dental checkup; with recurrence schedules
+  - **For your car** — Oil change, tire rotation, check tyre pressure, registration renewal; with recurrence schedules
+- Each card shows: inline SVG context icon (house/heart/car), context label header, 4 example tasks with their individual recurrence schedules below each task
+- Card colors driven by Choreganized brand tokens (#FBF6EC bg, #6366F1 indigo accent) — no hardcoded values outside color variables
+- Updated meta description to 160-char copy that includes "home maintenance app" per SEO targets in PRD
+- No screenshots required — fully placeholder-safe until Task 5.3
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 3.5 (Sprout Alarm landing page)

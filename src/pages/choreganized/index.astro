@@ -6,11 +6,32 @@ const app = await getEntry('apps', 'choreganized');
 const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors } = app.data;
 
 const pageUrl = 'https://newmanship.com/choreganized/';
+
+const useCases = [
+  {
+    context: 'For your home',
+    icon: 'house',
+    examples: ['Deep clean bathrooms', 'Replace air filters', 'Check smoke detectors', 'Mow the lawn'],
+    schedule: 'Every 2 weeks · Monthly · Every 6 months · Weekly',
+  },
+  {
+    context: 'For your health',
+    icon: 'heart',
+    examples: ['Take vitamins', 'Schedule eye exam', 'Refill prescriptions', 'Dental checkup'],
+    schedule: 'Daily · Yearly · Every 3 months · Every 6 months',
+  },
+  {
+    context: 'For your car',
+    icon: 'car',
+    examples: ['Oil change', 'Tire rotation', 'Check tyre pressure', 'Registration renewal'],
+    schedule: 'Every 5,000 mi · Every 7,500 mi · Monthly · Yearly',
+  },
+];
 ---
 
 <AppLandingLayout
   title="Choreganized — Smart Chore & Reminder Manager"
-  description="Stay on top of every chore, reminder, and recurring task. Smart scheduling, clear priorities, and all data stored privately on your device."
+  description="Stay on top of every chore, reminder, and recurring task. Smart scheduling, clear priorities, and all data stored privately on your device. The home maintenance app you'll actually use."
   canonicalUrl={pageUrl}
   name={name}
   tagline={tagline}
@@ -24,4 +45,71 @@ const pageUrl = 'https://newmanship.com/choreganized/';
   colors={colors}
   ctaHeading="Never miss what matters."
   ctaSubheading="Private by design. Smart by default."
-/>
+>
+  <!-- Use-case section: versatility across home, health, car -->
+  <section class="py-20 bg-brand-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-brand-ink mb-4 text-center">One App for All of Life's Recurring Tasks</h2>
+      <p class="text-brand-ink-muted text-center mb-16 max-w-xl mx-auto">
+        From weekly chores to annual checkups — Choreganized handles anything that repeats.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {useCases.map((uc) => (
+          <div
+            class="rounded-2xl overflow-hidden shadow-sm border border-black/5"
+            style={`background-color: ${colors.background};`}
+          >
+            <!-- Card header -->
+            <div
+              class="px-5 py-4 flex items-center gap-3 border-b border-black/5"
+              style={`background-color: ${colors.accent}12;`}
+            >
+              {uc.icon === 'house' && (
+                <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style={`color: ${colors.accent};`} aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75H15v-6h-6v6H3.75A.75.75 0 013 21V9.75z" />
+                </svg>
+              )}
+              {uc.icon === 'heart' && (
+                <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style={`color: ${colors.accent};`} aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              )}
+              {uc.icon === 'car' && (
+                <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style={`color: ${colors.accent};`} aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                </svg>
+              )}
+              <span class="font-semibold text-brand-ink text-sm">{uc.context}</span>
+            </div>
+
+            <!-- Task list -->
+            <ul class="px-5 py-4 space-y-3">
+              {uc.examples.map((task, i) => (
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-0.5 w-4 h-4 rounded flex-shrink-0 flex items-center justify-center"
+                    style={`background-color: ${colors.accent}20;`}
+                    aria-hidden="true"
+                  >
+                    <svg class="w-2.5 h-2.5" viewBox="0 0 10 10" fill="none">
+                      <circle cx="5" cy="5" r="2" fill={colors.accent} />
+                    </svg>
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm text-brand-ink leading-snug">{task}</p>
+                    <p class="text-xs text-brand-ink-muted mt-0.5">{uc.schedule.split(' · ')[i]}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-brand-ink-muted text-sm mt-10">
+        Everything that needs doing — on a schedule that makes sense.
+      </p>
+    </div>
+  </section>
+</AppLandingLayout>
