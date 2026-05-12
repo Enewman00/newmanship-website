@@ -6,11 +6,39 @@ const app = await getEntry('apps', 'stellar-habits');
 const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors } = app.data;
 
 const pageUrl = 'https://newmanship.com/stellar-habits/';
+
+const ritualSteps = [
+  {
+    number: '01',
+    title: 'Add your habits',
+    body: 'Each habit becomes a star in your personal sky. Name it, set a reminder time, and watch it appear in your constellation.',
+  },
+  {
+    number: '02',
+    title: 'Hold to light it',
+    body: 'Press and hold your habit card each day. Your star glows brighter as you hold — a mindful moment that makes completion feel real.',
+  },
+  {
+    number: '03',
+    title: 'Watch your sky grow',
+    body: 'Consistent habits burn bright. The year spiral shows your full journey — a living record of who you\'re becoming.',
+  },
+];
+
+// Sample habits for the night sky illustration
+const demoHabits = [
+  { label: 'Meditate', lit: true, x: 28, y: 32, size: 'lg' },
+  { label: 'Read', lit: true, x: 62, y: 22, size: 'md' },
+  { label: 'Exercise', lit: false, x: 78, y: 52, size: 'lg' },
+  { label: 'Journal', lit: true, x: 18, y: 62, size: 'sm' },
+  { label: 'Water', lit: false, x: 50, y: 68, size: 'sm' },
+  { label: 'Sleep 8h', lit: true, x: 42, y: 42, size: 'md' },
+];
 ---
 
 <AppLandingLayout
   title="Stellar Habits — Beautiful Habit Tracker for iOS"
-  description="A habit tracker that replaces checkboxes with an interactive night sky. Hold your habits to watch them glow. No streaks, no pressure — just beautiful consistency."
+  description="A mindful habit tracker that replaces checkboxes with an interactive night sky. Hold your habits to watch them glow. No streaks, no pressure — beautiful consistency."
   canonicalUrl={pageUrl}
   name={name}
   tagline={tagline}
@@ -24,4 +52,127 @@ const pageUrl = 'https://newmanship.com/stellar-habits/';
   colors={colors}
   ctaHeading="Start building beautiful habits."
   ctaSubheading="No streaks. No anxiety. Just you and your stars."
-/>
+>
+  <!-- Night sky ritual section -->
+  <section class="py-20 bg-brand-background">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-brand-ink mb-4 text-center">A New Kind of Habit Ritual</h2>
+      <p class="text-brand-ink-muted text-center mb-16 max-w-xl mx-auto">
+        No checkboxes. No streaks. Just a quiet, beautiful moment each day where you light up what matters.
+      </p>
+
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        <!-- CSS Night sky phone mockup -->
+        <div class="flex-shrink-0 w-64 mx-auto lg:mx-0" aria-hidden="true">
+          <div
+            class="rounded-3xl shadow-2xl overflow-hidden border border-white/10 relative"
+            style={`background-color: ${colors.background};`}
+          >
+            <!-- Status bar -->
+            <div class="px-5 pt-4 pb-2 flex justify-between items-center">
+              <span class="text-xs" style={`color: ${colors.accent}99;`}>9:41</span>
+              <span class="text-xs" style={`color: ${colors.accent}99;`}>●●●</span>
+            </div>
+
+            <!-- App title -->
+            <div class="px-5 pb-3">
+              <p class="text-sm font-semibold text-white/90">Tonight</p>
+              <p class="text-xs text-white/40">4 of 6 lit</p>
+            </div>
+
+            <!-- Night sky canvas -->
+            <div class="relative mx-3 mb-3 rounded-2xl overflow-hidden" style="height: 220px; background: radial-gradient(ellipse at center, #0d1117 0%, #050709 100%);">
+              <!-- Ambient star field (tiny dots) -->
+              {[
+                [15, 10], [30, 5], [55, 8], [72, 15], [85, 7], [92, 22],
+                [8, 28], [45, 18], [68, 30], [88, 42], [5, 55], [25, 72],
+                [60, 78], [80, 68], [95, 80], [38, 88], [70, 90],
+              ].map(([x, y]) => (
+                <div
+                  class="absolute rounded-full bg-white/30"
+                  style={`left: ${x}%; top: ${y}%; width: 1px; height: 1px;`}
+                />
+              ))}
+
+              <!-- Habit stars -->
+              {demoHabits.map((habit) => {
+                const radius = habit.size === 'lg' ? 8 : habit.size === 'md' ? 6 : 5;
+                return (
+                  <div
+                    class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
+                    style={`left: ${habit.x}%; top: ${habit.y}%;`}
+                  >
+                    <div
+                      class="rounded-full"
+                      style={`
+                        width: ${radius * 2}px;
+                        height: ${radius * 2}px;
+                        background-color: ${habit.lit ? colors.accent : `${colors.accent}30`};
+                        box-shadow: ${habit.lit ? `0 0 ${radius * 3}px ${colors.accent}80, 0 0 ${radius * 6}px ${colors.accent}30` : 'none'};
+                      `}
+                    />
+                    <span
+                      class="text-center leading-tight"
+                      style={`
+                        font-size: 7px;
+                        color: ${habit.lit ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)'};
+                        width: 40px;
+                        text-align: center;
+                      `}
+                    >
+                      {habit.label}
+                    </span>
+                  </div>
+                );
+              })}
+
+              <!-- "Hold to light" hint on unlit habit -->
+              <div
+                class="absolute rounded-full border border-dashed"
+                style={`
+                  left: ${demoHabits[2].x}%;
+                  top: ${demoHabits[2].y}%;
+                  width: 32px;
+                  height: 32px;
+                  transform: translate(-50%, -58%);
+                  border-color: ${colors.accent}60;
+                  animation: pulse-ring 2s ease-in-out infinite;
+                `}
+              />
+            </div>
+
+            <!-- Hold prompt -->
+            <div class="px-5 py-3 border-t border-white/5 text-center">
+              <p class="text-xs" style={`color: ${colors.accent}80;`}>Hold to light ✦</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="flex flex-col gap-10 flex-1">
+          {ritualSteps.map((step) => (
+            <div class="flex gap-5 items-start">
+              <span
+                class="text-3xl font-bold leading-none flex-shrink-0"
+                style={`color: ${colors.accent};`}
+              >
+                {step.number}
+              </span>
+              <div>
+                <h3 class="font-bold text-brand-ink mb-1">{step.title}</h3>
+                <p class="text-brand-ink-muted text-sm leading-relaxed">{step.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.4; transform: translate(-50%, -58%) scale(1); }
+      50% { opacity: 0.9; transform: translate(-50%, -58%) scale(1.15); }
+    }
+  </style>
+</AppLandingLayout>

@@ -242,3 +242,27 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 3.3 (Stellar Habits landing page)
+
+---
+
+### 2026-05-12 — Task 3.3: Stellar Habits landing page
+
+**Status:** Complete
+
+**What was done:**
+- All core sections (hero with 6 features, FAQ, CTA) were already handled by `AppLandingLayout` from Task 3.1
+- Added a "A New Kind of Habit Ritual" section via the layout's default slot (renders between features grid and FAQ)
+- Section includes a CSS night sky phone mockup:
+  - Dark background (`#050709`) with an ambient star field of tiny white dots scattered across the canvas
+  - 6 habit stars at varied positions, sizes (sm/md/lg), and states: 4 lit (bright amber with multi-layer glow box-shadows) and 2 unlit (dim amber at 30% opacity, no glow)
+  - A pulsing CSS ring animation (`@keyframes pulse-ring`) around an unlit habit star to demonstrate the "hold to light" interaction concept
+  - App chrome: status bar, "Tonight — 4 of 6 lit" header, "Hold to light ✦" prompt at the bottom
+  - All colors driven by the app's brand colors (`#050709` bg, `#F59E0B` accent) — no hardcoded hex values
+- Added 3-step ritual explanation beside the mockup: Add your habits → Hold to light it → Watch your sky grow
+- Updated meta description to include "mindful habit tracking" as targeted by the PRD's SEO requirements
+- No screenshots required — fully placeholder-safe until Task 5.3
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 3.4 (Choreganized landing page)

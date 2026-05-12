@@ -355,13 +355,14 @@ Four individual marketing pages — one per app. Each is an SEO-optimized landin
 - SEO: title "Sumstone — Free Math Puzzle Game | Countdown Numbers", description targeting "math puzzle app", "countdown numbers game", "offline puzzle game"
 - Note: "How to Play" added via default slot in sumstone/index.astro; includes a CSS game-board illustration (target number, timer bar, 6 number tiles) and 4 numbered steps; renders without screenshots (placeholder until Task 5.3)
 
-#### Task 3.3: Stellar Habits landing page
+#### Task 3.3: Stellar Habits landing page ✅ DONE (2026-05-12)
 - Hero: app icon, "Stellar Habits", tagline, description, App Store badge
 - Feature showcase (6 features): hold-to-light, constellations, year spiral, smart reminders, evening ritual, Pro tier
 - Visual section showing the night sky interface concept
 - FAQ section: "How is Stellar Habits different from other habit trackers?", "What does hold-to-light mean?", "Is there a streak counter?", "What's included in Stellar Habits Pro?"
 - Download CTA band
 - SEO: title "Stellar Habits — Beautiful Habit Tracker for iOS", targeting "habit tracker app", "habit tracker without streaks", "mindful habit tracking"
+- Note: Added "A New Kind of Habit Ritual" section via default slot — features a CSS night sky phone mockup (dark background, glowing amber habit-stars at varying luminance for lit vs. unlit states, ambient star-field dots, pulsing ring on an unlit habit) and 3-step ritual explanation (add habits → hold to light → watch your sky grow); all using Stellar Habits' brand colors (#050709 bg, #F59E0B amber accent); no screenshots required (placeholder-safe until Task 5.3)
 
 #### Task 3.4: Choreganized landing page
 - Hero: app icon, "Choreganized", tagline, description, store badges
