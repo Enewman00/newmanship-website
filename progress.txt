@@ -159,3 +159,26 @@
 **Type check:** ✅ `astro check` passes (0 errors)
 
 **Next task:** Task 2.5 (Homepage SEO)
+
+---
+
+### 2026-05-12 — Task 2.5: Homepage SEO
+
+**Status:** Complete
+
+**What was done:**
+- Meta title `"Newmanship — Apps That Make Daily Life Better"` was already set in `index.astro` from prior scaffold; confirmed correct
+- Updated meta description to 159-char keyword-targeted copy covering all four app niches (math puzzles, habit tracker, chore reminders, eco alarm) — fits ≤160 char constraint
+- Organization JSON-LD schema was already wired via `generateOrganizationSchema`; enhanced to include a `logo` ImageObject pointing at the default OG image for richer Google Knowledge Panel results
+- WebSite JSON-LD schema with `potentialAction` SearchAction was already wired via `generateWebSiteSchema`; no changes needed
+- Created `scripts/generate-og-images.py` — Pillow-based script that renders branded 1200×630 PNG OG images; generates two files:
+  - `public/og/homepage.png` — Newmanship name, tagline, app list, colored app-brand strips across the bottom
+  - `public/og/default.png` — minimal fallback (brand name + tagline) for pages without a specific image
+- Updated `BaseHead.astro` default image from `/og-default.png` (non-existent) to `/og/default.png`
+- Updated `index.astro` to pass `image="/og/homepage.png"` so the homepage gets its specific OG image
+- All meta tags verified in built `dist/index.html`: og:title, og:description, og:image, og:type, og:url, twitter:card, canonical, JSON-LD array
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 3.1 (App landing page layout — `AppLandingLayout.astro`)

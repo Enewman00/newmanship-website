@@ -8,6 +8,12 @@ export function generateOrganizationSchema(siteUrl: string): JsonLd {
     name: 'Newmanship',
     url: siteUrl,
     description: 'Indie app studio crafting thoughtful mobile apps for iOS and Android.',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/og/default.png`,
+      width: 1200,
+      height: 630,
+    },
   };
 }
 

@@ -324,12 +324,14 @@ The main entry point — showcases all 4 apps, establishes the brand, and funnel
 - Query from blog content collection, sorted by date, filter drafts
 - Note: Section is conditionally rendered — hidden when blog collection is empty; renders once posts exist
 
-#### Task 2.5: Homepage SEO
+#### Task 2.5: Homepage SEO ✅ DONE (2026-05-12)
 - Page-specific meta title: "Newmanship — Apps That Make Daily Life Better"
 - Meta description targeting brand + app category keywords
 - Organization JSON-LD schema
 - WebSite JSON-LD schema with `potentialAction` SearchAction
 - OG image (create a branded 1200x630 image)
+- Note: OG images generated with Pillow (Python) — `public/og/homepage.png` (1200x630, branded with app color strips) and `public/og/default.png` (fallback); `BaseHead.astro` default updated to `/og/default.png`; Organization schema enhanced with `logo` ImageObject; meta description is 159 chars targeting brand + all four app niches
+- Note: `scripts/generate-og-images.py` regenerates the PNGs if brand colors change
 
 ---
 
