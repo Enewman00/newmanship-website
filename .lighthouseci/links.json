@@ -1,0 +1,7 @@
+{
+  "http://localhost:55428/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1778622475933-1818.report.html",
+  "http://localhost:55428/sumstone/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1778622476331-73232.report.html",
+  "http://localhost:55428/stellar-habits/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1778622476769-2130.report.html",
+  "http://localhost:55428/choreganized/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1778622477158-70847.report.html",
+  "http://localhost:55428/sprout-alarm/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1778622477455-73463.report.html"
+}
