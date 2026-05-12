@@ -432,10 +432,11 @@ Each post: 800-1200 words, keyword-optimized title/headings, internal links to a
 
 Gather app screenshots/icons, create OG images, optimize all assets, and polish the visual experience.
 
-#### Task 5.1: App icon pipeline
+#### Task 5.1: App icon pipeline ✅ DONE (2026-05-12)
 - Copy app icons from each project's assets into `src/assets/images/app-icons/`
 - Optimize to WebP at multiple sizes (64px for cards, 128px for landing heroes)
 - Create favicon from Newmanship brand mark
+- Note: Real app icons not yet exported from the app projects; created branded SVG placeholder icons for each app in `public/app-icons/` (sumstone, stellar-habits, choreganized, sprout-alarm) using each app's brand colors and a distinctive visual motif (tiles for Sumstone, star for Stellar Habits, checkmark for Choreganized, sprout for Sprout Alarm); favicon.svg (`public/favicon.svg`) was already in place as a blue "N" monogram from the Task 1.1 scaffold; added `iconPath` field to all 4 app JSON files; updated `AppLandingLayout` to accept `iconPath` prop and display a 128×128 `loading="eager"` icon in the hero; `AppCard` already handled 64×64 icons — icons now appear on homepage cards and all 4 app landing page heroes; replace SVGs with real app icon exports when available
 
 #### Task 5.2: OG image creation
 - Create 1200x630 OG images for:

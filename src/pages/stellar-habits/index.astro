@@ -3,7 +3,7 @@ import AppLandingLayout from '@/layouts/AppLandingLayout.astro';
 import { getEntry } from 'astro:content';
 
 const app = await getEntry('apps', 'stellar-habits');
-const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors } = app.data;
+const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors, iconPath } = app.data;
 
 const pageUrl = 'https://newmanship.com/stellar-habits/';
 
@@ -47,6 +47,7 @@ const demoHabits = [
   platforms={platforms}
   appStoreUrl={appStoreUrl}
   playStoreUrl={playStoreUrl}
+  iconPath={iconPath}
   features={features}
   faqs={faqs}
   colors={colors}

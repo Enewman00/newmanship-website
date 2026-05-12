@@ -41,6 +41,7 @@
     "background": "#050709",
     "accent": "#F59E0B"
   },
+  "iconPath": "/app-icons/stellar-habits.svg",
   "faqs": [
     {
       "question": "How is Stellar Habits different from other habit trackers?",

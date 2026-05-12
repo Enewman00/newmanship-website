@@ -31,6 +31,7 @@
     "background": "#F5F0E8",
     "accent": "#C9A84C"
   },
+  "iconPath": "/app-icons/sumstone.svg",
   "faqs": [
     {
       "question": "Is Sumstone free?",

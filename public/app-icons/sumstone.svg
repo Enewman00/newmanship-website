@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background: warm parchment -->
+  <rect width="512" height="512" rx="112" fill="#F5F0E8"/>
+  <!-- Three number tiles in a descending diagonal — represents picking tiles in the puzzle -->
+  <rect x="72" y="216" width="152" height="152" rx="28" fill="#C9A84C" opacity="0.25"/>
+  <rect x="176" y="162" width="152" height="152" rx="28" fill="#C9A84C" opacity="0.55"/>
+  <rect x="280" y="108" width="152" height="152" rx="28" fill="#C9A84C"/>
+  <!-- Plus operator between tiles -->
+  <line x1="152" y1="292" x2="176" y2="292" stroke="#C9A84C" stroke-width="16" stroke-linecap="round" opacity="0.5"/>
+  <line x1="256" y1="238" x2="280" y2="238" stroke="#C9A84C" stroke-width="16" stroke-linecap="round" opacity="0.7"/>
+  <!-- Target number label at the bottom -->
+  <text x="256" y="426" font-size="52" font-weight="700" text-anchor="middle" dominant-baseline="central" fill="#C9A84C" font-family="system-ui,-apple-system,sans-serif" opacity="0.7">= 247</text>
+</svg>

@@ -387,3 +387,30 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 5.1 (App icon pipeline — copy and optimize app icons to WebP)
+
+---
+
+### 2026-05-12 — Task 5.1: App icon pipeline
+
+**Status:** Complete
+
+**What was done:**
+- Created branded SVG placeholder icons for all 4 apps in `public/app-icons/` (real app icons not yet exported from the mobile projects):
+  - `sumstone.svg` — warm parchment background (#F5F0E8), three gold tile shapes in a diagonal cascade representing the 6 number tiles in the puzzle game
+  - `stellar-habits.svg` — deep night sky background (#050709), a 5-pointed amber star with an outer glow and scattered accent stars in the corners
+  - `choreganized.svg` — warm cream background (#FBF6EC), a bold indigo checkmark with subtle horizontal rule lines representing a completed list item
+  - `sprout-alarm.svg` — soft eco-green background (#F0FDF4), a stylized sprout/seedling with two leaves (light and dark green) and a small bell circle at the crown
+- All icons use each app's brand colors exclusively (no hardcoded values outside the app palette)
+- Added `"iconPath": "/app-icons/<slug>.svg"` to all 4 app JSON files in `src/content/apps/`
+- Updated `src/layouts/AppLandingLayout.astro` to accept `iconPath?: string` prop and display a 128×128 `loading="eager"` icon above the app name in the hero section
+- Updated all 4 app pages (sumstone, stellar-habits, choreganized, sprout-alarm) to extract `iconPath` from `app.data` and pass it to `AppLandingLayout`
+- `AppCard.astro` already handled 64×64 icon display — icons now appear automatically on the homepage app grid cards
+- `public/favicon.svg` was already complete from Task 1.1 scaffold (blue "N" monogram on rounded square)
+- Icons are served from `public/app-icons/` as static assets (no Vite processing, consistent URL paths)
+
+**Note:** When real app icon PNGs/SVGs are exported from the actual apps, drop them into `public/app-icons/` (or `src/assets/images/app-icons/` for Astro sharp optimization) and update the `iconPath` fields in the JSON files. The placeholder SVGs will be replaced with no other code changes needed.
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 5.2 (OG image creation — per-app and per-post OG images)

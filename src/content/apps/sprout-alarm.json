@@ -36,6 +36,7 @@
     "background": "#F0FDF4",
     "accent": "#22C55E"
   },
+  "iconPath": "/app-icons/sprout-alarm.svg",
   "faqs": [
     {
       "question": "How does Sprout Alarm plant trees?",

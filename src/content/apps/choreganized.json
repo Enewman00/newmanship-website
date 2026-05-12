@@ -36,6 +36,7 @@
     "background": "#FBF6EC",
     "accent": "#6366F1"
   },
+  "iconPath": "/app-icons/choreganized.svg",
   "faqs": [
     {
       "question": "Is my data stored on my device?",
