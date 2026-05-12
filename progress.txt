@@ -104,3 +104,22 @@
 **Type check:** ✅ `astro check` passes (0 errors)
 
 **Next task:** Task 2.2 (App showcase grid — `AppCard.astro` component)
+
+---
+
+### 2026-05-12 — Task 2.2: App showcase grid
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/marketing/AppCard.astro` — reusable card component that accepts app data as props and renders: category badge, app name, tagline, platform badges (iOS/Android), and a "Learn more" arrow link
+- Component uses a luminance calculation (`isDark()`) to auto-select light or dark text/muted colors based on each app's background hex — handles Stellar Habits' dark `#050709` bg automatically without hardcoded per-app branches
+- Hover effect: scale up (1.01) + drop shadow + dynamic border-color matching the app's accent (applied via inline `onmouseenter/leave` since Tailwind can't interpolate runtime hex values into class names)
+- Renders `<img>` for app icon if `iconPath` is set (Task 5.1 will supply these); absent icons are gracefully skipped
+- Updated `src/pages/index.astro` to use `getCollection('apps')` and loop over results with `<AppCard />`; display order controlled by `APP_ORDER` constant (content collection has no sort field)
+- Also migrated hardcoded `text-[#1A1A1A]` / `bg-[#F2F0EC]` in the About section to semantic Tailwind design-system tokens (`text-brand-ink`, `bg-brand-surface`)
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 2.3 (Brand story section) or Task 2.4 (Blog preview section)

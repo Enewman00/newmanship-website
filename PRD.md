@@ -303,12 +303,13 @@ The main entry point — showcases all 4 apps, establishes the brand, and funnel
 - No lazy-loading on hero images (LCP optimization)
 - Note: Component is prop-driven (tagline, description, ctaText, ctaHref) with sensible defaults; uses brand Tailwind tokens and inline SVG down-arrow on CTA
 
-#### Task 2.2: App showcase grid
+#### Task 2.2: App showcase grid ✅ DONE (2026-05-12)
 - `AppCard.astro` component — app icon, name, tagline, category badge, "Learn more" link
 - 2x2 grid on desktop, single column on mobile
 - Each card uses a subtle tint of the app's brand color
 - Cards link to `/[app-slug]/`
 - Render from content collection data (loop over `apps` collection)
+- Note: `AppCard` uses a luminance check to auto-select light/dark text based on each app's background color; inline `onmouseenter/leave` for dynamic border-color hover since Tailwind can't interpolate hex values at runtime; `APP_ORDER` array in `index.astro` controls display order since JSON collection has no order field
 
 #### Task 2.3: Brand story section
 - Brief "About Newmanship" section — indie developer, craft-focused, privacy-first
