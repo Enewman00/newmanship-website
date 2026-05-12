@@ -5,6 +5,7 @@ interface Props {
   appName: string;
   appStoreUrl?: string;
   playStoreUrl?: string;
+  webAppUrl?: string;
   colors: { background: string; accent: string };
   isDark: boolean;
   heading?: string;
@@ -16,6 +17,7 @@ const {
   appName,
   appStoreUrl,
   playStoreUrl,
+  webAppUrl,
   colors,
   isDark,
   heading = `Download ${appName}`,
@@ -42,7 +44,8 @@ const {
         appName={appName}
         appStoreUrl={appStoreUrl}
         playStoreUrl={playStoreUrl}
-        class={isDark ? '' : '[&_a]:!bg-brand-ink [&_a]:!border-transparent'}
+        webAppUrl={webAppUrl}
+        class={isDark ? '' : '[&_a:not(.web-app-badge)]:!bg-brand-ink [&_a:not(.web-app-badge)]:!border-transparent'}
       />
     </div>
   </div>

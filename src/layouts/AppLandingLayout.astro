@@ -33,6 +33,7 @@ interface Props {
   platforms: string[];
   appStoreUrl?: string;
   playStoreUrl?: string;
+  webAppUrl?: string;
   appleAppId?: string;
   iconPath?: string;
   // Content
@@ -57,6 +58,7 @@ const {
   platforms,
   appStoreUrl,
   playStoreUrl,
+  webAppUrl,
   appleAppId,
   iconPath,
   features,
@@ -138,7 +140,8 @@ const schemas = [
           appName={name}
           appStoreUrl={appStoreUrl}
           playStoreUrl={playStoreUrl}
-          class={isDark ? '' : '[&_a]:!bg-brand-ink [&_a]:!border-transparent'}
+          webAppUrl={webAppUrl}
+          class={isDark ? '' : '[&_a:not(.web-app-badge)]:!bg-brand-ink [&_a:not(.web-app-badge)]:!border-transparent'}
         />
       </div>
       <slot name="hero-extra" />
@@ -180,6 +183,7 @@ const schemas = [
     appName={name}
     appStoreUrl={appStoreUrl}
     playStoreUrl={playStoreUrl}
+    webAppUrl={webAppUrl}
     colors={colors}
     isDark={isDark}
     heading={ctaHeading}
