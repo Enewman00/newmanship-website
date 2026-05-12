@@ -46,8 +46,8 @@ const values = [
     </div>
 
     <dl class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      {values.map((value) => (
-        <div class="flex flex-col items-center text-center gap-3 bg-brand-bg rounded-2xl px-6 py-8 border border-brand-surface shadow-sm">
+      {values.map((value, i) => (
+        <div class="flex flex-col items-center text-center gap-3 bg-brand-bg rounded-2xl px-6 py-8 border border-brand-surface shadow-sm reveal" style={`--reveal-delay: ${i * 100}ms`}>
           <div class="w-10 h-10 text-brand-accent flex-shrink-0" set:html={value.icon} />
           <dt class="font-semibold text-brand-ink">{value.label}</dt>
           <dd class="text-sm text-brand-ink-muted leading-relaxed">{value.description}</dd>

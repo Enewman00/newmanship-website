@@ -154,8 +154,8 @@ const schemas = [
         Why {name}?
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="p-6 rounded-2xl bg-brand-surface border border-black/5">
+        {features.map((feature, i) => (
+          <div class="p-6 rounded-2xl bg-brand-surface border border-black/5 reveal" style={`--reveal-delay: ${i * 80}ms`}>
             <h3 class="font-bold mb-2" style={`color: ${colors.accent};`}>
               {feature.title}
             </h3>

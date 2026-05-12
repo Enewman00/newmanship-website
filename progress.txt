@@ -467,3 +467,32 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 5.4 (Animation & micro-interactions)
+
+---
+
+### 2026-05-12 — Task 5.4: Animation & micro-interactions
+
+**Status:** Complete
+
+**What was done:**
+- Added `.reveal` / `.revealed` CSS classes to `src/styles/global.css`:
+  - Initial state: `opacity: 0; transform: translateY(24px)` with a 0.5s ease transition
+  - Supports `--reveal-delay` CSS custom property for per-element stagger (e.g., `--reveal-delay: 80ms`)
+  - `prefers-reduced-motion` media query overrides `.reveal` to show content immediately with no transition
+  - Also sets `scroll-behavior: auto` under `prefers-reduced-motion` (html already had `scroll-behavior: smooth` for other users)
+- Added `<ViewTransitions />` from `astro:transitions` to `src/layouts/BaseLayout.astro` — enables client-side navigation with animated page transitions across the full site
+- Added a `<script>` to `BaseLayout.astro` that sets up an `IntersectionObserver` watching all `.reveal` elements:
+  - Runs on `astro:page-load` (fires on initial page load AND after each ViewTransitions navigation)
+  - `threshold: 0.1, rootMargin: '0px 0px -40px 0px'` — triggers when 10% of the element is visible, slightly before the bottom edge
+  - Adds `revealed` class and stops observing once triggered (one-shot)
+- Applied `reveal` class to:
+  - **`AppCard.astro`** — the card `<a>` element (all 4 homepage cards)
+  - **`AppLandingLayout.astro`** — each feature card `<div>` with 80ms stagger (index × 80ms)
+  - **`BrandStory.astro`** — each value pillar `<div>` with 100ms stagger
+  - **`BlogPreview.astro`** — each blog preview `<a>` card with 80ms stagger
+- Hover effects were already in place from prior tasks (AppCard scale+shadow, blog cards border+shadow, nav links color, FAQ chevron rotation); no regressions
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 5.5 (Dark mode)

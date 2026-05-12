@@ -453,12 +453,13 @@ Gather app screenshots/icons, create OG images, optimize all assets, and polish 
 - Lazy-load all screenshots below the fold
 - Note: Created `src/components/marketing/ScreenshotSection.astro` — a reusable section that renders 3 CSS phone mockups (dark bezel, dynamic island, side buttons) with either a real screenshot via `<picture srcset webp + fallback>` or a branded placeholder (app background color + accent-tinted image icon + screen label); all images use `loading="lazy"`; added to all 4 app landing pages in the default slot after each app's custom section; replace placeholder `src`/`srcWebp` props with real screenshot paths when exports are available
 
-#### Task 5.4: Animation & micro-interactions
+#### Task 5.4: Animation & micro-interactions ✅ DONE (2026-05-12)
 - Subtle scroll-reveal animations on feature cards (CSS `@keyframes` + `IntersectionObserver`)
 - Smooth scroll behavior for anchor links
 - View Transitions between pages (Astro built-in)
 - Hover effects on app cards and CTAs
 - Keep all animations `prefers-reduced-motion` aware
+- Note: Added `.reveal`/`.revealed` CSS classes with `opacity` + `translateY` transition and `--reveal-delay` CSS custom property for stagger; `IntersectionObserver` setup runs on `astro:page-load` (fires on initial load and after ViewTransitions navigation); `prefers-reduced-motion` media query overrides reveal to show content immediately; `<ViewTransitions />` added to BaseLayout for client-side page navigation; reveal classes applied to AppCard, AppLandingLayout feature cards (80ms stagger), BrandStory value pillars (100ms stagger), and BlogPreview cards (80ms stagger); hover transitions already in place on AppCard, blog cards, and nav links
 
 #### Task 5.5: Dark mode
 - Implement dark mode toggle in header

@@ -42,10 +42,11 @@ function excerpt(text: string, maxLen = 160): string {
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {posts.map((post) => (
+      {posts.map((post, i) => (
         <a
           href={`/blog/${post.slug}/`}
-          class="group block bg-brand-surface rounded-2xl p-6 border border-transparent hover:border-brand-accent/20 hover:shadow-md transition-all duration-200"
+          class="group block bg-brand-surface rounded-2xl p-6 border border-transparent hover:border-brand-accent/20 hover:shadow-md transition-all duration-200 reveal"
+          style={`--reveal-delay: ${i * 80}ms`}
         >
           {post.data.tags.length > 0 && (
             <p class="text-xs font-semibold uppercase tracking-wider text-brand-accent mb-3">
