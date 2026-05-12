@@ -296,11 +296,12 @@ Set up the Astro project, tooling, deployment pipeline, and base components that
 
 The main entry point — showcases all 4 apps, establishes the brand, and funnels visitors to individual app pages.
 
-#### Task 2.1: Hero section
+#### Task 2.1: Hero section ✅ DONE (2026-05-12)
 - `HeroSection.astro` component — brand name, tagline ("Apps that make daily life a little better"), brief description
 - Primary CTA: scroll to app grid
 - Clean, minimal design with generous whitespace
 - No lazy-loading on hero images (LCP optimization)
+- Note: Component is prop-driven (tagline, description, ctaText, ctaHref) with sensible defaults; uses brand Tailwind tokens and inline SVG down-arrow on CTA
 
 #### Task 2.2: App showcase grid
 - `AppCard.astro` component — app icon, name, tagline, category badge, "Learn more" link

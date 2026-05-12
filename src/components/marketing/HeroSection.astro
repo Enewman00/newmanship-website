@@ -1,0 +1,50 @@
+---
+interface Props {
+  tagline?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  tagline = "Apps that make daily life a little better.",
+  description = "Indie-built mobile apps for iOS and Android. Thoughtfully designed, privacy-first, no bloat.",
+  ctaText = "Explore the apps",
+  ctaHref = "#apps",
+} = Astro.props;
+---
+
+<section class="flex flex-col items-center justify-center min-h-[80vh] py-24 text-center">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      class="inline-flex items-center gap-2 px-4 py-1.5 mb-10 rounded-full bg-blue-50 border border-blue-100 text-sm font-medium text-brand-accent"
+    >
+      <span class="w-2 h-2 rounded-full bg-brand-accent" aria-hidden="true"></span>
+      Newmanship
+    </div>
+
+    <h1
+      class="text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-ink leading-[1.05] tracking-tight mb-6"
+    >
+      {tagline}
+    </h1>
+
+    <p class="text-xl text-brand-ink-muted max-w-xl mx-auto mb-12 leading-relaxed">
+      {description}
+    </p>
+
+    <a
+      href={ctaHref}
+      class="inline-flex items-center gap-2 px-8 py-4 bg-brand-accent text-white font-semibold text-base rounded-xl hover:bg-brand-accent-hover transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+    >
+      {ctaText}
+      <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path
+          fill-rule="evenodd"
+          d="M8 1a.75.75 0 01.75.75v8.69l2.72-2.72a.75.75 0 111.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 111.06-1.06L7.25 10.44V1.75A.75.75 0 018 1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </a>
+  </div>
+</section>

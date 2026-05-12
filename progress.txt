@@ -84,4 +84,23 @@
 **Build status:** ✅ `astro build` succeeds (6 pages, `_headers` present in dist/)
 **Type check:** ✅ `astro check` passes (0 errors)
 
-**Next task:** Task 2.1 (Hero section — `HeroSection.astro` component)
+**Next task:** Task 2.2 (App showcase grid — `AppCard.astro` component)
+
+---
+
+### 2026-05-12 — Task 2.1: Hero section
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/marketing/HeroSection.astro` — prop-driven hero component with brand badge, H1 tagline, description, and CTA button
+- Component accepts optional props: `tagline`, `description`, `ctaText`, `ctaHref` (all have sensible defaults targeting the Newmanship brand)
+- Uses brand Tailwind color tokens (`text-brand-ink`, `bg-brand-accent`, `text-brand-ink-muted`, etc.) for consistency with the design system
+- CTA scrolls to `#apps` (the app grid below the fold) with an inline SVG down-arrow icon — zero network requests
+- No images in the hero section (text-only), so lazy-loading concern is moot; any future hero images should use `loading="eager"` per LCP guidance
+- Updated `src/pages/index.astro` to import and render `<HeroSection />` in place of the previous inline hero markup
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 2.2 (App showcase grid — `AppCard.astro` component)
