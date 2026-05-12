@@ -317,11 +317,12 @@ The main entry point — showcases all 4 apps, establishes the brand, and funnel
 - Optional: small dev photo or illustrated avatar
 - Note: Extracted to `BrandStory.astro` component; includes 3-column value pillars (Craft, Privacy, Simplicity) with inline SVG icons; accepts optional `avatarPath` prop for a dev photo when available
 
-#### Task 2.4: Blog preview section
+#### Task 2.4: Blog preview section ✅ DONE (2026-05-12)
 - `BlogPreview.astro` — latest 3 blog posts as cards
 - Each card: title, date, excerpt, "Read more" link
 - "View all posts" link to `/blog/`
 - Query from blog content collection, sorted by date, filter drafts
+- Note: Section is conditionally rendered — hidden when blog collection is empty; renders once posts exist
 
 #### Task 2.5: Homepage SEO
 - Page-specific meta title: "Newmanship — Apps That Make Daily Life Better"

@@ -141,3 +141,21 @@
 **Type check:** ✅ `astro check` passes (0 errors)
 
 **Next task:** Task 2.4 (Blog preview section)
+
+---
+
+### 2026-05-12 — Task 2.4: Blog preview section
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/marketing/BlogPreview.astro` — queries the blog collection, filters drafts, sorts by `pubDate` descending, slices to 3 posts
+- Each post renders as a card: first tag (as category label), title (turns blue on hover), description excerpt (≤160 chars), publish date, and "Read more" arrow link
+- Section heading "From the Blog" with a "View all posts →" link on the right, linking to `/blog/`
+- Section is entirely conditional (`{posts.length > 0 && ...}`) — renders nothing when the blog collection is empty, so the homepage is unaffected while there are no posts
+- Wired `<BlogPreview />` into `src/pages/index.astro` after `<BrandStory />`, with appropriate import
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 2.5 (Homepage SEO)
