@@ -339,10 +339,12 @@ The main entry point — showcases all 4 apps, establishes the brand, and funnel
 
 Four individual marketing pages — one per app. Each is an SEO-optimized landing page designed to convert visitors to app store installs.
 
-#### Task 3.1: App landing page layout
+#### Task 3.1: App landing page layout ✅ DONE (2026-05-12)
 - `AppLandingLayout.astro` — extends BaseLayout, adds SoftwareApplication JSON-LD, BreadcrumbList JSON-LD, smart app banner meta tag
 - Accepts app data from content collection as props
 - Consistent section structure: Hero → Features → How It Works → FAQ → Download CTA
+- Note: Layout handles dark/light text automatically via luminance check on `colors.background`; feature card titles use each app's `colors.accent`; named slots (`hero-extra`, `custom-section`, default) let individual pages inject app-specific sections (e.g., Sprout Alarm's impact banner)
+- Note: All 4 app pages (sumstone, stellar-habits, choreganized, sprout-alarm) migrated from BaseLayout to AppLandingLayout; schema generation (SoftwareApplication, BreadcrumbList, FAQPage) moved into the layout so pages only pass data props
 
 #### Task 3.2: Sumstone landing page
 - Hero: app icon, "Sumstone", tagline, description, App Store badge

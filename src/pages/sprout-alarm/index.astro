@@ -1,100 +1,39 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppLandingLayout from '@/layouts/AppLandingLayout.astro';
 import { getEntry } from 'astro:content';
-import { generateSoftwareApplicationSchema, generateFAQPageSchema, generateBreadcrumbSchema } from '@/utils/seo';
 
 const app = await getEntry('apps', 'sprout-alarm');
-const { name, tagline, description, category, platforms, appStoreUrl, features, faqs } = app.data;
+const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors } = app.data;
 
-const siteUrl = 'https://newmanship.com';
-const pageUrl = `${siteUrl}/sprout-alarm/`;
-
-const schemas = [
-  generateSoftwareApplicationSchema(name, description, category, platforms, appStoreUrl),
-  generateBreadcrumbSchema([
-    { name: 'Home', url: siteUrl },
-    { name: name, url: pageUrl },
-  ]),
-  ...(faqs ? [generateFAQPageSchema(faqs)] : []),
-];
+const pageUrl = 'https://newmanship.com/sprout-alarm/';
 ---
 
-<BaseLayout
+<AppLandingLayout
   title="Sprout Alarm — Wake Up & Plant Trees"
   description="An alarm app where waking up earns eco points that fund real tree planting. 50% of subscription revenue goes to reforestation. Wake challenges make sure you're actually up."
   canonicalUrl={pageUrl}
-  structuredData={schemas}
+  name={name}
+  tagline={tagline}
+  appDescription={description}
+  category={category}
+  platforms={platforms}
+  appStoreUrl={appStoreUrl}
+  playStoreUrl={playStoreUrl}
+  features={features}
+  faqs={faqs}
+  colors={colors}
+  ctaHeading="Wake up. Make a difference."
+  ctaSubheading="Every morning counts — for you and the planet."
+  ctaButtonText="Get Sprout Alarm"
 >
-  <!-- Hero -->
-  <section class="bg-[#F0FDF4] py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] mb-4">{category}</p>
-      <h1 class="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-4">{name}</h1>
-      <p class="text-xl text-[#6B6B6B] mb-6 max-w-2xl mx-auto">{tagline}</p>
-      <p class="text-[#6B6B6B] mb-10 max-w-xl mx-auto">{description}</p>
-      {appStoreUrl ? (
-        <a href={appStoreUrl} class="inline-block px-8 py-3 bg-[#22C55E] text-white font-semibold rounded-xl hover:bg-[#16A34A] transition-colors" target="_blank" rel="noopener noreferrer">
-          Download on the App Store
-        </a>
-      ) : (
-        <p class="text-sm text-[#6B6B6B] italic">Coming soon to the App Store</p>
-      )}
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <h2 class="text-2xl font-bold text-[#1A1A1A] mb-10 text-center">How your mornings plant trees</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {features.map((feature) => (
-        <div class="p-6 rounded-2xl bg-[#F0FDF4] border border-[#DCFCE7]">
-          <h3 class="font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
-          <p class="text-[#6B6B6B] text-sm">{feature.description}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Impact section -->
-  <section class="bg-[#22C55E] py-16 text-center">
+  <!-- Impact section specific to Sprout Alarm -->
+  <section slot="custom-section" style={`background-color: ${colors.accent};`} class="py-16 text-center">
     <div class="max-w-2xl mx-auto px-4">
       <h2 class="text-2xl font-bold text-white mb-4">50% of every Pro subscription plants trees.</h2>
-      <p class="text-green-100">
+      <p class="text-white/80">
         We partner with verified reforestation organizations to ensure every dollar goes
         to planting real trees in real forests. Track your personal impact in the app.
       </p>
     </div>
   </section>
-
-  <!-- FAQ -->
-  {faqs && faqs.length > 0 && (
-    <section class="bg-[#F2F0EC] py-20">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-[#1A1A1A] mb-10 text-center">Frequently Asked Questions</h2>
-        <dl class="space-y-6">
-          {faqs.map((faq) => (
-            <div class="bg-white rounded-xl p-6">
-              <dt class="font-semibold text-[#1A1A1A] mb-2">{faq.question}</dt>
-              <dd class="text-[#6B6B6B] text-sm leading-relaxed">{faq.answer}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </section>
-  )}
-
-  <!-- CTA -->
-  <section class="py-20 text-center">
-    <div class="max-w-xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-[#1A1A1A] mb-4">Wake up. Make a difference.</h2>
-      <p class="text-[#6B6B6B] mb-8">Every morning counts — for you and the planet.</p>
-      {appStoreUrl ? (
-        <a href={appStoreUrl} class="inline-block px-8 py-3 bg-[#22C55E] text-white font-semibold rounded-xl hover:bg-[#16A34A] transition-colors" target="_blank" rel="noopener noreferrer">
-          Get Sprout Alarm
-        </a>
-      ) : (
-        <p class="text-sm text-[#6B6B6B] italic">Coming soon to the App Store</p>
-      )}
-    </div>
-  </section>
-</BaseLayout>
+</AppLandingLayout>

@@ -182,3 +182,26 @@
 **Type check:** ✅ `astro check` passes (0 errors)
 
 **Next task:** Task 3.1 (App landing page layout — `AppLandingLayout.astro`)
+
+---
+
+### 2026-05-12 — Task 3.1: App landing page layout
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/layouts/AppLandingLayout.astro` — shared layout for all 4 app landing pages
+- Layout extends `BaseLayout` and accepts app data as props; auto-generates SoftwareApplication, BreadcrumbList, and (when faqs are present) FAQPage JSON-LD schemas, eliminating the duplicated schema code that was in each page
+- Smart app banner (`appleAppId` prop → `<meta name="apple-itunes-app">`) forwarded through to BaseLayout/BaseHead
+- Consistent section structure: Hero → `custom-section` slot → Features grid → default slot → FAQ → Download CTA
+- Luminance check on `colors.background` auto-selects light/dark text (handles Stellar Habits' dark `#050709` bg vs light-background apps)
+- Feature card titles use each app's `colors.accent` for branded differentiation on the neutral features section
+- Hero and CTA sections use inline `style` for app-specific background colors; App Store and Google Play buttons are included with inline SVG icons
+- Named slots: `hero-extra` (e.g., hero screenshot), `custom-section` (e.g., Sprout's impact banner, app-specific How to Play)
+- Migrated all 4 app pages (sumstone, stellar-habits, choreganized, sprout-alarm) from `BaseLayout` + inline markup to `AppLandingLayout` with data props; each page retains its unique CTA copy via `ctaHeading`/`ctaSubheading`/`ctaButtonText` props
+- Sprout Alarm's impact section ("50% of every Pro subscription plants trees") preserved via `slot="custom-section"`
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 3.6 (App landing page shared components — FeatureShowcase, FAQSection, CTASection, AppStoreBadges) or Task 3.2 (Sumstone landing page)
