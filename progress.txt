@@ -314,3 +314,21 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 4.1 (Blog infrastructure — BlogLayout, blog listing, dynamic blog post route)
+
+---
+
+### 2026-05-12 — Task 4.1: Blog infrastructure
+
+**Status:** Complete
+
+**What was done:**
+- Installed `@tailwindcss/typography@0.5.19` and wired into `tailwind.config.mjs` — required for `prose` classes used in blog post content rendering (previously a no-op without the plugin)
+- Created `src/layouts/BlogLayout.astro` — dedicated layout for individual blog posts; extends BaseLayout; auto-generates Article + BreadcrumbList JSON-LD schemas; displays reading time (word count ÷ 200, min 1 min); shows author, publish date, updated date (when present), and tag chips that link to tag-filtered listing; renders prev/next post navigation passed in from `getStaticPaths`
+- Created `src/components/blog/BlogCard.astro` — post preview card used by the listing page; shows up to 2 tag badges, title (with hover color), description excerpt (≤160 chars), date, and reading time; height-fills grid cell for consistent grid layout
+- Updated `src/pages/blog/index.astro` — replaces inline list with `BlogCard` grid (3 columns on desktop, 2 on tablet, 1 on mobile); adds tag filter bar when posts have tags; tag filtering is client-side via a small `is:inline` script (SSG-safe progressive enhancement — all posts visible without JS); active tag is stored in `?tag=` URL param via `history.replaceState`
+- Updated `src/pages/blog/[...slug].astro` — replaced `BaseLayout` + inline article markup with `BlogLayout`; computes reading time from `post.body` word count; finds prev/next posts by sorting collection in `getStaticPaths` and passing adjacent entries as props
+
+**Build status:** ✅ `astro build` succeeds (6 pages — blog routes are empty until Task 4.3 adds seed posts)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 4.2 (Blog components — TagList, table of contents, related posts section)

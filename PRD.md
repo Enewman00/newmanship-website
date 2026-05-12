@@ -395,11 +395,12 @@ Four individual marketing pages — one per app. Each is an SEO-optimized landin
 
 Content marketing engine for long-tail SEO. Blog posts target problem-solution keywords and link back to relevant app pages.
 
-#### Task 4.1: Blog infrastructure
+#### Task 4.1: Blog infrastructure ✅ DONE (2026-05-12)
 - `BlogLayout.astro` — extends BaseLayout, adds Article JSON-LD, reading time estimate, author info, prev/next post navigation
 - `src/pages/blog/index.astro` — paginated blog listing with BlogCard components, sorted newest-first
 - `src/pages/blog/[...slug].astro` — dynamic route rendering MDX posts
 - Tag/category filtering on listing page
+- Note: Installed `@tailwindcss/typography` to make `prose` classes work for post content rendering; `BlogCard.astro` created here since it's a dependency of the listing page; tag filtering implemented client-side via a small inline script (SSG-safe, progressive enhancement — all posts visible without JS); `BlogLayout` handles reading time (word count ÷ 200), Article + BreadcrumbList JSON-LD, and prev/next navigation passed from `getStaticPaths`
 
 #### Task 4.2: Blog components
 - `BlogCard.astro` — post title, date, excerpt (first 160 chars), read time, tag badges, featured image thumbnail

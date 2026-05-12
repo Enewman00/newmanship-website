@@ -16,6 +16,7 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^2.0.2",
     "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "0.5.19",
     "astro": "^4.16.19",
     "esbuild": "^0.21.5",
     "tailwindcss": "^3.4.19"

@@ -1,41 +1,100 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogCard from '@/components/blog/BlogCard.astro';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog', ({ data }) => !data.draft);
-const sorted = posts.sort(
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sorted = allPosts.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
+
+const allTags = [...new Set(sorted.flatMap((p) => p.data.tags))].sort();
 ---
 
 <BaseLayout
   title="Blog — Newmanship"
   description="Thoughts on apps, habit-building, productivity, and indie development from the Newmanship studio."
 >
-  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-bold text-[#1A1A1A] mb-2">Blog</h1>
-    <p class="text-[#6B6B6B] mb-12">Thoughts on apps, habits, productivity, and building things.</p>
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-brand-ink mb-2">Blog</h1>
+      <p class="text-brand-ink-muted">Thoughts on apps, habits, productivity, and building things.</p>
+    </div>
+
+    {allTags.length > 0 && (
+      <div id="tag-filters" class="flex flex-wrap gap-2 mb-10" role="navigation" aria-label="Filter by tag">
+        <button
+          data-tag=""
+          class="tag-btn text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors bg-brand-accent text-white"
+        >
+          All
+        </button>
+        {allTags.map((tag) => (
+          <button
+            data-tag={tag}
+            class="tag-btn text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors bg-brand-surface text-brand-ink-muted hover:bg-[#E8E4DC]"
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    )}
 
     {sorted.length === 0 ? (
-      <p class="text-[#6B6B6B]">No posts yet. Check back soon.</p>
+      <p class="text-brand-ink-muted">No posts yet. Check back soon.</p>
     ) : (
-      <ul class="space-y-8 list-none m-0 p-0">
+      <ul id="post-list" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
         {sorted.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}/`} class="block group">
-              <article class="p-6 rounded-2xl bg-[#F2F0EC] hover:shadow-md transition-shadow">
-                <time class="text-xs text-[#6B6B6B] font-medium" datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </time>
-                <h2 class="text-xl font-bold text-[#1A1A1A] mt-2 mb-2 group-hover:text-[#2563EB] transition-colors">
-                  {post.data.title}
-                </h2>
-                <p class="text-[#6B6B6B] text-sm line-clamp-2">{post.data.description}</p>
-              </article>
-            </a>
+          <li data-tags={post.data.tags.join(',')}>
+            <BlogCard post={post} />
           </li>
         ))}
       </ul>
     )}
   </section>
 </BaseLayout>
+
+<script is:inline>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var activeTag = params.get('tag') || '';
+
+    var buttons = document.querySelectorAll('.tag-btn');
+    var items = document.querySelectorAll('#post-list li');
+
+    function setTag(tag) {
+      buttons.forEach(function (btn) {
+        var isActive = btn.dataset.tag === tag;
+        if (isActive) {
+          btn.classList.add('bg-brand-accent', 'text-white');
+          btn.classList.remove('bg-brand-surface', 'text-brand-ink-muted');
+        } else {
+          btn.classList.remove('bg-brand-accent', 'text-white');
+          btn.classList.add('bg-brand-surface', 'text-brand-ink-muted');
+        }
+      });
+
+      items.forEach(function (item) {
+        var tags = (item.dataset.tags || '').split(',').filter(Boolean);
+        var show = tag === '' || tags.includes(tag);
+        item.style.display = show ? '' : 'none';
+      });
+
+      var url = new URL(window.location.href);
+      if (tag) {
+        url.searchParams.set('tag', tag);
+      } else {
+        url.searchParams.delete('tag');
+      }
+      history.replaceState(null, '', url.toString());
+    }
+
+    setTag(activeTag);
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setTag(btn.dataset.tag || '');
+      });
+    });
+  })();
+</script>
