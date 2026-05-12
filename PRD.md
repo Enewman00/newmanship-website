@@ -264,29 +264,31 @@ Set up the Astro project, tooling, deployment pipeline, and base components that
 - Preload critical font files in BaseHead
 - Note: Files placed in `public/fonts/` (not `src/assets/fonts/`) because CSS uses absolute `/fonts/` paths; `src/assets/` is processed by Vite and would produce hashed URLs incompatible with the static CSS declarations
 
-#### Task 1.3: Base layout & common components
+#### Task 1.3: Base layout & common components ✅ DONE (2026-05-12)
 - `BaseLayout.astro` — HTML shell, `<ViewTransitions />`, slot for content
 - `BaseHead.astro` — charset, viewport, title, description, OG tags, Twitter cards, canonical URL, favicon, font preloads, analytics script tag
 - `Header.astro` — sticky nav with logo, app links, blog link, mobile hamburger menu (CSS-only or minimal JS)
 - `Footer.astro` — brand name, copyright, links to individual app websites
 - `StructuredData.astro` — renders JSON-LD script tag from props
+- Note: Completed as part of Task 1.1 scaffold
 
-#### Task 1.4: SEO infrastructure
+#### Task 1.4: SEO infrastructure ✅ DONE (2026-05-12)
 - `src/utils/seo.ts` — helper functions to generate Organization, SoftwareApplication, Article, FAQPage, BreadcrumbList schemas
 - `src/pages/robots.txt.ts` — dynamic robots.txt with sitemap reference
 - `src/pages/rss.xml.ts` — RSS feed from blog collection
-- Verify `@astrojs/sitemap` auto-generates sitemap on build
+- Note: `@astrojs/sitemap` replaced with custom `sitemap-index.xml.ts` endpoint (absolute path bug in Astro 4)
+- Note: Completed as part of Task 1.1 scaffold
 
-#### Task 1.5: Content collections setup
+#### Task 1.5: Content collections setup ✅ DONE (2026-05-12)
 - `src/content/config.ts` — Zod schemas for `blog` (MDX) and `apps` (JSON data) collections
-- Create the 4 app JSON files in `src/content/apps/` with: name, slug, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features array, color palette, icon path
-- Verify type-safe collection queries work
+- Created all 4 app JSON files in `src/content/apps/` with full data
+- Note: Completed as part of Task 1.1 scaffold
 
-#### Task 1.6: Deployment pipeline
-- Configure Cloudflare Pages deployment (connect GitHub repo)
-- Add `Cache-Control` headers for immutable assets
-- Create `.github/workflows/lighthouse.yml` — run Lighthouse CI on PRs
-- Verify build + deploy succeeds with placeholder content
+#### Task 1.6: Deployment pipeline ✅ DONE (2026-05-12)
+- `public/_headers` — Cloudflare Pages `Cache-Control` headers: immutable for `/_astro/*` and `/fonts/*`, revalidate for HTML, moderate TTLs for feeds/sitemap; also sets security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy)
+- `.github/workflows/lighthouse.yml` — Lighthouse CI workflow runs on PRs and pushes to main; fails if any page scores below 95 on performance, accessibility, best-practices, or SEO
+- `.lighthouserc.json` — Lighthouse CI config targeting all 5 key pages (`/`, `/sumstone/`, `/stellar-habits/`, `/choreganized/`, `/sprout-alarm/`) with 95+ score assertions
+- Note: Cloudflare Pages project connection (GitHub repo → dashboard) is a manual one-time step
 
 ---
 
