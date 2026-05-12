@@ -6,6 +6,29 @@ const app = await getEntry('apps', 'sumstone');
 const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors } = app.data;
 
 const pageUrl = 'https://newmanship.com/sumstone/';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Get your numbers',
+    body: 'Six number tiles are dealt — a mix of small numbers (1–10) and large ones (25, 50, 75, 100). Every round is different.',
+  },
+  {
+    number: '02',
+    title: 'See the target',
+    body: 'A three-digit target number is revealed. Your goal: reach it (or get as close as possible) using your tiles.',
+  },
+  {
+    number: '03',
+    title: 'Build your solution',
+    body: 'Combine tiles using addition, subtraction, multiplication, and division. You don\'t have to use all six.',
+  },
+  {
+    number: '04',
+    title: 'Beat the clock',
+    body: 'The timer is ticking. Submit your best answer before time runs out. Closer solutions score more points.',
+  },
+];
 ---
 
 <AppLandingLayout
@@ -24,4 +47,73 @@ const pageUrl = 'https://newmanship.com/sumstone/';
   colors={colors}
   ctaHeading="Ready to play?"
   ctaSubheading="Free to download. No internet required. No ads."
-/>
+>
+  <!-- How to Play -->
+  <section class="py-20 bg-brand-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-brand-ink mb-4 text-center">How to Play</h2>
+      <p class="text-brand-ink-muted text-center mb-16 max-w-xl mx-auto">
+        Simple to learn, satisfying to master. Each round is a fresh puzzle.
+      </p>
+
+      <!-- Stylised game board illustration -->
+      <div
+        class="max-w-xs mx-auto mb-16 rounded-3xl shadow-xl overflow-hidden"
+        style={`background-color: ${colors.background};`}
+        aria-hidden="true"
+      >
+        <!-- Target display -->
+        <div class="px-6 pt-8 pb-4 text-center">
+          <p
+            class="text-xs font-semibold uppercase tracking-widest mb-2"
+            style={`color: ${colors.accent};`}
+          >Target</p>
+          <p class="text-5xl font-bold text-brand-ink" style="font-variant-numeric: tabular-nums;">247</p>
+        </div>
+
+        <!-- Timer bar -->
+        <div class="px-6 py-2">
+          <div class="h-1.5 rounded-full bg-black/10 overflow-hidden">
+            <div
+              class="h-full rounded-full w-3/5"
+              style={`background-color: ${colors.accent};`}
+            ></div>
+          </div>
+        </div>
+
+        <!-- Number tiles -->
+        <div class="px-6 pb-8 pt-4">
+          <div class="grid grid-cols-3 gap-3">
+            {[25, 50, 75, 3, 7, 100].map((n) => (
+              <div
+                class="aspect-square rounded-2xl flex items-center justify-center text-xl font-bold shadow-sm border border-black/5 text-brand-ink"
+                style={`background-color: ${colors.accent}20;`}
+              >
+                {n}
+              </div>
+            ))}
+          </div>
+          <p class="text-center text-xs text-brand-ink-muted mt-4">
+            e.g.&nbsp; (75 + 3) × (50 ÷ 25) + 7 × (100 ÷ 7) ≈ 247
+          </p>
+        </div>
+      </div>
+
+      <!-- Steps grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((step) => (
+          <div class="flex flex-col gap-3">
+            <span
+              class="text-3xl font-bold leading-none"
+              style={`color: ${colors.accent};`}
+            >
+              {step.number}
+            </span>
+            <h3 class="font-bold text-brand-ink">{step.title}</h3>
+            <p class="text-brand-ink-muted text-sm leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</AppLandingLayout>

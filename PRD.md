@@ -346,13 +346,14 @@ Four individual marketing pages — one per app. Each is an SEO-optimized landin
 - Note: Layout handles dark/light text automatically via luminance check on `colors.background`; feature card titles use each app's `colors.accent`; named slots (`hero-extra`, `custom-section`, default) let individual pages inject app-specific sections (e.g., Sprout Alarm's impact banner)
 - Note: All 4 app pages (sumstone, stellar-habits, choreganized, sprout-alarm) migrated from BaseLayout to AppLandingLayout; schema generation (SoftwareApplication, BreadcrumbList, FAQPage) moved into the layout so pages only pass data props
 
-#### Task 3.2: Sumstone landing page
+#### Task 3.2: Sumstone landing page ✅ DONE (2026-05-12)
 - Hero: app icon, "Sumstone", tagline, description, App Store badge
 - Feature showcase (3-4 features): timed puzzles, multiple difficulties, offline play, no ads/accounts
 - "How to Play" section with brief visual explanation
 - FAQ section (4-5 questions targeting search queries): "Is Sumstone free?", "Does Sumstone work offline?", "What is the Countdown numbers game?", "Is Sumstone available on Android?"
 - Download CTA band with store badges
 - SEO: title "Sumstone — Free Math Puzzle Game | Countdown Numbers", description targeting "math puzzle app", "countdown numbers game", "offline puzzle game"
+- Note: "How to Play" added via default slot in sumstone/index.astro; includes a CSS game-board illustration (target number, timer bar, 6 number tiles) and 4 numbered steps; renders without screenshots (placeholder until Task 5.3)
 
 #### Task 3.3: Stellar Habits landing page
 - Hero: app icon, "Stellar Habits", tagline, description, App Store badge

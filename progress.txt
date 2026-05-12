@@ -224,3 +224,21 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 3.2 (Sumstone landing page) — or Tasks 3.2–3.5 in parallel
+
+---
+
+### 2026-05-12 — Task 3.2: Sumstone landing page
+
+**Status:** Complete
+
+**What was done:**
+- All core sections (hero, features grid, FAQ, CTA) were already handled by `AppLandingLayout` from Task 3.1
+- Added a "How to Play" section via the layout's default slot (renders between features grid and FAQ)
+- Section includes a CSS game-board illustration: styled phone-card showing target number (247), a progress timer bar, and 6 number tiles (25, 50, 75, 3, 7, 100) — all using Sumstone's brand colors (`#F5F0E8` bg, `#C9A84C` accent); no screenshots required (placeholder-safe until Task 5.3)
+- Added 4 numbered steps explaining the game loop: Get your numbers → See the target → Build your solution → Beat the clock
+- SEO title ("Sumstone — Free Math Puzzle Game | Countdown Numbers") and meta description were already correct from the prior scaffold
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 3.3 (Stellar Habits landing page)
