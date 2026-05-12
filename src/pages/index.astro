@@ -1,0 +1,68 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { generateOrganizationSchema, generateWebSiteSchema } from '@/utils/seo';
+
+const siteUrl = 'https://newmanship.com';
+const schemas = [
+  generateOrganizationSchema(siteUrl),
+  generateWebSiteSchema(siteUrl),
+];
+---
+
+<BaseLayout
+  title="Newmanship — Apps That Make Daily Life Better"
+  description="Newmanship is an indie app studio crafting thoughtful mobile apps. Discover Sumstone, Stellar Habits, Choreganized, and Sprout Alarm."
+  structuredData={schemas}
+>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-6 leading-tight">
+      Apps that make daily life<br />a little better.
+    </h1>
+    <p class="text-xl text-[#6B6B6B] max-w-2xl mx-auto mb-10">
+      Indie-built mobile apps for iOS. Thoughtfully designed, privacy-first, no bloat.
+    </p>
+    <a
+      href="#apps"
+      class="inline-block px-6 py-3 bg-[#2563EB] text-white font-semibold rounded-lg hover:bg-[#1D4ED8] transition-colors"
+    >
+      Explore the apps
+    </a>
+  </section>
+
+  <section id="apps" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <h2 class="text-2xl font-bold text-[#1A1A1A] mb-8 text-center">The Apps</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <a href="/sumstone/" class="block p-6 rounded-2xl bg-[#F5F0E8] hover:shadow-md transition-shadow border border-transparent hover:border-[#C9A84C]/30">
+        <p class="text-xs font-semibold uppercase tracking-wider text-[#C9A84C] mb-2">Puzzle / Game</p>
+        <h3 class="text-xl font-bold text-[#1A1A1A] mb-2">Sumstone</h3>
+        <p class="text-[#6B6B6B] text-sm">The classic numbers puzzle — pick your tiles, reach the target, beat the clock.</p>
+      </a>
+      <a href="/stellar-habits/" class="block p-6 rounded-2xl bg-[#050709] hover:shadow-md transition-shadow border border-transparent hover:border-[#F59E0B]/30">
+        <p class="text-xs font-semibold uppercase tracking-wider text-[#F59E0B] mb-2">Habit Tracker</p>
+        <h3 class="text-xl font-bold text-white mb-2">Stellar Habits</h3>
+        <p class="text-gray-400 text-sm">Your habits are stars waiting to be lit.</p>
+      </a>
+      <a href="/choreganized/" class="block p-6 rounded-2xl bg-[#FBF6EC] hover:shadow-md transition-shadow border border-transparent hover:border-[#6366F1]/30">
+        <p class="text-xs font-semibold uppercase tracking-wider text-[#6366F1] mb-2">Life Management</p>
+        <h3 class="text-xl font-bold text-[#1A1A1A] mb-2">Choreganized</h3>
+        <p class="text-[#6B6B6B] text-sm">Never Miss What Matters.</p>
+      </a>
+      <a href="/sprout-alarm/" class="block p-6 rounded-2xl bg-[#F0FDF4] hover:shadow-md transition-shadow border border-transparent hover:border-[#22C55E]/30">
+        <p class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] mb-2">Alarm Clock</p>
+        <h3 class="text-xl font-bold text-[#1A1A1A] mb-2">Sprout Alarm</h3>
+        <p class="text-[#6B6B6B] text-sm">Wake up. Plant trees.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="bg-[#F2F0EC] py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-[#1A1A1A] mb-4">About Newmanship</h2>
+      <p class="text-[#6B6B6B] max-w-2xl mx-auto leading-relaxed">
+        Newmanship is a one-person indie app studio focused on craft, simplicity, and privacy.
+        Every app is designed to do one thing well — no dark patterns, no data harvesting, no bloat.
+        Just tools that make your day a little better.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

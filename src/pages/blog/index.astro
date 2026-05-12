@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const sorted = posts.sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+---
+
+<BaseLayout
+  title="Blog — Newmanship"
+  description="Thoughts on apps, habit-building, productivity, and indie development from the Newmanship studio."
+>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-3xl font-bold text-[#1A1A1A] mb-2">Blog</h1>
+    <p class="text-[#6B6B6B] mb-12">Thoughts on apps, habits, productivity, and building things.</p>
+
+    {sorted.length === 0 ? (
+      <p class="text-[#6B6B6B]">No posts yet. Check back soon.</p>
+    ) : (
+      <ul class="space-y-8 list-none m-0 p-0">
+        {sorted.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}/`} class="block group">
+              <article class="p-6 rounded-2xl bg-[#F2F0EC] hover:shadow-md transition-shadow">
+                <time class="text-xs text-[#6B6B6B] font-medium" datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+                <h2 class="text-xl font-bold text-[#1A1A1A] mt-2 mb-2 group-hover:text-[#2563EB] transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-[#6B6B6B] text-sm line-clamp-2">{post.data.description}</p>
+              </article>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>

@@ -1,0 +1,89 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import { generateSoftwareApplicationSchema, generateFAQPageSchema, generateBreadcrumbSchema } from '@/utils/seo';
+
+const app = await getEntry('apps', 'sumstone');
+const { name, tagline, description, category, platforms, appStoreUrl, features, faqs } = app.data;
+
+const siteUrl = 'https://newmanship.com';
+const pageUrl = `${siteUrl}/sumstone/`;
+
+const schemas = [
+  generateSoftwareApplicationSchema(name, description, category, platforms, appStoreUrl),
+  generateBreadcrumbSchema([
+    { name: 'Home', url: siteUrl },
+    { name: name, url: pageUrl },
+  ]),
+  ...(faqs ? [generateFAQPageSchema(faqs)] : []),
+];
+---
+
+<BaseLayout
+  title="Sumstone — Free Math Puzzle Game | Countdown Numbers"
+  description="A calm, satisfying math puzzle inspired by the Countdown numbers round. Six numbers, one target, endless combinations. Free, offline, no ads."
+  canonicalUrl={pageUrl}
+  structuredData={schemas}
+>
+  <!-- Hero -->
+  <section class="bg-[#F5F0E8] py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-semibold uppercase tracking-wider text-[#C9A84C] mb-4">{category}</p>
+      <h1 class="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-4">{name}</h1>
+      <p class="text-xl text-[#6B6B6B] mb-6 max-w-2xl mx-auto">{tagline}</p>
+      <p class="text-[#6B6B6B] mb-10 max-w-xl mx-auto">{description}</p>
+      {appStoreUrl ? (
+        <a href={appStoreUrl} class="inline-block px-8 py-3 bg-[#1A1A1A] text-white font-semibold rounded-xl hover:bg-[#333] transition-colors" target="_blank" rel="noopener noreferrer">
+          Download on the App Store
+        </a>
+      ) : (
+        <p class="text-sm text-[#6B6B6B] italic">Coming soon to the App Store</p>
+      )}
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <h2 class="text-2xl font-bold text-[#1A1A1A] mb-10 text-center">Why Sumstone?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {features.map((feature) => (
+        <div class="p-6 rounded-2xl bg-[#F5F0E8]">
+          <h3 class="font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
+          <p class="text-[#6B6B6B] text-sm">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {faqs && faqs.length > 0 && (
+    <section class="bg-[#F2F0EC] py-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-[#1A1A1A] mb-10 text-center">Frequently Asked Questions</h2>
+        <dl class="space-y-6">
+          {faqs.map((faq) => (
+            <div class="bg-white rounded-xl p-6">
+              <dt class="font-semibold text-[#1A1A1A] mb-2">{faq.question}</dt>
+              <dd class="text-[#6B6B6B] text-sm leading-relaxed">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-20 text-center">
+    <div class="max-w-xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-[#1A1A1A] mb-4">Ready to play?</h2>
+      <p class="text-[#6B6B6B] mb-8">Free to download. No internet required. No ads.</p>
+      {appStoreUrl ? (
+        <a href={appStoreUrl} class="inline-block px-8 py-3 bg-[#2563EB] text-white font-semibold rounded-xl hover:bg-[#1D4ED8] transition-colors" target="_blank" rel="noopener noreferrer">
+          Get Sumstone Free
+        </a>
+      ) : (
+        <p class="text-sm text-[#6B6B6B] italic">Coming soon to the App Store</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

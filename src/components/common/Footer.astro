@@ -1,0 +1,57 @@
+---
+const apps = [
+  { href: '/sumstone/', label: 'Sumstone' },
+  { href: '/stellar-habits/', label: 'Stellar Habits' },
+  { href: '/choreganized/', label: 'Choreganized' },
+  { href: '/sprout-alarm/', label: 'Sprout Alarm' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#F2F0EC] border-t border-[#E5E2DC] mt-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <p class="font-bold text-[#1A1A1A] text-lg mb-2">Newmanship</p>
+        <p class="text-sm text-[#6B6B6B] leading-relaxed">
+          Apps that make daily life a little better. Indie-built, privacy-first.
+        </p>
+      </div>
+
+      <!-- Apps -->
+      <div>
+        <p class="font-semibold text-[#1A1A1A] text-sm mb-3 uppercase tracking-wider">Apps</p>
+        <ul class="space-y-2 list-none m-0 p-0">
+          {apps.map(({ href, label }) => (
+            <li>
+              <a href={href} class="text-sm text-[#6B6B6B] hover:text-[#2563EB] transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <p class="font-semibold text-[#1A1A1A] text-sm mb-3 uppercase tracking-wider">More</p>
+        <ul class="space-y-2 list-none m-0 p-0">
+          <li>
+            <a href="/blog/" class="text-sm text-[#6B6B6B] hover:text-[#2563EB] transition-colors">Blog</a>
+          </li>
+          <li>
+            <a href="/rss.xml" class="text-sm text-[#6B6B6B] hover:text-[#2563EB] transition-colors">RSS Feed</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-[#E5E2DC] text-center">
+      <p class="text-sm text-[#6B6B6B]">
+        &copy; {currentYear} Newmanship. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

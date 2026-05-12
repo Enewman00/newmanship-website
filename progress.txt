@@ -1,0 +1,43 @@
+## Progress Log
+
+### 2026-05-12 — Task 1.1: Initialize Astro Project
+
+**Status:** Complete
+
+**What was done:**
+- Scaffolded Astro 4.16 project manually (npm create astro GitHub fetch is blocked in this environment)
+- Installed integrations: @astrojs/tailwind (v6), @astrojs/mdx (v3), @astrojs/rss (v4)
+- Configured astro.config.mjs with site URL and integrations
+- Set up tailwind.config.mjs with full design system color tokens for parent brand and each app
+- Created src/styles/global.css with @tailwind directives, CSS custom properties, and @font-face declarations for self-hosted Inter + JetBrains Mono
+- Created tsconfig.json with strict TypeScript and @/ path alias → src/
+- Created .gitignore for Astro
+
+**Also completed as part of scaffold (Tasks 1.3, 1.4, 1.5 partial):**
+- Created full project directory structure per PRD
+- Built BaseHead.astro, Header.astro, Footer.astro, StructuredData.astro
+- Built BaseLayout.astro with skip-to-content, Header, Footer slot
+- Created src/utils/seo.ts with all schema generators (Organization, WebSite, SoftwareApplication, FAQPage, Article, BreadcrumbList)
+- Created src/pages/robots.txt.ts (dynamic robots.txt)
+- Created src/pages/sitemap-index.xml.ts (custom sitemap — @astrojs/sitemap incompatible with Astro 4 on macOS-hosted paths)
+- Created src/pages/rss.xml.ts (RSS feed from blog collection)
+- Created src/content/config.ts with Zod schemas for blog (MDX) and apps (JSON) collections
+- Created all 4 app JSON files in src/content/apps/ (sumstone, stellar-habits, choreganized, sprout-alarm) with full data
+- Created homepage (src/pages/index.astro) with hero, app grid, and about section
+- Created all 4 app landing pages with hero, features, FAQ, and CTA sections
+- Created blog listing page and dynamic blog post page
+
+**Environment notes:**
+- Node.js v22.22.2 required (npm create astro requires Node 22+)
+- Installed via nvm; persisted to /etc/sandbox-persistent.sh
+- Tailwind CSS v4 + @tailwindcss/vite were incompatible (oxide Rust binary crashes with SIGILL)
+  → Downgraded to Tailwind CSS v3 + @astrojs/tailwind
+- esbuild native binary installed blank (--ignore-scripts workaround needed);
+  fixed by extracting ELF binary from npm pack tarball manually
+- Rolldown (Vite 6 / Astro 5) crashes with SIGILL on this ARM64 kernel → used Astro 4 + Vite 5
+- @astrojs/sitemap crashes with Astro 4 (absolute path bug) → replaced with custom sitemap endpoint
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors)
+
+**Next task:** Task 1.2 (Self-host fonts) or Task 1.6 (Deployment pipeline)

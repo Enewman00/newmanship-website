@@ -1,0 +1,57 @@
+{
+  "name": "Choreganized",
+  "slug": "choreganized",
+  "tagline": "Never Miss What Matters.",
+  "description": "Stay on top of every chore, reminder, and recurring task — from car maintenance to home upkeep to personal health. Smart scheduling and clear priorities, all stored privately on your device.",
+  "category": "Productivity / Life Management",
+  "platforms": ["iOS"],
+  "features": [
+    {
+      "title": "Recurring Tasks",
+      "description": "Set tasks to repeat daily, weekly, monthly, or on any custom schedule. Choreganized remembers so you don't have to.",
+      "icon": "repeat"
+    },
+    {
+      "title": "Smart Reminders",
+      "description": "Get notified at the right time, not just the next time you open the app. Timely nudges that keep you on track.",
+      "icon": "bell"
+    },
+    {
+      "title": "Priority System",
+      "description": "Mark tasks as high, medium, or low priority. See what actually needs your attention today.",
+      "icon": "flag"
+    },
+    {
+      "title": "On-Device Privacy",
+      "description": "All your data stays on your device. No accounts, no cloud sync, no data sharing. Your home life is your business.",
+      "icon": "lock"
+    },
+    {
+      "title": "Smart Scheduling",
+      "description": "Choreganized spaces out tasks intelligently so your to-do list doesn't pile up on one day.",
+      "icon": "calendar"
+    }
+  ],
+  "colors": {
+    "background": "#FBF6EC",
+    "accent": "#6366F1"
+  },
+  "faqs": [
+    {
+      "question": "Is my data stored on my device?",
+      "answer": "Yes. Choreganized stores all your tasks and reminders locally on your device. No account required, no data sent to external servers."
+    },
+    {
+      "question": "Can I set recurring reminders?",
+      "answer": "Absolutely. You can set any task to recur on a schedule — daily, weekly, monthly, every X days, or on specific days of the week."
+    },
+    {
+      "question": "Is Choreganized free?",
+      "answer": "Choreganized is free to download with core features. A one-time unlock is available for advanced scheduling features and unlimited task categories."
+    },
+    {
+      "question": "Is Choreganized available on Android?",
+      "answer": "Currently Choreganized is available on iOS. Android support is planned for a future release."
+    }
+  ]
+}

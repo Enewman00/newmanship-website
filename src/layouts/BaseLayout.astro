@@ -1,0 +1,49 @@
+---
+import BaseHead from '@/components/common/BaseHead.astro';
+import Header from '@/components/common/Header.astro';
+import Footer from '@/components/common/Footer.astro';
+import '@/styles/global.css';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type JsonLd = Record<string, any> | Record<string, any>[];
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalUrl?: string;
+  appleAppId?: string;
+  structuredData?: JsonLd;
+}
+
+const { title, description, image, canonicalUrl, appleAppId, structuredData } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      canonicalUrl={canonicalUrl}
+      appleAppId={appleAppId}
+    />
+    {structuredData && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+  </head>
+  <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#2563EB] focus:text-white focus:rounded-md focus:font-medium"
+    >
+      Skip to main content
+    </a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

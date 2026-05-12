@@ -1,0 +1,91 @@
+---
+const navLinks = [
+  { href: '/sumstone/', label: 'Sumstone' },
+  { href: '/stellar-habits/', label: 'Stellar Habits' },
+  { href: '/choreganized/', label: 'Choreganized' },
+  { href: '/sprout-alarm/', label: 'Sprout Alarm' },
+  { href: '/blog/', label: 'Blog' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-[#FAFAF8]/95 backdrop-blur border-b border-[#F2F0EC]">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Main navigation">
+    <a href="/" class="flex items-center gap-2 font-bold text-lg text-[#1A1A1A] hover:text-[#2563EB] transition-colors">
+      <span>Newmanship</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'px-3 py-2 rounded-md text-sm font-medium transition-colors',
+              currentPath.startsWith(href)
+                ? 'text-[#2563EB] bg-blue-50'
+                : 'text-[#6B6B6B] hover:text-[#1A1A1A] hover:bg-[#F2F0EC]',
+            ]}
+            aria-current={currentPath.startsWith(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden p-2 rounded-md text-[#6B6B6B] hover:text-[#1A1A1A] hover:bg-[#F2F0EC] transition-colors"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Toggle navigation menu"
+    >
+      <svg class="w-5 h-5" id="menu-icon-open" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+      </svg>
+      <svg class="w-5 h-5 hidden" id="menu-icon-close" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[#F2F0EC]" role="navigation" aria-label="Mobile navigation">
+    <ul class="px-4 py-2 space-y-1 list-none m-0">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'block px-3 py-2 rounded-md text-sm font-medium transition-colors',
+              currentPath.startsWith(href)
+                ? 'text-[#2563EB] bg-blue-50'
+                : 'text-[#6B6B6B] hover:text-[#1A1A1A] hover:bg-[#F2F0EC]',
+            ]}
+            aria-current={currentPath.startsWith(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    iconOpen?.classList.toggle('hidden', isOpen);
+    iconClose?.classList.toggle('hidden', !isOpen);
+  });
+</script>

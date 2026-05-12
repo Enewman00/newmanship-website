@@ -1,0 +1,56 @@
+{
+  "name": "Sumstone",
+  "slug": "sumstone",
+  "tagline": "The classic numbers puzzle — pick your tiles, reach the target, beat the clock.",
+  "description": "Six numbers. One goal. Endless combinations. A calm, satisfying math puzzle inspired by the Countdown numbers round. No internet needed, no accounts, no pressure.",
+  "category": "Puzzle / Game",
+  "platforms": ["iOS"],
+  "features": [
+    {
+      "title": "Timed Rounds",
+      "description": "Race against the clock to find the solution. Multiple time limits for different difficulty levels.",
+      "icon": "clock"
+    },
+    {
+      "title": "Multiple Difficulties",
+      "description": "From easy warm-ups to brain-bending challenges. Find your perfect level.",
+      "icon": "chart"
+    },
+    {
+      "title": "Offline Play",
+      "description": "No internet required. Play anywhere, anytime — on the subway, in a waiting room, on a plane.",
+      "icon": "wifi-off"
+    },
+    {
+      "title": "No Ads, No Accounts",
+      "description": "Just the puzzle. No sign-ups, no interruptions, no tracking. Pure focus.",
+      "icon": "shield"
+    }
+  ],
+  "colors": {
+    "background": "#F5F0E8",
+    "accent": "#C9A84C"
+  },
+  "faqs": [
+    {
+      "question": "Is Sumstone free?",
+      "answer": "Yes, Sumstone is completely free to download and play. There are no in-app purchases or subscriptions."
+    },
+    {
+      "question": "Does Sumstone work offline?",
+      "answer": "Absolutely. Sumstone requires no internet connection. Once downloaded, you can play anywhere without Wi-Fi or data."
+    },
+    {
+      "question": "What is the Countdown numbers game?",
+      "answer": "The Countdown numbers game is a classic British TV puzzle where contestants use six numbers and basic arithmetic (+, -, ×, ÷) to reach a target number. Sumstone is inspired by this format."
+    },
+    {
+      "question": "Is Sumstone available on Android?",
+      "answer": "Currently Sumstone is available on iOS. Android support is planned for a future update."
+    },
+    {
+      "question": "Do I need to be good at math to play?",
+      "answer": "Not at all! Sumstone is about logical thinking and exploration. The easier levels are accessible to everyone, while harder levels challenge math enthusiasts."
+    }
+  ]
+}

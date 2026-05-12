@@ -1,0 +1,57 @@
+{
+  "name": "Sprout Alarm",
+  "slug": "sprout-alarm",
+  "tagline": "Wake up. Plant trees.",
+  "description": "An alarm app where waking up earns eco points that fund real tree planting. 50% of subscription revenue goes to reforestation. Wake challenges make sure you're actually up.",
+  "category": "Lifestyle / Alarm Clock",
+  "platforms": ["iOS"],
+  "features": [
+    {
+      "title": "Wake Challenges",
+      "description": "Shake your phone, solve a math problem, or unscramble a word to dismiss your alarm. Actually wake up, every time.",
+      "icon": "zap"
+    },
+    {
+      "title": "Eco Points",
+      "description": "Every morning you wake up earns eco points. Accumulate points to fund real tree planting through verified reforestation partners.",
+      "icon": "leaf"
+    },
+    {
+      "title": "Real Tree Planting",
+      "description": "50% of all Pro subscription revenue goes directly to reforestation. Track your impact in the app.",
+      "icon": "tree"
+    },
+    {
+      "title": "Cosmetic Themes",
+      "description": "Customize your alarm experience with nature-inspired themes. Watch your forest grow as your eco points accumulate.",
+      "icon": "palette"
+    },
+    {
+      "title": "AlarmKit Integration",
+      "description": "Built for iOS 26+ with AlarmKit support for reliable, system-level alarm delivery.",
+      "icon": "clock"
+    }
+  ],
+  "colors": {
+    "background": "#F0FDF4",
+    "accent": "#22C55E"
+  },
+  "faqs": [
+    {
+      "question": "How does Sprout Alarm plant trees?",
+      "answer": "50% of all Pro subscription revenue is donated to verified reforestation partners. Every morning you wake up earns eco points, and as those points accumulate, they contribute to tree planting milestones tracked in the app."
+    },
+    {
+      "question": "What are wake challenges?",
+      "answer": "Wake challenges are mini-tasks you must complete to dismiss your alarm — shake your phone a set number of times, solve a simple math problem, or unscramble a word. They ensure you're actually awake, not just hitting snooze."
+    },
+    {
+      "question": "Does Sprout Alarm work with Focus mode?",
+      "answer": "Yes. Sprout Alarm uses iOS alarm permissions to break through Focus mode and Do Not Disturb, just like the built-in Clock app."
+    },
+    {
+      "question": "What's included in Sprout Alarm Pro?",
+      "answer": "Pro includes unlimited alarms, all wake challenge types, detailed eco impact tracking, premium themes, and the knowledge that 50% of your subscription goes to planting real trees."
+    }
+  ]
+}

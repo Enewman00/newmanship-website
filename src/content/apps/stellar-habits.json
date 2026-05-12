@@ -1,0 +1,62 @@
+{
+  "name": "Stellar Habits",
+  "slug": "stellar-habits",
+  "tagline": "Your habits are stars waiting to be lit.",
+  "description": "A habit tracker that replaces checkboxes with an interactive night sky. Hold your habits to watch them glow. A small, satisfying ritual that turns consistency into something beautiful.",
+  "category": "Productivity / Habit Tracker",
+  "platforms": ["iOS"],
+  "features": [
+    {
+      "title": "Hold-to-Light Ritual",
+      "description": "Press and hold each habit to watch your star glow brighter. A mindful moment that makes completion feel meaningful.",
+      "icon": "star"
+    },
+    {
+      "title": "Personal Constellations",
+      "description": "Your habits form constellations in your night sky. Build patterns that are uniquely yours.",
+      "icon": "constellation"
+    },
+    {
+      "title": "Year Spiral",
+      "description": "See your entire year of consistency mapped onto a beautiful spiral. Watch your universe grow.",
+      "icon": "spiral"
+    },
+    {
+      "title": "Smart Reminders",
+      "description": "Gentle, timely nudges that fit your schedule. Not nagging — just a quiet reminder from the stars.",
+      "icon": "bell"
+    },
+    {
+      "title": "Evening Ritual Mode",
+      "description": "A focused end-of-day review that helps you reflect and prepare for tomorrow.",
+      "icon": "moon"
+    },
+    {
+      "title": "Pro Tier",
+      "description": "Unlock unlimited habits, advanced analytics, custom themes, and priority support.",
+      "icon": "crown"
+    }
+  ],
+  "colors": {
+    "background": "#050709",
+    "accent": "#F59E0B"
+  },
+  "faqs": [
+    {
+      "question": "How is Stellar Habits different from other habit trackers?",
+      "answer": "Stellar Habits replaces the anxiety of streaks and checkboxes with a meditative ritual. You hold each habit to light it — a small moment of mindfulness that makes building habits feel beautiful, not pressured."
+    },
+    {
+      "question": "What does hold-to-light mean?",
+      "answer": "Instead of tapping a checkbox, you press and hold each habit card. As you hold, your star glows brighter. Release when it's fully lit. It's a deliberate, satisfying ritual that takes just a few seconds."
+    },
+    {
+      "question": "Is there a streak counter?",
+      "answer": "No — by design. Streaks create anxiety and punish you for missing a day. Stellar Habits shows your overall consistency over time without the pressure of maintaining a streak."
+    },
+    {
+      "question": "What's included in Stellar Habits Pro?",
+      "answer": "Pro unlocks unlimited habits (free tier has 5), detailed consistency analytics, custom star colors and themes, widget support, and the year spiral view."
+    }
+  ]
+}

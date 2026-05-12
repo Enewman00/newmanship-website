@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalUrl?: string;
+  appleAppId?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/og-default.png',
+  canonicalUrl,
+  appleAppId,
+} = Astro.props;
+
+const siteUrl = 'https://newmanship.com';
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="Newmanship" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Smart App Banner -->
+{appleAppId && (
+  <meta name="apple-itunes-app" content={`app-id=${appleAppId}`} />
+)}
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- RSS autodiscovery -->
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Newmanship Blog"
+  href="/rss.xml"
+/>
+
+<!-- Font preloads (update paths once font files are added) -->
+<!-- <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin /> -->
+<!-- <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin /> -->
