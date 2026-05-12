@@ -289,3 +289,28 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 3.5 (Sprout Alarm landing page)
+
+---
+
+### 2026-05-12 — Task 3.5: Sprout Alarm landing page
+
+**Status:** Complete
+
+**What was done:**
+- All core sections (hero with 5 features, FAQ, CTA) were already handled by `AppLandingLayout` from Task 3.1
+- Replaced the previous single-line impact banner with a two-part impact experience:
+  - **`custom-section` slot** — compact green banner ("50% of every Pro subscription plants trees.") with supporting copy; sits above the features grid as a quick social-proof stat
+  - **Default slot** — detailed "How Your Mornings Plant Trees" section between features and FAQ
+- The detailed section includes:
+  - A CSS phone mockup (Sprout Alarm UI): status bar, large 7:00 AM clock, math wake challenge ("14 + 8 = ?") with three answer buttons (one highlighted as selected), eco points counter with sprout SVG icon (247 pts), and a green footer ("3 trees planted this month")
+  - A 3-step flow beside the mockup: Set your alarm → Complete your wake challenge → Watch your impact grow
+  - A "reforestation promise" callout card (bordered green, 50% → verified partners, tracked in-app)
+  - All colors driven by app brand tokens (`#F0FDF4` bg, `#22C55E` accent) — no hardcoded values
+- Updated meta description to include "eco alarm app" and "alarm app that plants trees" keywords per PRD SEO targets
+- No screenshots required — fully placeholder-safe until Task 5.3
+- Phase 3 is now fully complete (all 6 tasks done: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6)
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 4.1 (Blog infrastructure — BlogLayout, blog listing, dynamic blog post route)

@@ -373,13 +373,14 @@ Four individual marketing pages — one per app. Each is an SEO-optimized landin
 - SEO: title "Choreganized — Smart Chore & Reminder Manager", targeting "chore reminder app", "recurring task manager", "home maintenance app"
 - Note: Use-case section added via default slot in choreganized/index.astro; renders three cards (home/health/car) each with inline SVG icon, context label, 4 example tasks, and their recurrence schedules; uses Choreganized's brand colors (#FBF6EC bg, #6366F1 indigo accent); no screenshots required (placeholder-safe until Task 5.3); updated meta description to include "home maintenance app" keyword per SEO targets
 
-#### Task 3.5: Sprout Alarm landing page
+#### Task 3.5: Sprout Alarm landing page ✅ DONE (2026-05-12)
 - Hero: app icon, "Sprout Alarm", tagline, description, store badges
 - Feature showcase: wake challenges, eco points, tree planting impact, themes, AlarmKit integration
 - Impact section: "How your mornings plant trees" — explain the 50% revenue → reforestation model
 - FAQ section: "How does Sprout Alarm plant trees?", "What are wake challenges?", "Does Sprout Alarm work with Focus mode?", "What's included in Sprout Alarm Pro?"
 - Download CTA band
 - SEO: title "Sprout Alarm — Wake Up & Plant Trees", targeting "eco alarm app", "alarm app that plants trees", "alarm with wake challenges"
+- Note: Two-part impact experience: a compact green impact banner via `custom-section` slot (quick social-proof stat) + a detailed "How Your Mornings Plant Trees" section via default slot with a CSS phone mockup (7AM alarm, math wake challenge with answer choices, eco points counter, trees-planted footer) and a 3-step explanation (set alarm → complete challenge → watch impact grow) plus a reforestation promise callout; meta description updated to include "eco alarm app" and "alarm app that plants trees" keywords per SEO targets
 
 #### Task 3.6: App landing page shared components ✅ DONE (2026-05-12)
 - `FeatureShowcase.astro` — alternating left/right image+text rows for key features

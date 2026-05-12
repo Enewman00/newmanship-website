@@ -6,11 +6,26 @@ const app = await getEntry('apps', 'sprout-alarm');
 const { name, tagline, description, category, platforms, appStoreUrl, playStoreUrl, features, faqs, colors } = app.data;
 
 const pageUrl = 'https://newmanship.com/sprout-alarm/';
+
+const steps = [
+  {
+    title: 'Set your alarm',
+    body: 'Choose your wake time, pick a challenge type, and Sprout Alarm handles the rest. Works alongside iOS Focus mode — nothing gets silenced.',
+  },
+  {
+    title: 'Complete your wake challenge',
+    body: 'Shake, solve a math problem, or unscramble a word — whichever challenge you chose. No snoozing your way out. Earning eco points starts here.',
+  },
+  {
+    title: 'Watch your impact grow',
+    body: 'Eco points accumulate with every morning. Meanwhile, 50% of every Pro subscription goes directly to verified reforestation partners — real trees, real forests, tracked in the app.',
+  },
+];
 ---
 
 <AppLandingLayout
   title="Sprout Alarm — Wake Up & Plant Trees"
-  description="An alarm app where waking up earns eco points that fund real tree planting. 50% of subscription revenue goes to reforestation. Wake challenges make sure you're actually up."
+  description="An eco alarm app where waking up earns points that fund real tree planting. Wake challenges, eco impact tracking, and 50% of Pro revenue goes to reforestation. Available on iOS."
   canonicalUrl={pageUrl}
   name={name}
   tagline={tagline}
@@ -25,14 +40,115 @@ const pageUrl = 'https://newmanship.com/sprout-alarm/';
   ctaHeading="Wake up. Make a difference."
   ctaSubheading="Every morning counts — for you and the planet."
 >
-  <!-- Impact section specific to Sprout Alarm -->
-  <section slot="custom-section" style={`background-color: ${colors.accent};`} class="py-16 text-center">
+  <!-- Impact banner: quick social-proof stat above the features -->
+  <section slot="custom-section" style={`background-color: ${colors.accent};`} class="py-10 text-center">
     <div class="max-w-2xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-white mb-4">50% of every Pro subscription plants trees.</h2>
-      <p class="text-white/80">
-        We partner with verified reforestation organizations to ensure every dollar goes
-        to planting real trees in real forests. Track your personal impact in the app.
+      <p class="text-white font-bold text-lg mb-1">50% of every Pro subscription plants trees.</p>
+      <p class="text-white/80 text-sm">
+        Verified reforestation partners. Real trees. Track your personal impact inside the app.
       </p>
+    </div>
+  </section>
+
+  <!-- How Your Mornings Plant Trees — detailed impact section -->
+  <section class="py-20 bg-brand-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-brand-ink mb-4 text-center">How Your Mornings Plant Trees</h2>
+      <p class="text-brand-ink-muted text-center mb-16 max-w-xl mx-auto">
+        Every alarm is a chance to do something good. Here's how it works.
+      </p>
+
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        <!-- CSS phone mockup showing Sprout Alarm interface -->
+        <div class="flex-shrink-0 flex justify-center">
+          <div
+            class="relative w-60 rounded-[2.5rem] border-4 shadow-2xl overflow-hidden"
+            style={`border-color: ${colors.accent}; background-color: ${colors.background};`}
+          >
+            <!-- Status bar -->
+            <div
+              class="flex justify-between items-center px-5 py-2 text-xs text-white font-medium"
+              style={`background-color: ${colors.accent};`}
+            >
+              <span>7:00 AM</span>
+              <span>100%</span>
+            </div>
+
+            <!-- Alarm face -->
+            <div class="text-center pt-5 pb-2 px-4">
+              <div class="text-4xl font-bold mb-0.5" style={`color: ${colors.accent};`}>7:00</div>
+              <div class="text-xs text-brand-ink-muted mb-4">Good morning!</div>
+
+              <!-- Wake challenge card -->
+              <div
+                class="rounded-xl p-3 mb-3 border"
+                style={`background-color: white; border-color: ${colors.accent}40;`}
+              >
+                <p class="text-xs text-brand-ink-muted font-semibold uppercase tracking-wide mb-1">Wake Challenge</p>
+                <p class="text-sm font-bold text-brand-ink mb-2">Solve to dismiss</p>
+                <p class="text-2xl font-bold" style={`color: ${colors.accent};`}>14 + 8 = ?</p>
+                <div class="mt-3 grid grid-cols-3 gap-1">
+                  <div class="text-sm font-semibold py-1 rounded-lg border text-center" style={`border-color: ${colors.accent}; color: ${colors.accent};`}>18</div>
+                  <div
+                    class="text-sm font-semibold py-1 rounded-lg text-center text-white"
+                    style={`background-color: ${colors.accent};`}
+                  >22</div>
+                  <div class="text-sm font-semibold py-1 rounded-lg border text-center" style={`border-color: ${colors.accent}; color: ${colors.accent};`}>21</div>
+                </div>
+              </div>
+
+              <!-- Eco points display -->
+              <div class="rounded-xl p-3" style={`background-color: ${colors.accent}18;`}>
+                <div class="flex items-center justify-center gap-2">
+                  <!-- Sprout icon -->
+                  <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style={`color: ${colors.accent};`} aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12M12 12C12 8 8 5 4 5c0 4 3 7 8 7zM12 12C12 8 16 5 20 5c0 4-3 7-8 7z" />
+                  </svg>
+                  <div class="text-left">
+                    <p class="text-xs text-brand-ink-muted leading-none">Eco points</p>
+                    <p class="text-base font-bold leading-none mt-0.5" style={`color: ${colors.accent};`}>247 pts</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Impact footer -->
+            <div class="px-4 py-3 mt-2 text-center" style={`background-color: ${colors.accent};`}>
+              <p class="text-white text-xs font-medium">3 trees planted this month</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step-by-step explanation -->
+        <div class="flex-1 space-y-10">
+          {steps.map((step, i) => (
+            <div class="flex gap-4 items-start">
+              <div
+                class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm"
+                style={`background-color: ${colors.accent};`}
+              >
+                {i + 1}
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-ink mb-1">{step.title}</h3>
+                <p class="text-brand-ink-muted text-sm leading-relaxed">{step.body}</p>
+              </div>
+            </div>
+          ))}
+
+          <!-- Reforestation partner note -->
+          <div
+            class="rounded-xl p-4 border"
+            style={`background-color: ${colors.accent}10; border-color: ${colors.accent}30;`}
+          >
+            <p class="text-sm text-brand-ink leading-relaxed">
+              <span class="font-semibold" style={`color: ${colors.accent};`}>Our reforestation promise: </span>
+              50% of every Pro subscription goes directly to verified partners. No middlemen.
+              Every tree is tracked and reported inside the app so you can see your real-world impact.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </AppLandingLayout>
