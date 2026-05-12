@@ -44,3 +44,20 @@ const schema = generateFAQPageSchema(faqs);
 </section>
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<script>
+  type PlausibleFn = (event: string, opts: { props: Record<string, string> }) => void;
+
+  function bindFAQTracking() {
+    document.querySelectorAll<HTMLDetailsElement>('details').forEach((details) => {
+      details.addEventListener('toggle', () => {
+        if (!details.open) return;
+        const question = details.querySelector('summary')?.textContent?.trim() ?? '';
+        const plausible = (window as unknown as { plausible?: PlausibleFn }).plausible;
+        plausible?.('FAQ Expand', { props: { question } });
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', bindFAQTracking);
+</script>

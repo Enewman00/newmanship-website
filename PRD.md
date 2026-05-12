@@ -520,10 +520,11 @@ Ensure the site scores 95+ on all Lighthouse categories and passes accessibility
 
 Wire up analytics, set up monitoring, and launch.
 
-#### Task 7.1: Analytics integration
+#### Task 7.1: Analytics integration ✅ DONE (2026-05-12)
 - Add Plausible script tag to BaseHead (use `@astrojs/partytown` to offload to web worker)
 - Configure custom events: app store badge clicks (per app), blog post reads, FAQ expansions
 - Verify events fire correctly in Plausible dashboard
+- Note: Installed `@astrojs/partytown`; configured with `forward: ['plausible']` so `window.plausible()` calls on the main thread are forwarded to the worker. Created two Cloudflare Pages Functions (`functions/js/plausible.js`, `functions/api/event.js`) to proxy the Plausible script and event API through our own domain — this makes all requests same-origin (no CORS issues in the Partytown worker) and bypasses ad blockers. `BaseHead.astro` loads the script with `type="text/partytown"`, `src="/js/plausible.js"`, and `data-api="/api/event"`. Three custom events wired: (1) **`AppStoreBadges.astro`** — fires `App Store Click` with `{ app, store }` props on badge link clicks, bound via `data-analytics-*` attributes + `astro:page-load` listener; (2) **`FAQSection.astro`** — fires `FAQ Expand` with `{ question }` props on `<details>` `toggle` events; (3) **`BlogLayout.astro`** — fires `Blog Read` with `{ title }` props when an IntersectionObserver sentinel `<div>` at the end of the article enters the viewport. All scripts use `astro:page-load` for ViewTransitions compatibility. Connecting a Plausible account and setting `data-domain` to the live domain is a one-time step at launch.
 
 #### Task 7.2: Search Console setup
 - Submit sitemap to Google Search Console

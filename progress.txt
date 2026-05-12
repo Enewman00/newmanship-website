@@ -683,3 +683,36 @@ Three bugs found and fixed:
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 7.1 (Analytics integration — Plausible)
+
+---
+
+### 2026-05-12 — Task 7.1: Analytics integration
+
+**Status:** Complete
+
+**What was done:**
+- Installed `@astrojs/partytown` and wired it into `astro.config.mjs` with `forward: ['plausible']`
+  - `forward: ['plausible']` creates a main-thread `window.plausible` proxy that queues calls until the Partytown worker is ready, enabling custom event calls from regular `<script>` tags
+- Created two **Cloudflare Pages Functions** to proxy Plausible through our domain:
+  - `functions/js/plausible.js` — fetches `https://plausible.io/js/script.js` and returns it with a 1-hour cache; served at `/js/plausible.js`
+  - `functions/api/event.js` — forwards POST requests to `https://plausible.io/api/event` with IP pass-through via `X-Forwarded-For: CF-Connecting-IP`
+  - Using same-origin proxy URLs eliminates CORS issues for Partytown's web worker and bypasses ad blockers as a bonus
+- Updated `BaseHead.astro` to add the Plausible `<script>` tag:
+  - `type="text/partytown"` — hands off to Partytown so analytics never blocks the main thread
+  - `src="/js/plausible.js"` and `data-api="/api/event"` — point at our own-domain proxies
+  - `data-domain="newmanship.com"` — set to the live site domain
+- Added three **custom event tracking hooks**, all bound on `astro:page-load` for ViewTransitions compatibility:
+  1. **App Store badge clicks** (`AppStoreBadges.astro`) — fires `"App Store Click"` with `{ app: appName, store: "App Store"|"Google Play" }` props; uses `data-analytics-*` attributes on the `<a>` elements and an `astro:page-load` listener that re-binds on every navigation
+  2. **FAQ expansions** (`FAQSection.astro`) — fires `"FAQ Expand"` with `{ question }` props on `<details>` `toggle` events; captures question text from the `<summary>` element
+  3. **Blog reads** (`BlogLayout.astro`) — fires `"Blog Read"` with `{ title }` props when an IntersectionObserver sentinel `<div>` (placed at the end of the article content) enters the viewport; post title is stored in a `data-post-title` attribute on the `<article>` element
+
+**Activation step (at launch):**
+- Create a free Plausible account at plausible.io and add `newmanship.com` as a site
+- No `data-domain` change needed — it's already set to `newmanship.com`
+- Custom events will appear in the Plausible dashboard automatically once live traffic arrives
+- To verify locally: Plausible does not fire on localhost by default (it excludes localhost + file:// origins)
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 7.2 (Search Console setup — manual) or Task 7.3 (Pre-launch checklist)

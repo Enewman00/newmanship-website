@@ -70,7 +70,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   ogType="article"
   structuredData={[articleSchema, breadcrumbSchema]}
 >
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16" data-post-title={title}>
     <nav aria-label="Breadcrumb" class="mb-8">
       <ol class="flex items-center gap-2 text-sm text-brand-ink-muted list-none m-0 p-0">
         <li><a href="/" class="hover:text-brand-accent transition-colors">Home</a></li>
@@ -124,6 +124,8 @@ const breadcrumbSchema = generateBreadcrumbSchema([
     <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-brand-ink dark:prose-headings:text-[#F4F1EC] prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-img:rounded-xl">
       <slot />
     </div>
+    <!-- Sentinel: fires "Blog Read" analytics event when reader reaches article end -->
+    <div id="read-sentinel" aria-hidden="true"></div>
 
     {relatedPosts.length > 0 && (
       <aside aria-label="Related posts" class="mt-16 pt-8 border-t border-brand-surface">
@@ -164,3 +166,28 @@ const breadcrumbSchema = generateBreadcrumbSchema([
     )}
   </article>
 </BaseLayout>
+
+<script>
+  type PlausibleFn = (event: string, opts: { props: Record<string, string> }) => void;
+
+  function setupBlogReadTracking() {
+    const sentinel = document.getElementById('read-sentinel');
+    if (!sentinel) return;
+    const article = document.querySelector<HTMLElement>('[data-post-title]');
+    const postTitle = article?.dataset.postTitle ?? '';
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const plausible = (window as unknown as { plausible?: PlausibleFn }).plausible;
+          plausible?.('Blog Read', { props: { title: postTitle } });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+  }
+
+  document.addEventListener('astro:page-load', setupBlogReadTracking);
+</script>
