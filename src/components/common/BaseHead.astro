@@ -59,6 +59,6 @@ const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
   href="/rss.xml"
 />
 
-<!-- Font preloads (update paths once font files are added) -->
-<!-- <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin /> -->
-<!-- <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin /> -->
+<!-- Font preloads — critical Inter weights to eliminate FOUT -->
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin />

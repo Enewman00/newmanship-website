@@ -257,11 +257,12 @@ Set up the Astro project, tooling, deployment pipeline, and base components that
 - Note: Custom sitemap endpoint replaces @astrojs/sitemap (absolute path incompatibility)
 - Also scaffolded base components, layouts, content collections, all app pages, and homepage (Tasks 1.3–1.5 partially complete)
 
-#### Task 1.2: Self-host fonts
+#### Task 1.2: Self-host fonts ✅ DONE (2026-05-12)
 - Subset Inter (400, 500, 700) and JetBrains Mono (400) to latin glyphs
 - Place WOFF2 files in `src/assets/fonts/`
 - Write `@font-face` declarations in `global.css` with `font-display: swap`
 - Preload critical font files in BaseHead
+- Note: Files placed in `public/fonts/` (not `src/assets/fonts/`) because CSS uses absolute `/fonts/` paths; `src/assets/` is processed by Vite and would produce hashed URLs incompatible with the static CSS declarations
 
 #### Task 1.3: Base layout & common components
 - `BaseLayout.astro` — HTML shell, `<ViewTransitions />`, slot for content
