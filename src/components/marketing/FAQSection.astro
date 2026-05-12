@@ -1,0 +1,46 @@
+---
+import { generateFAQPageSchema } from '@/utils/seo';
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+  heading?: string;
+  class?: string;
+}
+
+const { faqs, heading = 'Frequently Asked Questions', class: className = '' } = Astro.props;
+
+const schema = generateFAQPageSchema(faqs);
+---
+
+<section class:list={['py-20 bg-brand-surface', className]}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-brand-ink mb-10 text-center">{heading}</h2>
+    <dl class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="group bg-white rounded-xl shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer px-6 py-5 font-semibold text-brand-ink [list-style:none] [&::-webkit-details-marker]:hidden">
+            {faq.question}
+            <svg
+              class="w-5 h-5 shrink-0 text-brand-ink-muted transition-transform duration-200 group-open:rotate-180"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5">
+            <p class="text-brand-ink-muted text-sm leading-relaxed">{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

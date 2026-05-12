@@ -1,0 +1,78 @@
+---
+interface ShowcaseItem {
+  title: string;
+  description: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  badge?: string;
+}
+
+interface Props {
+  items: ShowcaseItem[];
+  accentColor?: string;
+  heading?: string;
+  class?: string;
+}
+
+const { items, accentColor = '#2563EB', heading, class: className = '' } = Astro.props;
+---
+
+<section class:list={['py-20', className]}>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    {heading && (
+      <h2 class="text-2xl font-bold text-brand-ink mb-16 text-center">{heading}</h2>
+    )}
+    <div class="space-y-20">
+      {items.map((item, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <div
+            class:list={[
+              'flex flex-col gap-10 items-center',
+              isEven ? 'lg:flex-row' : 'lg:flex-row-reverse',
+            ]}
+          >
+            <!-- Image or placeholder -->
+            <div class="w-full lg:w-1/2 shrink-0">
+              {item.imageSrc ? (
+                <img
+                  src={item.imageSrc}
+                  alt={item.imageAlt ?? item.title}
+                  class="rounded-2xl shadow-lg w-full"
+                  loading="lazy"
+                  width="640"
+                  height="480"
+                />
+              ) : (
+                <div
+                  class="rounded-2xl aspect-[4/3] flex items-center justify-center border-2 border-dashed"
+                  style={`background-color: ${accentColor}0d; border-color: ${accentColor}30;`}
+                  aria-hidden="true"
+                >
+                  <svg class="w-12 h-12 opacity-30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <rect x="6" y="6" width="36" height="36" rx="6" stroke="currentColor" stroke-width="2" />
+                    <circle cx="18" cy="20" r="4" stroke="currentColor" stroke-width="2" />
+                    <path d="M6 34l10-8 8 6 8-10 10 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              )}
+            </div>
+            <!-- Text -->
+            <div class="w-full lg:w-1/2">
+              {item.badge && (
+                <p
+                  class="text-xs font-semibold uppercase tracking-wider mb-3"
+                  style={`color: ${accentColor};`}
+                >
+                  {item.badge}
+                </p>
+              )}
+              <h3 class="text-2xl font-bold text-brand-ink mb-4">{item.title}</h3>
+              <p class="text-brand-ink-muted leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

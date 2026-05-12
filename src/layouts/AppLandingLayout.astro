@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppStoreBadges from '@/components/marketing/AppStoreBadges.astro';
+import FAQSection from '@/components/marketing/FAQSection.astro';
+import CTASection from '@/components/marketing/CTASection.astro';
 import {
   generateSoftwareApplicationSchema,
-  generateFAQPageSchema,
   generateBreadcrumbSchema,
 } from '@/utils/seo';
 
@@ -40,7 +42,6 @@ interface Props {
   // CTA copy overrides
   ctaHeading?: string;
   ctaSubheading?: string;
-  ctaButtonText?: string;
 }
 
 const {
@@ -61,7 +62,6 @@ const {
   colors,
   ctaHeading = `Download ${name}`,
   ctaSubheading,
-  ctaButtonText,
 } = Astro.props;
 
 const siteUrl = 'https://newmanship.com';
@@ -90,7 +90,7 @@ const schemas = [
     { name: 'Home', url: siteUrl },
     { name, url: canonicalUrl },
   ]),
-  ...(faqs?.length ? [generateFAQPageSchema(faqs)] : []),
+  // FAQPage schema is emitted inline by <FAQSection> to keep it co-located with the content
 ];
 ---
 
@@ -120,39 +120,13 @@ const schemas = [
       <p class={`mb-10 max-w-xl mx-auto ${isDark ? 'text-white/60' : 'text-brand-ink-muted'}`}>
         {appDescription}
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
-        {appStoreUrl ? (
-          <a
-            href={appStoreUrl}
-            class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-semibold rounded-xl hover:bg-gray-900 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Download ${name} on the App Store`}
-          >
-            <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-            </svg>
-            App Store
-          </a>
-        ) : (
-          <p class={`text-sm italic ${isDark ? 'text-white/50' : 'text-brand-ink-muted'}`}>
-            Coming soon to the App Store
-          </p>
-        )}
-        {playStoreUrl && (
-          <a
-            href={playStoreUrl}
-            class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-semibold rounded-xl hover:bg-gray-900 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Get ${name} on Google Play`}
-          >
-            <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.37.6 1.23 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z" />
-            </svg>
-            Google Play
-          </a>
-        )}
+      <div class="flex justify-center">
+        <AppStoreBadges
+          appName={name}
+          appStoreUrl={appStoreUrl}
+          playStoreUrl={playStoreUrl}
+          class={isDark ? '' : '[&_a]:!bg-brand-ink [&_a]:!border-transparent'}
+        />
       </div>
       <slot name="hero-extra" />
     </div>
@@ -185,62 +159,17 @@ const schemas = [
 
   <!-- FAQ -->
   {faqs && faqs.length > 0 && (
-    <section class="bg-brand-surface py-20">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-brand-ink mb-10 text-center">
-          Frequently Asked Questions
-        </h2>
-        <dl class="space-y-4">
-          {faqs.map((faq) => (
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <dt class="font-semibold text-brand-ink mb-2">{faq.question}</dt>
-              <dd class="text-brand-ink-muted text-sm leading-relaxed">{faq.answer}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </section>
+    <FAQSection faqs={faqs} />
   )}
 
   <!-- Download CTA -->
-  <section style={`background-color: ${colors.background};`} class="py-20">
-    <div class="max-w-xl mx-auto px-4 text-center">
-      <h2 class={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-brand-ink'}`}>
-        {ctaHeading}
-      </h2>
-      {ctaSubheading && (
-        <p class={`mb-8 ${isDark ? 'text-white/70' : 'text-brand-ink-muted'}`}>
-          {ctaSubheading}
-        </p>
-      )}
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
-        {appStoreUrl ? (
-          <a
-            href={appStoreUrl}
-            class="inline-flex items-center gap-2 px-8 py-3 font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style={`background-color: ${colors.accent}; color: ${isDark ? '#000000' : '#ffffff'};`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {ctaButtonText ?? `Get ${name} Free`}
-          </a>
-        ) : (
-          <p class={`text-sm italic ${isDark ? 'text-white/50' : 'text-brand-ink-muted'}`}>
-            Coming soon to the App Store
-          </p>
-        )}
-        {playStoreUrl && (
-          <a
-            href={playStoreUrl}
-            class="inline-flex items-center gap-2 px-8 py-3 font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style={`background-color: ${colors.accent}; color: ${isDark ? '#000000' : '#ffffff'};`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Get on Google Play
-          </a>
-        )}
-      </div>
-    </div>
-  </section>
+  <CTASection
+    appName={name}
+    appStoreUrl={appStoreUrl}
+    playStoreUrl={playStoreUrl}
+    colors={colors}
+    isDark={isDark}
+    heading={ctaHeading}
+    subheading={ctaSubheading}
+  />
 </BaseLayout>

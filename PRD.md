@@ -378,11 +378,12 @@ Four individual marketing pages — one per app. Each is an SEO-optimized landin
 - Download CTA band
 - SEO: title "Sprout Alarm — Wake Up & Plant Trees", targeting "eco alarm app", "alarm app that plants trees", "alarm with wake challenges"
 
-#### Task 3.6: App landing page shared components
+#### Task 3.6: App landing page shared components ✅ DONE (2026-05-12)
 - `FeatureShowcase.astro` — alternating left/right image+text rows for key features
 - `FAQSection.astro` — accordion-style FAQ with FAQPage JSON-LD schema auto-generated from items
 - `CTASection.astro` — full-width download band with store badges, app icon, and compelling copy
 - `AppStoreBadges.astro` — official Apple/Google badge SVGs with proper links
+- Note: FAQSection uses `<details>/<summary>` for zero-JS accordion with CSS chevron rotation; emits FAQPage JSON-LD inline via `set:html` so schema stays co-located with content; AppLandingLayout updated to use all three new components (FAQSection, CTASection, AppStoreBadges), removing duplicate inline implementations; `ctaButtonText` prop removed from AppLandingLayout since CTASection uses standardized store badge labels
 
 ---
 

@@ -1,0 +1,49 @@
+---
+import AppStoreBadges from './AppStoreBadges.astro';
+
+interface Props {
+  appName: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
+  colors: { background: string; accent: string };
+  isDark: boolean;
+  heading?: string;
+  subheading?: string;
+  class?: string;
+}
+
+const {
+  appName,
+  appStoreUrl,
+  playStoreUrl,
+  colors,
+  isDark,
+  heading = `Download ${appName}`,
+  subheading,
+  class: className = '',
+} = Astro.props;
+---
+
+<section
+  class:list={['py-20', className]}
+  style={`background-color: ${colors.background};`}
+>
+  <div class="max-w-xl mx-auto px-4 text-center">
+    <h2 class:list={['text-2xl font-bold mb-4', isDark ? 'text-white' : 'text-brand-ink']}>
+      {heading}
+    </h2>
+    {subheading && (
+      <p class:list={['mb-8', isDark ? 'text-white/70' : 'text-brand-ink-muted']}>
+        {subheading}
+      </p>
+    )}
+    <div class="flex justify-center">
+      <AppStoreBadges
+        appName={appName}
+        appStoreUrl={appStoreUrl}
+        playStoreUrl={playStoreUrl}
+        class={isDark ? '' : '[&_a]:!bg-brand-ink [&_a]:!border-transparent'}
+      />
+    </div>
+  </div>
+</section>

@@ -205,3 +205,22 @@
 **Type check:** ✅ `astro check` passes (0 errors)
 
 **Next task:** Task 3.6 (App landing page shared components — FeatureShowcase, FAQSection, CTASection, AppStoreBadges) or Task 3.2 (Sumstone landing page)
+
+---
+
+### 2026-05-12 — Task 3.6: App landing page shared components
+
+**Status:** Complete
+
+**What was done:**
+- Created `src/components/marketing/AppStoreBadges.astro` — reusable store badge component; renders official-style Apple App Store and Google Play badges (black pill shape with icon + two-line label); gracefully shows "Coming soon to the App Store" text when `appStoreUrl` is absent
+- Created `src/components/marketing/FAQSection.astro` — accordion FAQ using `<details>/<summary>` elements for zero-JS, native-accessible expand/collapse; CSS chevron rotates 180° on open via `group-open:rotate-180`; emits FAQPage JSON-LD inline via `set:html` so schema is co-located with content (avoids duplicate schema in `<head>`)
+- Created `src/components/marketing/CTASection.astro` — full-width download CTA band; accepts `isDark` to adapt text color for dark-background apps (Stellar Habits); internally uses `<AppStoreBadges>` component
+- Created `src/components/marketing/FeatureShowcase.astro` — alternating left/right image+text rows; `imageSrc` is optional — renders a dashed placeholder frame when omitted so pages work before screenshots are ready (Task 5.3); accepts `accentColor` for branded tinting
+- Updated `src/layouts/AppLandingLayout.astro` to use all three drop-in components: `<AppStoreBadges>` in hero, `<FAQSection>` replacing inline DL, `<CTASection>` replacing inline section; removed `generateFAQPageSchema` import (now handled inside FAQSection); removed `ctaButtonText` prop (no longer applicable)
+- Removed `ctaButtonText` from all 4 app pages (sumstone, choreganized, sprout-alarm, stellar-habits)
+
+**Build status:** ✅ `astro build` succeeds (6 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 3.2 (Sumstone landing page) — or Tasks 3.2–3.5 in parallel
