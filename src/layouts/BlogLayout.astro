@@ -86,7 +86,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
           {tags.map((tag) => (
             <a
               href={`/blog/?tag=${encodeURIComponent(tag)}`}
-              class="text-xs font-semibold uppercase tracking-wider text-brand-accent bg-blue-50 px-2 py-1 rounded hover:bg-blue-100 transition-colors"
+              class="text-xs font-semibold uppercase tracking-wider text-brand-accent bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
             >
               {tag}
             </a>
@@ -120,7 +120,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 
     <TableOfContents headings={headings} />
 
-    <div class="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-brand-ink prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-img:rounded-xl">
+    <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-brand-ink dark:prose-headings:text-[#F4F1EC] prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-img:rounded-xl">
       <slot />
     </div>
 
@@ -143,7 +143,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
           {prevPost ? (
             <a
               href={`/blog/${prevPost.slug}/`}
-              class="group flex flex-col gap-1 p-4 rounded-xl bg-brand-surface hover:bg-[#E8E4DC] transition-colors min-w-0 flex-1"
+              class="group flex flex-col gap-1 p-4 rounded-xl bg-brand-surface dark:bg-[#1C1C1F] hover:bg-[#E8E4DC] dark:hover:bg-[#252528] transition-colors min-w-0 flex-1"
             >
               <span class="text-xs font-semibold uppercase tracking-wider text-brand-ink-muted">← Previous</span>
               <span class="text-brand-ink font-medium group-hover:text-brand-accent transition-colors line-clamp-2">{prevPost.title}</span>

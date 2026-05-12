@@ -461,12 +461,13 @@ Gather app screenshots/icons, create OG images, optimize all assets, and polish 
 - Keep all animations `prefers-reduced-motion` aware
 - Note: Added `.reveal`/`.revealed` CSS classes with `opacity` + `translateY` transition and `--reveal-delay` CSS custom property for stagger; `IntersectionObserver` setup runs on `astro:page-load` (fires on initial load and after ViewTransitions navigation); `prefers-reduced-motion` media query overrides reveal to show content immediately; `<ViewTransitions />` added to BaseLayout for client-side page navigation; reveal classes applied to AppCard, AppLandingLayout feature cards (80ms stagger), BrandStory value pillars (100ms stagger), and BlogPreview cards (80ms stagger); hover transitions already in place on AppCard, blog cards, and nav links
 
-#### Task 5.5: Dark mode
+#### Task 5.5: Dark mode ✅ DONE (2026-05-12)
 - Implement dark mode toggle in header
 - Define dark mode color tokens in Tailwind config
 - Persist preference in `localStorage`
 - Handle View Transitions theme flash (re-apply on `astro:after-swap`)
 - Each app section's accent colors should work in both modes
+- Note: `darkMode: 'class'` added to Tailwind config; `.dark` CSS variable overrides in `global.css` switch the brand palette (`#111113` bg, `#1C1C1F` surface, `#F4F1EC` ink, `#9B9B9B` ink-muted, `#3B82F6` accent); a `is:inline` script in `BaseLayout` head sets `.dark` on `<html>` synchronously to prevent flash; `astro:after-swap` listener re-applies after ViewTransitions; `Header.astro` gets moon/sun toggle button with `syncToggleIcon()` and all nav elements updated with `dark:` Tailwind variants; `Footer.astro` updated with `dark:` variants; `global.css` CSS overrides automatically flip all `text-brand-ink`, `bg-brand-surface`, etc. Tailwind classes in dark mode (no per-component `dark:` needed for most elements); blog content gets `dark:prose-invert`; app brand colors (parchment, night sky, cream, eco-green) intentionally unchanged as they represent app identity
 
 ---
 

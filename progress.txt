@@ -496,3 +496,33 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 5.5 (Dark mode)
+
+---
+
+### 2026-05-12 — Task 5.5: Dark mode
+
+**Status:** Complete
+
+**What was done:**
+- Added `darkMode: 'class'` to `tailwind.config.mjs` to enable class-based dark mode
+- Added `.dark` CSS variable block to `src/styles/global.css` with dark palette:
+  - Background: `#111113`, Surface: `#1C1C1F`, Ink: `#F4F1EC`, Ink Muted: `#9B9B9B`, Accent: `#3B82F6`, Accent Hover: `#60A5FA`
+  - `color-scheme: dark` so browser chrome (scrollbars, inputs) matches
+- Added `.dark .<class>` CSS overrides in `global.css` to automatically flip all static Tailwind `brand-*` classes (text-brand-ink, bg-brand-surface, border-brand-surface, etc.) without requiring `dark:` on every element
+- Added `is:inline` script at the top of `<head>` in `BaseLayout.astro` that synchronously reads `localStorage.theme` and applies `.dark` class before first paint — eliminates flash of wrong theme
+- Added `astro:after-swap` listener in `BaseLayout.astro` to re-apply theme class after ViewTransitions swaps the DOM
+- Rewrote `Header.astro`:
+  - Added moon/sun toggle button between nav links and hamburger; `syncToggleIcon()` shows moon in light mode, sun in dark mode
+  - Toggle writes `dark` or `light` to `localStorage` and toggles `.dark` on `<html>`
+  - All header colors updated with `dark:` Tailwind variants (bg, border, text, hover states)
+  - All setup code moved into `setupHeader()` called on `astro:page-load` (required for ViewTransitions compatibility)
+- Updated `Footer.astro` with `dark:` Tailwind variants for all colors
+- Updated `BlogLayout.astro`: added `dark:prose-invert` for post content, dark variants for tag chips and prev/next navigation cards
+- Updated `BlogCard.astro`: dark surface and tag chip backgrounds
+- Updated `HeroSection.astro`: dark badge background
+- App landing page brand colors (warm parchment, night sky, warm cream, eco green) intentionally unchanged — they represent each app's visual identity and work on both light and dark backgrounds
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 6.1 (Performance audit & optimization)

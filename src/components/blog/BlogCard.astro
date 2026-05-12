@@ -17,11 +17,11 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
 <a href={`/blog/${post.slug}/`} class="block group h-full">
-  <article class="p-6 rounded-2xl bg-brand-surface hover:shadow-md transition-shadow h-full flex flex-col">
+  <article class="p-6 rounded-2xl bg-brand-surface dark:bg-[#1C1C1F] hover:shadow-md dark:hover:shadow-black/30 transition-shadow h-full flex flex-col">
     {post.data.tags.length > 0 && (
       <div class="flex flex-wrap gap-1 mb-3">
         {post.data.tags.slice(0, 2).map((tag) => (
-          <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent bg-blue-50 px-2 py-0.5 rounded">
+          <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded">
             {tag}
           </span>
         ))}

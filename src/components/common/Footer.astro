@@ -9,24 +9,24 @@ const apps = [
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-[#F2F0EC] border-t border-[#E5E2DC] mt-24">
+<footer class="bg-[#F2F0EC] dark:bg-[#1C1C1F] border-t border-[#E5E2DC] dark:border-[#2A2A2F] mt-24">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Brand -->
       <div>
-        <p class="font-bold text-[#1A1A1A] text-lg mb-2">Newmanship</p>
-        <p class="text-sm text-[#6B6B6B] leading-relaxed">
+        <p class="font-bold text-[#1A1A1A] dark:text-[#F4F1EC] text-lg mb-2">Newmanship</p>
+        <p class="text-sm text-[#6B6B6B] dark:text-[#9B9B9B] leading-relaxed">
           Apps that make daily life a little better. Indie-built, privacy-first.
         </p>
       </div>
 
       <!-- Apps -->
       <div>
-        <p class="font-semibold text-[#1A1A1A] text-sm mb-3 uppercase tracking-wider">Apps</p>
+        <p class="font-semibold text-[#1A1A1A] dark:text-[#F4F1EC] text-sm mb-3 uppercase tracking-wider">Apps</p>
         <ul class="space-y-2 list-none m-0 p-0">
           {apps.map(({ href, label }) => (
             <li>
-              <a href={href} class="text-sm text-[#6B6B6B] hover:text-[#2563EB] transition-colors">
+              <a href={href} class="text-sm text-[#6B6B6B] dark:text-[#9B9B9B] hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors">
                 {label}
               </a>
             </li>
@@ -36,20 +36,20 @@ const currentYear = new Date().getFullYear();
 
       <!-- Links -->
       <div>
-        <p class="font-semibold text-[#1A1A1A] text-sm mb-3 uppercase tracking-wider">More</p>
+        <p class="font-semibold text-[#1A1A1A] dark:text-[#F4F1EC] text-sm mb-3 uppercase tracking-wider">More</p>
         <ul class="space-y-2 list-none m-0 p-0">
           <li>
-            <a href="/blog/" class="text-sm text-[#6B6B6B] hover:text-[#2563EB] transition-colors">Blog</a>
+            <a href="/blog/" class="text-sm text-[#6B6B6B] dark:text-[#9B9B9B] hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors">Blog</a>
           </li>
           <li>
-            <a href="/rss.xml" class="text-sm text-[#6B6B6B] hover:text-[#2563EB] transition-colors">RSS Feed</a>
+            <a href="/rss.xml" class="text-sm text-[#6B6B6B] dark:text-[#9B9B9B] hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors">RSS Feed</a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-8 pt-8 border-t border-[#E5E2DC] text-center">
-      <p class="text-sm text-[#6B6B6B]">
+    <div class="mt-8 pt-8 border-t border-[#E5E2DC] dark:border-[#2A2A2F] text-center">
+      <p class="text-sm text-[#6B6B6B] dark:text-[#9B9B9B]">
         &copy; {currentYear} Newmanship. All rights reserved.
       </p>
     </div>

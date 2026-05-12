@@ -23,6 +23,16 @@ const { title, description, image, canonicalUrl, appleAppId, structuredData } = 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Runs synchronously before paint to prevent flash of wrong theme -->
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <BaseHead
       title={title}
       description={description}
@@ -48,6 +58,16 @@ const { title, description, image, canonicalUrl, appleAppId, structuredData } = 
     </main>
     <Footer />
     <script>
+      function applyTheme() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+
       function setupReveal() {
         const observer = new IntersectionObserver(
           (entries) => {
@@ -62,7 +82,10 @@ const { title, description, image, canonicalUrl, appleAppId, structuredData } = 
         );
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
       }
+
       document.addEventListener('astro:page-load', setupReveal);
+      // Re-apply theme after ViewTransitions swaps the DOM
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
   </body>
 </html>
