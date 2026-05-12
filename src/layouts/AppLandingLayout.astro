@@ -110,15 +110,18 @@ const schemas = [
   <section style={`background-color: ${colors.background};`} class="py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       {iconPath && (
-        <img
-          src={iconPath}
-          alt={`${name} app icon`}
-          width="128"
-          height="128"
-          class="mx-auto mb-6 rounded-3xl shadow-lg"
-          loading="eager"
-          fetchpriority="high"
-        />
+        <picture>
+          <source srcset={iconPath.replace('.png', '.webp')} type="image/webp" />
+          <img
+            src={iconPath}
+            alt={`${name} app icon`}
+            width="128"
+            height="128"
+            class="mx-auto mb-6 rounded-3xl shadow-lg"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
       )}
       <p
         class="text-xs font-semibold uppercase tracking-wider mb-4"
