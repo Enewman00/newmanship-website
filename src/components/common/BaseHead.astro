@@ -49,7 +49,7 @@ const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 <!-- RSS autodiscovery -->
 <link
@@ -61,4 +61,5 @@ const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
 
 <!-- Font preloads — critical Inter weights to eliminate FOUT -->
 <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin />

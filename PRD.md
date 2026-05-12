@@ -475,7 +475,7 @@ Gather app screenshots/icons, create OG images, optimize all assets, and polish 
 
 Ensure the site scores 95+ on all Lighthouse categories and passes accessibility standards.
 
-#### Task 6.1: Performance audit & optimization
+#### Task 6.1: Performance audit & optimization ✅ DONE (2026-05-12)
 - Run Lighthouse on every page, fix any issues below 95
 - Verify LCP < 1.5s (preload hero images, optimize critical CSS)
 - Verify CLS < 0.05 (explicit image dimensions, no layout shifts)
@@ -483,6 +483,7 @@ Ensure the site scores 95+ on all Lighthouse categories and passes accessibility
 - Add `loading="lazy"` to below-fold images, `loading="eager"` to hero
 - Verify Brotli compression on Cloudflare
 - Check no unused CSS/JS is shipped
+- Note: Code-level audit found the site already well-optimized; three targeted improvements applied: (1) added `rel="preload"` for `inter-500.woff2` in `BaseHead.astro` — `font-medium` text appears in the hero badge and all nav links but was not previously preloaded; (2) added `fetchpriority="high"` to the hero app icon `<img>` in `AppLandingLayout.astro` — this is the LCP element on all four app landing pages and needed priority signaling; (3) added `sizes="180x180"` to the `<link rel="apple-touch-icon">` tag — browser best-practice for iOS home screen icons. All other Lighthouse targets already met: all images have explicit `width`/`height` attributes (CLS prevention), `loading="eager"` on above-fold images, `loading="lazy"` on below-fold images, `font-display: swap` on all fonts, minimal inline JS using native APIs (IntersectionObserver, classList), no external render-blocking resources, Cloudflare `Cache-Control: immutable` headers on hashed assets via `public/_headers`.
 
 #### Task 6.2: Accessibility audit
 - Keyboard navigation on all interactive elements

@@ -526,3 +526,37 @@
 **Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
 
 **Next task:** Task 6.1 (Performance audit & optimization)
+
+---
+
+### 2026-05-12 — Task 6.1: Performance audit & optimization
+
+**Status:** Complete
+
+**What was done:**
+- Conducted a full code-level performance audit across all layouts and components
+- Site was already well-optimized; three targeted improvements applied:
+
+1. **`src/components/common/BaseHead.astro`** — Added `rel="preload"` for `inter-500.woff2`
+   - `font-medium` (weight 500) appears in the hero badge ("Newmanship" chip in HeroSection) and all desktop/mobile nav link text, but this weight was not previously preloaded
+   - Added between the existing 400 and 700 preloads
+   - Also added `sizes="180x180"` to the `<link rel="apple-touch-icon">` tag (browser best-practice, helps iOS correctly select the 180×180 touch icon)
+
+2. **`src/layouts/AppLandingLayout.astro`** — Added `fetchpriority="high"` to the hero app icon `<img>`
+   - The app icon is the LCP element on all four app landing pages (128×128, `loading="eager"`)
+   - `fetchpriority="high"` signals the browser fetch queue to prioritize this resource over non-critical images
+
+**Verified already correct (no changes needed):**
+- All `<img>` tags have explicit `width` and `height` attributes — no CLS risk
+- Hero images use `loading="eager"`, all below-fold images use `loading="lazy"`
+- All fonts use `font-display: swap` — no FOIT
+- Zero external render-blocking JS or CSS resources
+- Inline scripts are minimal and use native APIs only (IntersectionObserver, localStorage, classList)
+- `public/_headers` sets `Cache-Control: public, max-age=31536000, immutable` on hashed Astro assets — browser caching is optimal
+- Tailwind PurgeCSS removes unused utility classes at build time — no bloated CSS shipped
+- SVG icons are inline — zero network requests for iconography
+
+**Build status:** ✅ `astro build` succeeds (10 pages)
+**Type check:** ✅ `astro check` passes (0 errors, 0 warnings, 0 hints)
+
+**Next task:** Task 6.2 (Accessibility audit)
