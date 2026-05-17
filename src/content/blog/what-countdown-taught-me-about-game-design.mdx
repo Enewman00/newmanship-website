@@ -1,0 +1,90 @@
+---
+title: "What Countdown Taught Me About Game Design"
+description: "The British TV show Countdown has kept audiences hooked on mental arithmetic since 1982. Here's what adapting its numbers round into a mobile game taught me about puzzle design."
+pubDate: 2026-05-17
+tags: ["game design", "puzzle", "Countdown"]
+author: "Ethan Newman"
+relatedApp: "sumstone"
+---
+
+The Countdown numbers round is one of the simplest game formats ever broadcast. Six numbers. One target. Thirty seconds. Combine the numbers using basic arithmetic to reach the target, or get as close as you can. That's it.
+
+It first aired on Channel 4 in 1982 and hasn't meaningfully changed since. The letters round has its fans, but the numbers round is the one that makes people lean forward, grab a pen, and mutter to themselves. Forty-three years of that. No format refresh needed.
+
+When I decided to turn it into a mobile game, I assumed the hard part would be the math engine. It wasn't. The hard part was understanding *why* the format works and making sure I didn't accidentally break it.
+
+## The thirty-second illusion
+
+On television, the clock is everything. Thirty seconds creates urgency, forces intuition over calculation, and gives the audience permission to play along at home because the window is short enough that not solving it feels reasonable rather than embarrassing.
+
+My first instinct was to make this the default. Thirty-second timer. Countdown clock energy. Faithful recreation.
+
+But when I tested it, I realized something important. On television, you're watching from a sofa. The pressure is vicarious - exciting, not stressful. On a phone, you're the one performing, and thirty seconds with your thumbs on a small screen feels nothing like thirty seconds with a pen and paper in your living room. The input mechanics alone - selecting numbers, choosing operators, confirming steps - eat time that your brain used to spend thinking.
+
+So the *default* timer needed to breathe. Enough time to think, not so much that the constraint stops mattering. Removing the timer entirely made puzzles feel slack, like doing homework. But jumping straight into thirty seconds felt punishing for someone still learning the interface.
+
+The thirty-second mode is still there - and it's brilliant once you've built up the muscle memory. When your fingers know the interface well enough to disappear, the original Countdown pressure comes roaring back. It's the mode that most closely recreates the lean-forward feeling of watching the show. But it earns its place as a challenge you graduate into, not the front door.
+
+This was the first real lesson: **faithfulness to the source material is not the same as faithfulness to the experience.** The TV show's thirty seconds *created* a feeling. Recreating that feeling for everyone meant offering a path to get there, not demanding it from the start.
+
+## Why six numbers is the right number
+
+Early in development I experimented with the tile count. Four numbers felt too restrictive - many targets were simply unreachable, which is frustrating rather than challenging. Eight numbers made the solution space so large that puzzles felt trivial. You could usually brute-force your way to the target with leftover tiles.
+
+Six is the sweet spot, and it's not an accident that the show landed there. With six numbers, most targets are reachable but require genuine thought. You frequently use four or five of the six, which means you're making real decisions about which numbers to deploy. The unused tiles create a pleasant sense of efficiency - you solved it *without needing everything you were given.*
+
+There's a deeper principle here that applies to puzzle design broadly: **the best puzzles give you slightly more than you need.** Not so much that the excess is obvious, but enough that choosing your path through the available tools is itself a meaningful decision.
+
+## The large number problem
+
+Countdown draws from two pools: small numbers (1 through 10) and large numbers (25, 50, 75, 100). Contestants choose how many of each they want, usually picking one or two large numbers.
+
+The large numbers are what make the game. They serve as anchors - you can get *near* the target quickly with a couple of multiplications involving 25 or 75, and then the small numbers handle the fine adjustment. Without large numbers, reaching a target like 647 is tedious. With them, there's a natural two-phase structure to every solve: get close, then adjust.
+
+I kept this mechanic because it creates something important for mobile play: **a legible first move.** When you see 75 and a target of 683, your brain immediately thinks "75 times 9 is 675, that's close." You have a foothold. You're already solving.
+
+Games that lack this - where the opening move is as opaque as the fifth - tend to produce blank-stare moments. The player doesn't know where to start, so they don't. Countdown's number pools solve this elegantly by giving you obvious building blocks and subtle finishing pieces.
+
+## Input design is game design
+
+The mathematical engine behind Sumstone was relatively straightforward to build. The interface was not.
+
+On paper, the Countdown numbers round is performed by writing equations. On a phone, you're tapping tiles. This seems like a minor translation, but it changes the cognitive experience significantly.
+
+When you write with a pen, you can see your entire working history. False starts, crossed-out attempts, partial solutions - they're all visible, and your brain uses them as a map of the solution space you've already explored. On a phone, that history disappears unless you deliberately preserve it.
+
+The solution was to make the tile interactions feel physical and reversible. Tiles combine and can be separated again. Your working state is always visible. You can undo without penalty and explore a different branch. The goal was to make the screen feel less like a calculator and more like a table where you're sliding numbered tiles around.
+
+**Every input decision is a game design decision.** How many taps to combine two numbers. Whether the result replaces the source tiles or sits alongside them. How undo works. These aren't UX questions in the traditional sense - they directly shape the puzzle-solving experience, because the friction of input determines which mental strategies the player will actually try.
+
+## Difficulty without difficulty settings
+
+Countdown has a hidden difficulty curve built into its format. Some targets, given certain available numbers, are trivially reachable. Others require every tile and a creative chain of operations. The show doesn't label these - it just deals the cards and lets the math fall where it may.
+
+For a mobile game, this needed to be more intentional. Players who've never done a numbers puzzle before need to succeed early and often. Players who grew up watching Countdown need targets that make them genuinely sweat.
+
+The approach I landed on was to control difficulty through the *relationship* between the available numbers and the target, rather than through separate rule sets. An easy puzzle uses numbers that have obvious multiplicative relationships to the target. A hard puzzle uses numbers that require indirect paths - division to create a useful intermediate value, or subtraction to set up a multiplication that wouldn't otherwise work.
+
+This means difficulty is invisible. The interface looks the same at every level. A new player doesn't feel patronized by a "beginner mode" label, and an experienced player doesn't feel that the game is artificially inflated by arbitrary restrictions. **The best difficulty curves are the ones the player doesn't notice.**
+
+## What the show got right all along
+
+After spending months adapting Countdown's numbers round, I came away with enormous respect for how much the original format got right from the beginning.
+
+The numbers round works because it balances several tensions simultaneously: constrained enough to be solvable, open enough to reward creativity. Simple enough to understand immediately, deep enough to remain interesting after hundreds of attempts. Timed enough to create urgency, forgiving enough that near-misses feel like progress rather than failure.
+
+Most puzzle games have to iterate toward this balance over many versions. Countdown walked in with it on day one, probably because it emerged from the practical constraints of live television rather than from a game design document. It needed to be explainable in ten seconds, playable by a general audience, and dramatic enough to sustain a broadcast segment. Those constraints, ironically, produced near-perfect puzzle design.
+
+The lesson I keep returning to: **constraints breed elegance, in game design exactly as in the puzzles themselves.**
+
+---
+
+## The game that carries this forward
+
+[Sumstone](/sumstone/) is my attempt to bring everything the Countdown numbers round does well to a format that works in your hand. Six numbers, one target, basic arithmetic - the core is untouched because the core didn't need fixing.
+
+What changed is everything around it. A timer tuned for mobile input. Tile interactions designed to keep your working state visible. Difficulty that scales through mathematical relationships rather than artificial labels. And no accounts, no ads, no internet required - because a good puzzle doesn't need any of that.
+
+If you've ever leaned forward during the numbers round and thought "I could do that," Sumstone is the place to find out.
+
+[Download Sumstone →](/sumstone/)

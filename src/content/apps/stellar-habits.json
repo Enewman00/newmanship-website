@@ -5,6 +5,7 @@
   "description": "A habit tracker that replaces checkboxes with an interactive night sky. Hold your habits to watch them glow. A small, satisfying ritual that turns consistency into something beautiful.",
   "category": "Productivity / Habit Tracker",
   "platforms": ["iOS"],
+  "appStoreUrl": "https://apps.apple.com/us/app/stellar-habits/id6765559935",
   "features": [
     {
       "title": "Hold-to-Light Ritual",
