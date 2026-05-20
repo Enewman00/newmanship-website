@@ -48,7 +48,7 @@ APPS = [
     },
     {
         'slug': 'sprout-alarm',
-        'name': 'Sprout Alarm',
+        'name': 'SproutAwake',
         'tagline': 'Wake up. Plant trees.',
         'category': 'Lifestyle / Alarm Clock',
         'bg': '#F0FDF4',
