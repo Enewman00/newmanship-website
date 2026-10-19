@@ -11,7 +11,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     author: z.string().default('Ethan Newman'),
-    relatedApp: z.enum(['sumstone', 'stellar-habits', 'choreganized', 'sprout-alarm']).optional(),
+    relatedApp: z.enum(['sumstone', 'stellar-habits', 'choreganized', 'sproutawake']).optional(),
   }),
 });
 
@@ -19,7 +19,7 @@ const apps = defineCollection({
   type: 'data',
   schema: z.object({
     name: z.string(),
-    slug: z.enum(['sumstone', 'stellar-habits', 'choreganized', 'sprout-alarm']),
+    slug: z.enum(['sumstone', 'stellar-habits', 'choreganized', 'sproutawake']),
     tagline: z.string(),
     description: z.string(),
     category: z.string(),

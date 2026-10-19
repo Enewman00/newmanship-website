@@ -49,6 +49,60 @@ export function generateSoftwareApplicationSchema(
   };
 }
 
+export function generateMobileApplicationSchema(opts: {
+  name: string;
+  description: string;
+  pageUrl: string;
+  appStoreUrl: string;
+  applicationCategory: string;
+  applicationSubCategory?: string;
+  operatingSystem: string;
+  image?: string;
+  screenshots?: string[];
+  offers: Array<{ name: string; price: string }>;
+  rating?: { value: number; count: number };
+  // Official social profiles, emitted as sameAs alongside the App Store listing
+  profiles?: string[];
+  author: string;
+  siteUrl: string;
+}): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: opts.name,
+    description: opts.description,
+    url: opts.pageUrl,
+    installUrl: opts.appStoreUrl,
+    downloadUrl: opts.appStoreUrl,
+    sameAs: [opts.appStoreUrl, ...(opts.profiles ?? [])],
+    applicationCategory: opts.applicationCategory,
+    ...(opts.applicationSubCategory ? { applicationSubCategory: opts.applicationSubCategory } : {}),
+    operatingSystem: opts.operatingSystem,
+    inLanguage: 'en',
+    ...(opts.image ? { image: opts.image } : {}),
+    ...(opts.screenshots ? { screenshot: opts.screenshots } : {}),
+    offers: opts.offers.map(({ name, price }) => ({
+      '@type': 'Offer',
+      name,
+      price,
+      priceCurrency: 'USD',
+    })),
+    ...(opts.rating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: opts.rating.value,
+            ratingCount: opts.rating.count,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
+    author: { '@type': 'Person', name: opts.author },
+    publisher: { '@type': 'Organization', name: 'Newmanship', url: opts.siteUrl },
+  };
+}
+
 export function generateFAQPageSchema(
   faqs: Array<{ question: string; answer: string }>,
 ): JsonLd {

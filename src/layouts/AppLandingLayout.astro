@@ -6,6 +6,7 @@ import CTASection from '@/components/marketing/CTASection.astro';
 import {
   generateSoftwareApplicationSchema,
   generateBreadcrumbSchema,
+  type JsonLd,
 } from '@/utils/seo';
 
 interface Feature {
@@ -44,6 +45,8 @@ interface Props {
   // CTA copy overrides
   ctaHeading?: string;
   ctaSubheading?: string;
+  // Replaces the default SoftwareApplication schema when an app needs richer markup
+  appSchema?: JsonLd;
 }
 
 const {
@@ -66,6 +69,7 @@ const {
   colors,
   ctaHeading = `Download ${name}`,
   ctaSubheading,
+  appSchema,
 } = Astro.props;
 
 const siteUrl = 'https://newmanship.com';
@@ -89,7 +93,7 @@ function relativeLuminance([r, g, b]: [number, number, number]): number {
 const isDark = relativeLuminance(hexToRgb(colors.background)) < 0.179;
 
 const schemas = [
-  generateSoftwareApplicationSchema(name, appDescription, category, platforms, appStoreUrl),
+  appSchema ?? generateSoftwareApplicationSchema(name, appDescription, category, platforms, appStoreUrl),
   generateBreadcrumbSchema([
     { name: 'Home', url: siteUrl },
     { name, url: canonicalUrl },

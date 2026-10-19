@@ -13,7 +13,7 @@ const schemas = [
   generateWebSiteSchema(siteUrl),
 ];
 
-const APP_ORDER = ['sumstone', 'stellar-habits', 'choreganized', 'sprout-alarm'];
+const APP_ORDER = ['sumstone', 'stellar-habits', 'choreganized', 'sproutawake'];
 const allApps = await getCollection('apps');
 const apps = APP_ORDER.map((slug) => allApps.find((a) => a.id === slug)!).filter(Boolean);
 ---

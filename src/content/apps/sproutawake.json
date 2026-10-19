@@ -1,0 +1,84 @@
+{
+  "name": "SproutAwake",
+  "slug": "sproutawake",
+  "tagline": "Loud wake-ups. Real trees planted.",
+  "description": "SproutAwake is a free iPhone alarm clock for heavy sleepers. Loud alarm sounds and wake-up missions get you out of bed, and 50% of proceeds fund tree planting through One Tree Planted.",
+  "category": "Alarm Clock for Heavy Sleepers",
+  "platforms": ["iOS"],
+  "features": [
+    {
+      "title": "Loud Alarms for Heavy Sleepers",
+      "description": "Alarm sounds engineered to cut through deep sleep. Built for people who sleep through the default iPhone alarm.",
+      "icon": "zap"
+    },
+    {
+      "title": "Wake-Up Missions",
+      "description": "Solve a math problem, shake your phone, finish a puzzle, unscramble a word, or find a household object to turn the alarm off. You can't snooze your way out of it.",
+      "icon": "clock"
+    },
+    {
+      "title": "Real Trees with One Tree Planted",
+      "description": "50% of proceeds go to One Tree Planted, a verified reforestation nonprofit active in over 80 countries. Monthly tree-planting updates are posted on TikTok at @sprout.alarm.",
+      "icon": "tree"
+    },
+    {
+      "title": "Points, Streaks & Rewards",
+      "description": "Earn points every time you beat your alarm and build streaks for not snoozing. Spend points in the shop on themes, alarm sounds, and animated effects.",
+      "icon": "leaf"
+    },
+    {
+      "title": "Next-Alarm Widget",
+      "description": "A home screen widget shows your next alarm at a glance, so you never have to wonder whether it's set.",
+      "icon": "palette"
+    },
+    {
+      "title": "Rings Through Silent & Focus",
+      "description": "Built on Apple's AlarmKit for iOS 26, so alarms ring through Silent mode, Focus, and Do Not Disturb, just like the built-in Clock app.",
+      "icon": "clock"
+    }
+  ],
+  "colors": {
+    "background": "#F0FDF4",
+    "accent": "#22C55E"
+  },
+  "appStoreUrl": "https://apps.apple.com/us/app/sproutawake-loud-alarm-clock/id6761698232",
+  "iconPath": "/app-icons/sprout-alarm.png",
+  "faqs": [
+    {
+      "question": "What is SproutAwake?",
+      "answer": "SproutAwake is an iPhone alarm clock app for heavy sleepers that plants real trees. It uses loud alarm sounds and wake-up missions to make sure you get out of bed, and 50% of its proceeds go to the reforestation nonprofit One Tree Planted. It's made by Newmanship, an indie studio run by developer Ethan Newman."
+    },
+    {
+      "question": "Is SproutAwake a good alarm for heavy sleepers?",
+      "answer": "Yes - it's designed for them. The alarm sounds are engineered to cut through deep sleep, and you can't just tap to dismiss: you have to complete a wake-up mission like a math problem, a puzzle, a word unscramble, shaking your phone, or finding a household object. By the time it's done, you're awake."
+    },
+    {
+      "question": "How does SproutAwake plant trees?",
+      "answer": "50% of SproutAwake's proceeds are donated to One Tree Planted, a verified reforestation nonprofit that plants trees in over 80 countries. Monthly updates on how many trees have been planted are posted on the SproutAwake TikTok account, @sprout.alarm."
+    },
+    {
+      "question": "What are wake-up missions?",
+      "answer": "Wake-up missions are short tasks you must complete to turn off your alarm: solving a math problem, shaking your phone, finishing a puzzle, unscrambling a word, or finding a household object. They stop you from dismissing the alarm half-asleep and drifting back off."
+    },
+    {
+      "question": "Will SproutAwake ring when my iPhone is on silent or in Focus mode?",
+      "answer": "Yes. SproutAwake uses Apple's AlarmKit (iOS 26 and later), which lets alarms ring through Silent mode, Focus, and Do Not Disturb, just like the built-in Clock app."
+    },
+    {
+      "question": "Is SproutAwake free?",
+      "answer": "SproutAwake is free to download. SproutAwake Pro costs $4.99 per month or $29.99 per year. Optional point packs start at $0.99. Half of all proceeds go to tree planting."
+    },
+    {
+      "question": "What's included in SproutAwake Pro?",
+      "answer": "Pro includes unlimited alarms, all wake-up mission types, and premium themes. It costs $4.99 per month or $29.99 per year, and 50% of it goes to planting real trees."
+    },
+    {
+      "question": "What devices does SproutAwake work on?",
+      "answer": "SproutAwake is available for iPhone and requires iOS 26 or later. It isn't available on Android yet."
+    },
+    {
+      "question": "How is SproutAwake different from Alarmy and other mission alarm apps?",
+      "answer": "Like Alarmy and other mission-based alarm apps, SproutAwake makes you complete a task before the alarm turns off. The difference is what your mornings support: 50% of SproutAwake's proceeds fund tree planting through One Tree Planted, and you earn points and streaks for not snoozing."
+    }
+  ]
+}

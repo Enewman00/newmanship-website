@@ -9,7 +9,7 @@ export const GET: APIRoute = async ({ site }) => {
     '/sumstone/',
     '/stellar-habits/',
     '/choreganized/',
-    '/sprout-alarm/',
+    '/sproutawake/',
     '/blog/',
   ];
 
