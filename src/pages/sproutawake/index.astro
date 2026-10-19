@@ -43,7 +43,7 @@ const facts = [
   { label: 'Price', value: `Free download. Pro is $${pricing.monthly}/month or $${pricing.annual}/year` },
   { label: 'Wake-up missions', value: 'Math problems, phone shaking, puzzles, word unscrambles, finding a household object' },
   { label: 'Tree-planting partner', value: 'One Tree Planted - 50% of proceeds donated' },
-  { label: 'Monthly tree updates', value: 'Posted on TikTok at @sprout.alarm' },
+  { label: 'Monthly tree updates', value: 'Posted on TikTok at', link: { href: tiktokUrl, text: '@sprout.alarm' } },
   { label: 'App Store rating', value: `${rating.value} out of 5 (${rating.count} ratings)` },
   { label: 'Developer', value: 'Ethan Newman, Newmanship' },
 ];
@@ -100,7 +100,7 @@ const steps = [
     <div class="max-w-2xl mx-auto px-4">
       <p class="text-white font-bold text-lg mb-1">50% of proceeds plant trees with One Tree Planted.</p>
       <p class="text-white/80 text-sm">
-        A verified reforestation nonprofit active in over 80 countries. Monthly tree-planting updates on TikTok at @sprout.alarm.
+        A verified reforestation nonprofit active in over 80 countries. Monthly tree-planting updates on TikTok at <a href={tiktokUrl} class="underline text-white">@sprout.alarm</a>.
       </p>
     </div>
   </section>
@@ -118,7 +118,7 @@ const steps = [
         {facts.map((fact) => (
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 px-6 py-4">
             <dt class="text-sm font-semibold text-brand-ink">{fact.label}</dt>
-            <dd class="text-sm text-brand-ink-muted sm:col-span-2">{fact.value}</dd>
+            <dd class="text-sm text-brand-ink-muted sm:col-span-2">{fact.value}{fact.link && (<> <a href={fact.link.href} class="underline">{fact.link.text}</a></>)}</dd>
           </div>
         ))}
       </dl>
