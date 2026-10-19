@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import { isPublished } from '@/utils/blog';
 
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const allPosts = await getCollection('blog', isPublished);
 const posts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);

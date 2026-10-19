@@ -1,9 +1,10 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { isPublished } from '@/utils/blog';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const posts = await getCollection('blog', isPublished);
   const sorted = posts.sort(
     (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
   );

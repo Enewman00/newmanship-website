@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { isPublished } from '@/utils/blog';
 
 export const GET: APIRoute = async ({ site }) => {
   const siteUrl = (site ?? 'https://newmanship.com').toString().replace(/\/$/, '');
@@ -13,13 +14,13 @@ export const GET: APIRoute = async ({ site }) => {
     '/blog/',
   ];
 
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  const now = new Date().toISOString();
-
-  const staticEntries = staticPages.map((path) => ({ path, lastmod: now }));
+  const posts = await getCollection('blog', isPublished);
+  // Static pages omit lastmod: stamping them with the build time on every deploy
+  // (including the daily scheduled one) tells search engines nothing.
+  const staticEntries: Array<{ path: string; lastmod?: string }> = staticPages.map((path) => ({ path }));
   const blogEntries = posts.map((post) => ({
     path: `/blog/${post.slug}/`,
-    lastmod: post.data.pubDate.toISOString(),
+    lastmod: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   }));
 
   const allEntries = [...staticEntries, ...blogEntries];
@@ -28,8 +29,8 @@ export const GET: APIRoute = async ({ site }) => {
     .map(
       ({ path, lastmod }) => `
   <url>
-    <loc>${siteUrl}${path}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <loc>${siteUrl}${path}</loc>${lastmod ? `
+    <lastmod>${lastmod}</lastmod>` : ''}
     <changefreq>${path === '' ? 'weekly' : 'monthly'}</changefreq>
     <priority>${path === '' ? '1.0' : path.includes('/blog/') && path !== '/blog/' ? '0.6' : '0.8'}</priority>
   </url>`,

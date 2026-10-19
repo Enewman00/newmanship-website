@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Daily rebuild so future-dated blog posts go live on their pubDate
+  schedule:
+    - cron: '0 13 * * *'
   workflow_dispatch:
 
 permissions:
